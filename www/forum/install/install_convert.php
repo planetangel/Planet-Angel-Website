@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version $Id: install_convert.php 8615 2008-06-07 13:50:39Z acydburn $
+* @version $Id: install_convert.php 8814 2008-09-04 12:01:47Z acydburn $
 * @copyright (c) 2006 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -685,7 +685,7 @@ class install_convert extends module
 			// Thanks MySQL, for silently converting...
 			case 'mysql':
 			case 'mysql4':
-				if (version_compare($src_db->mysql_version, '4.1.3', '>='))
+				if (version_compare($src_db->sql_server_info(true), '4.1.3', '>='))
 				{
 					$convert->mysql_convert = true;
 				}

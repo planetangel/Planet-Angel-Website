@@ -1,5 +1,5 @@
 #
-# $Id: firebird_schema.sql 8666 2008-06-21 16:04:13Z acydburn $
+# $Id: firebird_schema.sql 9400 2009-03-20 13:22:19Z acydburn $
 #
 
 
@@ -65,7 +65,7 @@ CREATE TABLE phpbb_acl_options (
 
 ALTER TABLE phpbb_acl_options ADD PRIMARY KEY (auth_option_id);;
 
-CREATE INDEX phpbb_acl_options_auth_option ON phpbb_acl_options(auth_option);;
+CREATE UNIQUE INDEX phpbb_acl_options_auth_option ON phpbb_acl_options(auth_option);;
 
 CREATE GENERATOR phpbb_acl_options_gen;;
 SET GENERATOR phpbb_acl_options_gen TO 0;;
@@ -440,6 +440,7 @@ CREATE TABLE phpbb_groups (
 	group_sig_chars INTEGER DEFAULT 0 NOT NULL,
 	group_receive_pm INTEGER DEFAULT 0 NOT NULL,
 	group_message_limit INTEGER DEFAULT 0 NOT NULL,
+	group_max_recipients INTEGER DEFAULT 0 NOT NULL,
 	group_legend INTEGER DEFAULT 1 NOT NULL
 );;
 
@@ -785,6 +786,7 @@ CREATE TABLE phpbb_profile_fields (
 	field_validation VARCHAR(20) CHARACTER SET UTF8 DEFAULT '' NOT NULL COLLATE UNICODE,
 	field_required INTEGER DEFAULT 0 NOT NULL,
 	field_show_on_reg INTEGER DEFAULT 0 NOT NULL,
+	field_show_profile INTEGER DEFAULT 0 NOT NULL,
 	field_hide INTEGER DEFAULT 0 NOT NULL,
 	field_no_view INTEGER DEFAULT 0 NOT NULL,
 	field_active INTEGER DEFAULT 0 NOT NULL,
@@ -1076,7 +1078,9 @@ CREATE TABLE phpbb_styles_template (
 	template_copyright VARCHAR(255) CHARACTER SET UTF8 DEFAULT '' NOT NULL COLLATE UNICODE,
 	template_path VARCHAR(100) CHARACTER SET NONE DEFAULT '' NOT NULL,
 	bbcode_bitfield VARCHAR(255) CHARACTER SET NONE DEFAULT 'kNg=' NOT NULL,
-	template_storedb INTEGER DEFAULT 0 NOT NULL
+	template_storedb INTEGER DEFAULT 0 NOT NULL,
+	template_inherits_id INTEGER DEFAULT 0 NOT NULL,
+	template_inherit_path VARCHAR(255) CHARACTER SET NONE DEFAULT '' NOT NULL
 );;
 
 ALTER TABLE phpbb_styles_template ADD PRIMARY KEY (template_id);;

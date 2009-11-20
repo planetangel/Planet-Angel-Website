@@ -1,6 +1,6 @@
 /*
 
- $Id: oracle_schema.sql 8666 2008-06-21 16:04:13Z acydburn $
+ $Id: oracle_schema.sql 9400 2009-03-20 13:22:19Z acydburn $
 
 */
 
@@ -119,12 +119,11 @@ CREATE TABLE phpbb_acl_options (
 	is_global number(1) DEFAULT '0' NOT NULL,
 	is_local number(1) DEFAULT '0' NOT NULL,
 	founder_only number(1) DEFAULT '0' NOT NULL,
-	CONSTRAINT pk_phpbb_acl_options PRIMARY KEY (auth_option_id)
+	CONSTRAINT pk_phpbb_acl_options PRIMARY KEY (auth_option_id),
+	CONSTRAINT u_phpbb_auth_option UNIQUE (auth_option)
 )
 /
 
-CREATE INDEX phpbb_acl_options_auth_option ON phpbb_acl_options (auth_option)
-/
 
 CREATE SEQUENCE phpbb_acl_options_seq
 /
@@ -485,7 +484,7 @@ CREATE TABLE phpbb_forums (
 	forum_desc_uid varchar2(8) DEFAULT '' ,
 	forum_link varchar2(765) DEFAULT '' ,
 	forum_password varchar2(120) DEFAULT '' ,
-	forum_style number(4) DEFAULT '0' NOT NULL,
+	forum_style number(8) DEFAULT '0' NOT NULL,
 	forum_image varchar2(255) DEFAULT '' ,
 	forum_rules clob DEFAULT '' ,
 	forum_rules_link varchar2(765) DEFAULT '' ,
@@ -602,6 +601,7 @@ CREATE TABLE phpbb_groups (
 	group_sig_chars number(8) DEFAULT '0' NOT NULL,
 	group_receive_pm number(1) DEFAULT '0' NOT NULL,
 	group_message_limit number(8) DEFAULT '0' NOT NULL,
+	group_max_recipients number(8) DEFAULT '0' NOT NULL,
 	group_legend number(1) DEFAULT '1' NOT NULL,
 	CONSTRAINT pk_phpbb_groups PRIMARY KEY (group_id)
 )
@@ -820,7 +820,7 @@ CREATE TABLE phpbb_poll_votes (
 	topic_id number(8) DEFAULT '0' NOT NULL,
 	poll_option_id number(4) DEFAULT '0' NOT NULL,
 	vote_user_id number(8) DEFAULT '0' NOT NULL,
-	vote_user_ip varchar2(40) DEFAULT '' 
+	vote_user_ip varchar2(40) DEFAULT ''
 )
 /
 
@@ -1055,6 +1055,7 @@ CREATE TABLE phpbb_profile_fields (
 	field_validation varchar2(60) DEFAULT '' ,
 	field_required number(1) DEFAULT '0' NOT NULL,
 	field_show_on_reg number(1) DEFAULT '0' NOT NULL,
+	field_show_profile number(1) DEFAULT '0' NOT NULL,
 	field_hide number(1) DEFAULT '0' NOT NULL,
 	field_no_view number(1) DEFAULT '0' NOT NULL,
 	field_active number(1) DEFAULT '0' NOT NULL,
@@ -1386,13 +1387,13 @@ END;
 	Table: 'phpbb_styles'
 */
 CREATE TABLE phpbb_styles (
-	style_id number(4) NOT NULL,
+	style_id number(8) NOT NULL,
 	style_name varchar2(765) DEFAULT '' ,
 	style_copyright varchar2(765) DEFAULT '' ,
 	style_active number(1) DEFAULT '1' NOT NULL,
-	template_id number(4) DEFAULT '0' NOT NULL,
-	theme_id number(4) DEFAULT '0' NOT NULL,
-	imageset_id number(4) DEFAULT '0' NOT NULL,
+	template_id number(8) DEFAULT '0' NOT NULL,
+	theme_id number(8) DEFAULT '0' NOT NULL,
+	imageset_id number(8) DEFAULT '0' NOT NULL,
 	CONSTRAINT pk_phpbb_styles PRIMARY KEY (style_id),
 	CONSTRAINT u_phpbb_style_name UNIQUE (style_name)
 )
@@ -1425,12 +1426,14 @@ END;
 	Table: 'phpbb_styles_template'
 */
 CREATE TABLE phpbb_styles_template (
-	template_id number(4) NOT NULL,
+	template_id number(8) NOT NULL,
 	template_name varchar2(765) DEFAULT '' ,
 	template_copyright varchar2(765) DEFAULT '' ,
 	template_path varchar2(100) DEFAULT '' ,
 	bbcode_bitfield varchar2(255) DEFAULT 'kNg=' NOT NULL,
 	template_storedb number(1) DEFAULT '0' NOT NULL,
+	template_inherits_id number(4) DEFAULT '0' NOT NULL,
+	template_inherit_path varchar2(255) DEFAULT '' ,
 	CONSTRAINT pk_phpbb_styles_template PRIMARY KEY (template_id),
 	CONSTRAINT u_phpbb_tmplte_nm UNIQUE (template_name)
 )
@@ -1457,11 +1460,11 @@ END;
 	Table: 'phpbb_styles_template_data'
 */
 CREATE TABLE phpbb_styles_template_data (
-	template_id number(4) DEFAULT '0' NOT NULL,
+	template_id number(8) DEFAULT '0' NOT NULL,
 	template_filename varchar2(100) DEFAULT '' ,
 	template_included clob DEFAULT '' ,
 	template_mtime number(11) DEFAULT '0' NOT NULL,
-	template_data clob DEFAULT '' 
+	template_data clob DEFAULT ''
 )
 /
 
@@ -1474,7 +1477,7 @@ CREATE INDEX phpbb_styles_template_data_tfn ON phpbb_styles_template_data (templ
 	Table: 'phpbb_styles_theme'
 */
 CREATE TABLE phpbb_styles_theme (
-	theme_id number(4) NOT NULL,
+	theme_id number(8) NOT NULL,
 	theme_name varchar2(765) DEFAULT '' ,
 	theme_copyright varchar2(765) DEFAULT '' ,
 	theme_path varchar2(100) DEFAULT '' ,
@@ -1507,7 +1510,7 @@ END;
 	Table: 'phpbb_styles_imageset'
 */
 CREATE TABLE phpbb_styles_imageset (
-	imageset_id number(4) NOT NULL,
+	imageset_id number(8) NOT NULL,
 	imageset_name varchar2(765) DEFAULT '' ,
 	imageset_copyright varchar2(765) DEFAULT '' ,
 	imageset_path varchar2(100) DEFAULT '' ,
@@ -1537,13 +1540,13 @@ END;
 	Table: 'phpbb_styles_imageset_data'
 */
 CREATE TABLE phpbb_styles_imageset_data (
-	image_id number(4) NOT NULL,
+	image_id number(8) NOT NULL,
 	image_name varchar2(200) DEFAULT '' ,
 	image_filename varchar2(200) DEFAULT '' ,
 	image_lang varchar2(30) DEFAULT '' ,
 	image_height number(4) DEFAULT '0' NOT NULL,
 	image_width number(4) DEFAULT '0' NOT NULL,
-	imageset_id number(4) DEFAULT '0' NOT NULL,
+	imageset_id number(8) DEFAULT '0' NOT NULL,
 	CONSTRAINT pk_phpbb_styles_imageset_data PRIMARY KEY (image_id)
 )
 /
@@ -1735,7 +1738,7 @@ CREATE TABLE phpbb_users (
 	user_timezone number(5, 2) DEFAULT '0' NOT NULL,
 	user_dst number(1) DEFAULT '0' NOT NULL,
 	user_dateformat varchar2(90) DEFAULT 'd M Y H:i' NOT NULL,
-	user_style number(4) DEFAULT '0' NOT NULL,
+	user_style number(8) DEFAULT '0' NOT NULL,
 	user_rank number(8) DEFAULT '0' NOT NULL,
 	user_colour varchar2(6) DEFAULT '' ,
 	user_new_privmsg number(4) DEFAULT '0' NOT NULL,

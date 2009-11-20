@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: style.php 8513 2008-04-21 10:54:12Z acydburn $
+* @version $Id: style.php 9366 2009-03-11 17:47:31Z acydburn $
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -27,7 +27,7 @@ if (!defined('PHPBB_INSTALLED') || empty($dbms) || empty($acm_type))
 
 if (version_compare(PHP_VERSION, '6.0.0-dev', '<'))
 {
-	set_magic_quotes_runtime(0);
+	@set_magic_quotes_runtime(0);
 }
 
 // Load Extensions
@@ -62,6 +62,7 @@ if ($id)
 	require($phpbb_root_path . 'includes/cache.' . $phpEx);
 	require($phpbb_root_path . 'includes/db/' . $dbms . '.' . $phpEx);
 	require($phpbb_root_path . 'includes/constants.' . $phpEx);
+	require($phpbb_root_path . 'includes/functions.' . $phpEx);
 
 	$db = new $sql_db();
 	$cache = new cache();
@@ -117,10 +118,11 @@ if ($id)
 
 	$user_image_lang = (file_exists($phpbb_root_path . 'styles/' . $theme['imageset_path'] . '/imageset/' . $user['user_lang'])) ? $user['user_lang'] : $config['default_lang'];
 
+	// Same query in session.php
 	$sql = 'SELECT *
 		FROM ' . STYLES_IMAGESET_DATA_TABLE . '
 		WHERE imageset_id = ' . $theme['imageset_id'] . "
-		AND image_filename <> '' 
+		AND image_filename <> ''
 		AND image_lang IN ('" . $db->sql_escape($user_image_lang) . "', '')";
 	$result = $db->sql_query($sql, 3600);
 
@@ -256,11 +258,11 @@ if ($id)
 				case 'SRC':
 					$replace[] = $imgs[$img]['src'];
 				break;
-				
+
 				case 'WIDTH':
 					$replace[] = $imgs[$img]['width'];
 				break;
-	
+
 				case 'HEIGHT':
 					$replace[] = $imgs[$img]['height'];
 				break;

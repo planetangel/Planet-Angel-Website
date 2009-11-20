@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB3
-* @version $Id: functions_user.php 8668 2008-06-21 17:08:41Z acydburn $
+* @version $Id: functions_user.php 9409 2009-03-27 16:39:19Z acydburn $
 * @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -147,7 +147,7 @@ function user_update_name($old_name, $new_name)
 *
 * @param mixed $user_row An array containing the following keys (and the appropriate values): username, group_id (the group to place the user in), user_email and the user_type(usually 0). Additional entries not overridden by defaults will be forwarded.
 * @param string $cp_data custom profile fields, see custom_profile::build_insert_sql_array
-* @return: the new user's ID.
+* @return the new user's ID.
 */
 function user_add($user_row, $cp_data = false)
 {
@@ -280,7 +280,7 @@ function user_add($user_row, $cp_data = false)
 	{
 		set_config('newest_user_id', $user_id, true);
 		set_config('newest_username', $user_row['username'], true);
-		set_config('num_users', $config['num_users'] + 1, true);
+		set_config_count('num_users', 1, true);
 
 		$sql = 'SELECT group_colour
 			FROM ' . GROUPS_TABLE . '
@@ -314,8 +314,6 @@ function user_delete($mode, $user_id, $post_username = false)
 	{
 		return false;
 	}
-
-	$db->sql_transaction('begin');
 
 	// Before we begin, we will remove the reports the user issued.
 	$sql = 'SELECT r.post_id, p.topic_id
@@ -385,6 +383,8 @@ function user_delete($mode, $user_id, $post_username = false)
 	{
 		case 'retain':
 
+			$db->sql_transaction('begin');
+
 			if ($post_username === false)
 			{
 				$post_username = $user->lang['GUEST'];
@@ -432,6 +432,9 @@ function user_delete($mode, $user_id, $post_username = false)
 					$db->sql_query($sql);
 				}
 			}
+
+			$db->sql_transaction('commit');
+
 		break;
 
 		case 'remove':
@@ -485,7 +488,9 @@ function user_delete($mode, $user_id, $post_username = false)
 		break;
 	}
 
-	$table_ary = array(USERS_TABLE, USER_GROUP_TABLE, TOPICS_WATCH_TABLE, FORUMS_WATCH_TABLE, ACL_USERS_TABLE, TOPICS_TRACK_TABLE, TOPICS_POSTED_TABLE, FORUMS_TRACK_TABLE, PROFILE_FIELDS_DATA_TABLE, MODERATOR_CACHE_TABLE, DRAFTS_TABLE, BOOKMARKS_TABLE);
+	$db->sql_transaction('begin');
+
+	$table_ary = array(USERS_TABLE, USER_GROUP_TABLE, TOPICS_WATCH_TABLE, FORUMS_WATCH_TABLE, ACL_USERS_TABLE, TOPICS_TRACK_TABLE, TOPICS_POSTED_TABLE, FORUMS_TRACK_TABLE, PROFILE_FIELDS_DATA_TABLE, MODERATOR_CACHE_TABLE, DRAFTS_TABLE, BOOKMARKS_TABLE, SESSIONS_KEYS_TABLE);
 
 	foreach ($table_ary as $table)
 	{
@@ -495,6 +500,16 @@ function user_delete($mode, $user_id, $post_username = false)
 	}
 
 	$cache->destroy('sql', MODERATOR_CACHE_TABLE);
+
+	// Delete the user_id from the banlist
+	$sql = 'DELETE FROM ' . BANLIST_TABLE . '
+		WHERE ban_userid = ' . $user_id;
+	$db->sql_query($sql);
+
+	// Delete the user_id from the session table
+	$sql = 'DELETE FROM ' . SESSIONS_TABLE . '
+		WHERE session_user_id = ' . $user_id;
+	$db->sql_query($sql);
 
 	// Remove any undelivered mails...
 	$sql = 'SELECT msg_id, user_id
@@ -553,6 +568,8 @@ function user_delete($mode, $user_id, $post_username = false)
 		$db->sql_query($sql);
 	}
 
+	$db->sql_transaction('commit');
+
 	// Reset newest user info if appropriate
 	if ($config['newest_user_id'] == $user_id)
 	{
@@ -562,10 +579,8 @@ function user_delete($mode, $user_id, $post_username = false)
 	// Decrement number of users if this user is active
 	if ($user_row['user_type'] != USER_INACTIVE && $user_row['user_type'] != USER_IGNORE)
 	{
-		set_config('num_users', $config['num_users'] - 1, true);
+		set_config_count('num_users', -1, true);
 	}
-
-	$db->sql_transaction('commit');
 
 	return false;
 }
@@ -645,12 +660,12 @@ function user_active_flip($mode, $user_id_ary, $reason = INACTIVE_MANUAL)
 
 	if ($deactivated)
 	{
-		set_config('num_users', $config['num_users'] - $deactivated, true);
+		set_config_count('num_users', $deactivated * (-1), true);
 	}
 
 	if ($activated)
 	{
-		set_config('num_users', $config['num_users'] + $activated, true);
+		set_config_count('num_users', $activated, true);
 	}
 
 	// Update latest username
@@ -934,7 +949,7 @@ function user_ban($mode, $ban, $ban_len, $ban_len_other, $ban_exclude, $ban_reas
 	$sql = "SELECT $type
 		FROM " . BANLIST_TABLE . "
 		WHERE $sql_where
-			AND ban_exclude = $ban_exclude";
+			AND ban_exclude = " . (int) $ban_exclude;
 	$result = $db->sql_query($sql);
 
 	// Reset $sql_where, because we use it later...
@@ -1129,6 +1144,8 @@ function user_unban($mode, $ban)
 
 /**
 * Whois facility
+*
+* @link http://tools.ietf.org/html/rfc3912 RFC3912: WHOIS Protocol Specification
 */
 function user_ipwhois($ip)
 {
@@ -1141,16 +1158,10 @@ function user_ipwhois($ip)
 		return '';
 	}
 
-	$match = array(
-		'#RIPE\.NET#is'				=> 'whois.ripe.net',
-		'#whois\.apnic\.net#is'		=> 'whois.apnic.net',
-		'#nic\.ad\.jp#is'			=> 'whois.nic.ad.jp',
-		'#whois\.registro\.br#is'	=> 'whois.registro.br'
-	);
-
 	if (($fsk = @fsockopen('whois.arin.net', 43)))
 	{
-		fputs($fsk, "$ip\n");
+		// CRLF as per RFC3912
+		fputs($fsk, "$ip\r\n");
 		while (!feof($fsk))
 		{
 			$ipwhois .= fgets($fsk, 1024);
@@ -1158,22 +1169,38 @@ function user_ipwhois($ip)
 		@fclose($fsk);
 	}
 
-	foreach (array_keys($match) as $server)
+	$match = array();
+
+	// Test for referrals from ARIN to other whois databases, roll on rwhois
+	if (preg_match('#ReferralServer: whois://(.+)#im', $ipwhois, $match))
 	{
-		if (preg_match($server, $ipwhois))
+		if (strpos($match[1], ':') !== false)
 		{
-			$ipwhois = '';
-			if (($fsk = @fsockopen($match[$server], 43)))
-			{
-				fputs($fsk, "$ip\n");
-				while (!feof($fsk))
-				{
-					$ipwhois .= fgets($fsk, 1024);
-				}
-				@fclose($fsk);
-			}
-			break;
+			$pos	= strrpos($match[1], ':');
+			$server	= substr($match[1], 0, $pos);
+			$port	= (int) substr($match[1], $pos + 1);
+			unset($pos);
 		}
+		else
+		{
+			$server	= $match[1];
+			$port	= 43;
+		}
+
+		$buffer = '';
+
+		if (($fsk = @fsockopen($server, $port)))
+		{
+			fputs($fsk, "$ip\r\n");
+			while (!feof($fsk))
+			{
+				$buffer .= fgets($fsk, 1024);
+			}
+			@fclose($fsk);
+		}
+
+		// Use the result from ARIN if we don't get any result here
+		$ipwhois = (empty($buffer)) ? $ipwhois : $buffer;
 	}
 
 	$ipwhois = htmlspecialchars($ipwhois);
@@ -1409,7 +1436,7 @@ function validate_username($username, $allowed_username = false)
 			}
 			else if ($mbstring)
 			{
-				$regex = '[-\]_+ [[:upper:][:lower:][:digit:]]+';
+				$regex = '[-\]_+ \[[:upper:][:lower:][:digit:]]+';
 			}
 			else
 			{
@@ -1434,8 +1461,7 @@ function validate_username($username, $allowed_username = false)
 	}
 	else if ($mbstring)
 	{
-		$matches = array();
-		mb_ereg_search_init('^' . $username . '$', $regex, $matches);
+		mb_ereg_search_init($username, '^' . $regex . '$');
 		if (!mb_ereg_search())
 		{
 			return 'INVALID_CHARS';
@@ -2297,22 +2323,29 @@ function avatar_process_user(&$error, $custom_userdata = false)
 		// Do we actually have any data to update?
 		if (sizeof($sql_ary))
 		{
+			$ext_new = $ext_old = '';
+			if (isset($sql_ary['user_avatar']))
+			{
+				$userdata = ($custom_userdata === false) ? $user->data : $custom_userdata;
+				$ext_new = (empty($sql_ary['user_avatar'])) ? '' : substr(strrchr($sql_ary['user_avatar'], '.'), 1);
+				$ext_old = (empty($userdata['user_avatar'])) ? '' : substr(strrchr($userdata['user_avatar'], '.'), 1);
+
+				if ($userdata['user_avatar_type'] == AVATAR_UPLOAD)
+				{
+					// Delete old avatar if present
+					if ((!empty($userdata['user_avatar']) && empty($sql_ary['user_avatar']))
+					   || ( !empty($userdata['user_avatar']) && !empty($sql_ary['user_avatar']) && $ext_new !== $ext_old))
+					{
+						avatar_delete('user', $userdata);
+					}
+				}
+			}
+
 			$sql = 'UPDATE ' . USERS_TABLE . '
 				SET ' . $db->sql_build_array('UPDATE', $sql_ary) . '
 				WHERE user_id = ' . (($custom_userdata === false) ? $user->data['user_id'] : $custom_userdata['user_id']);
 			$db->sql_query($sql);
 
-			if (isset($sql_ary['user_avatar']))
-			{
-				$userdata = ($custom_userdata === false) ? $user->data : $custom_userdata;
-
-				// Delete old avatar if present
-				if ((!empty($userdata['user_avatar']) && empty($sql_ary['user_avatar']) && $userdata['user_avatar_type'] == AVATAR_UPLOAD)
-				   || ( !empty($userdata['user_avatar']) && !empty($sql_ary['user_avatar']) && $userdata['user_avatar_type'] == AVATAR_UPLOAD && $sql_ary['user_avatar_type'] != AVATAR_UPLOAD))
-				{
-					avatar_delete('user', $userdata);
-				}
-			}
 		}
 	}
 
@@ -2343,12 +2376,13 @@ function group_create(&$group_id, $type, $name, $desc, $group_attributes, $allow
 		'group_receive_pm'		=> 'int',
 		'group_legend'			=> 'int',
 		'group_message_limit'	=> 'int',
+		'group_max_recipients'	=> 'int',
 
 		'group_founder_manage'	=> 'int',
 	);
 
 	// Those are group-only attributes
-	$group_only_ary = array('group_receive_pm', 'group_legend', 'group_message_limit', 'group_founder_manage');
+	$group_only_ary = array('group_receive_pm', 'group_legend', 'group_message_limit', 'group_max_recipients', 'group_founder_manage');
 
 	// Check data. Limit group name length.
 	if (!utf8_strlen($name) || utf8_strlen($name) > 60)
@@ -2700,9 +2734,16 @@ function group_user_add($group_id, $user_id_ary = false, $username_ary = false, 
 */
 function group_user_del($group_id, $user_id_ary = false, $username_ary = false, $group_name = false)
 {
-	global $db, $auth;
+	global $db, $auth, $config;
 
-	$group_order = array('ADMINISTRATORS', 'GLOBAL_MODERATORS', 'REGISTERED_COPPA', 'REGISTERED', 'BOTS', 'GUESTS');
+	if ($config['coppa_enable'])
+	{
+		$group_order = array('ADMINISTRATORS', 'GLOBAL_MODERATORS', 'REGISTERED_COPPA', 'REGISTERED', 'BOTS', 'GUESTS');
+	}
+	else
+	{
+		$group_order = array('ADMINISTRATORS', 'GLOBAL_MODERATORS', 'REGISTERED', 'BOTS', 'GUESTS');
+	}
 
 	// We need both username and user_id info
 	$result = user_get_id_name($user_id_ary, $username_ary);
@@ -2766,13 +2807,14 @@ function group_user_del($group_id, $user_id_ary = false, $username_ary = false, 
 	$temp_ary = array();
 	while ($row = $db->sql_fetchrow($result))
 	{
-		if ($default_groups[$row['user_id']] == $group_id && (!isset($temp_ary[$row['user_id']]) || array_search($row['group_name'], $group_order) < $temp_ary[$row['user_id']]))
+		if ($default_groups[$row['user_id']] == $group_id && (!isset($temp_ary[$row['user_id']]) || $group_order_id[$row['group_name']] < $temp_ary[$row['user_id']]))
 		{
 			$temp_ary[$row['user_id']] = $row['group_id'];
 		}
 	}
 	$db->sql_freeresult($result);
 
+	// sql_where_ary holds the new default groups and their users
 	$sql_where_ary = array();
 	foreach ($temp_ary as $uid => $gid)
 	{
@@ -2784,7 +2826,7 @@ function group_user_del($group_id, $user_id_ary = false, $username_ary = false, 
 	{
 		if (isset($sql_where_ary[$gid]) && sizeof($sql_where_ary[$gid]))
 		{
-			remove_default_rank($group_id, $sql_where_ary[$gid]);
+			remove_default_rank($gid, $sql_where_ary[$gid]);
 			remove_default_avatar($group_id, $sql_where_ary[$gid]);
 			group_set_user_default($gid, $sql_where_ary[$gid], $default_data_ary);
 		}
@@ -3080,7 +3122,7 @@ function group_validate_groupname($group_id, $group_name)
 /**
 * Set users default group
 *
-* @private
+* @access private
 */
 function group_set_user_default($group_id, $user_id_ary, $group_attributes = false, $update_listing = false)
 {

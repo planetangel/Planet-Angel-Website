@@ -1,6 +1,6 @@
 /*
 
- $Id: postgres_schema.sql 8666 2008-06-21 16:04:13Z acydburn $
+ $Id: postgres_schema.sql 9400 2009-03-20 13:22:19Z acydburn $
 
 */
 
@@ -140,7 +140,7 @@ CREATE TABLE phpbb_acl_options (
 	PRIMARY KEY (auth_option_id)
 );
 
-CREATE INDEX phpbb_acl_options_auth_option ON phpbb_acl_options (auth_option);
+CREATE UNIQUE INDEX phpbb_acl_options_auth_option ON phpbb_acl_options (auth_option);
 
 /*
 	Table: 'phpbb_acl_roles'
@@ -361,7 +361,7 @@ CREATE TABLE phpbb_forums (
 	forum_desc_uid varchar(8) DEFAULT '' NOT NULL,
 	forum_link varchar(255) DEFAULT '' NOT NULL,
 	forum_password varchar(40) DEFAULT '' NOT NULL,
-	forum_style INT2 DEFAULT '0' NOT NULL CHECK (forum_style >= 0),
+	forum_style INT4 DEFAULT '0' NOT NULL CHECK (forum_style >= 0),
 	forum_image varchar(255) DEFAULT '' NOT NULL,
 	forum_rules varchar(4000) DEFAULT '' NOT NULL,
 	forum_rules_link varchar(255) DEFAULT '' NOT NULL,
@@ -455,6 +455,7 @@ CREATE TABLE phpbb_groups (
 	group_sig_chars INT4 DEFAULT '0' NOT NULL CHECK (group_sig_chars >= 0),
 	group_receive_pm INT2 DEFAULT '0' NOT NULL CHECK (group_receive_pm >= 0),
 	group_message_limit INT4 DEFAULT '0' NOT NULL CHECK (group_message_limit >= 0),
+	group_max_recipients INT4 DEFAULT '0' NOT NULL CHECK (group_max_recipients >= 0),
 	group_legend INT2 DEFAULT '1' NOT NULL CHECK (group_legend >= 0),
 	PRIMARY KEY (group_id)
 );
@@ -736,6 +737,7 @@ CREATE TABLE phpbb_profile_fields (
 	field_validation varchar(20) DEFAULT '' NOT NULL,
 	field_required INT2 DEFAULT '0' NOT NULL CHECK (field_required >= 0),
 	field_show_on_reg INT2 DEFAULT '0' NOT NULL CHECK (field_show_on_reg >= 0),
+	field_show_profile INT2 DEFAULT '0' NOT NULL CHECK (field_show_profile >= 0),
 	field_hide INT2 DEFAULT '0' NOT NULL CHECK (field_hide >= 0),
 	field_no_view INT2 DEFAULT '0' NOT NULL CHECK (field_no_view >= 0),
 	field_active INT2 DEFAULT '0' NOT NULL CHECK (field_active >= 0),
@@ -945,13 +947,13 @@ CREATE INDEX phpbb_smilies_display_on_post ON phpbb_smilies (display_on_posting)
 CREATE SEQUENCE phpbb_styles_seq;
 
 CREATE TABLE phpbb_styles (
-	style_id INT2 DEFAULT nextval('phpbb_styles_seq'),
+	style_id INT4 DEFAULT nextval('phpbb_styles_seq'),
 	style_name varchar(255) DEFAULT '' NOT NULL,
 	style_copyright varchar(255) DEFAULT '' NOT NULL,
 	style_active INT2 DEFAULT '1' NOT NULL CHECK (style_active >= 0),
-	template_id INT2 DEFAULT '0' NOT NULL CHECK (template_id >= 0),
-	theme_id INT2 DEFAULT '0' NOT NULL CHECK (theme_id >= 0),
-	imageset_id INT2 DEFAULT '0' NOT NULL CHECK (imageset_id >= 0),
+	template_id INT4 DEFAULT '0' NOT NULL CHECK (template_id >= 0),
+	theme_id INT4 DEFAULT '0' NOT NULL CHECK (theme_id >= 0),
+	imageset_id INT4 DEFAULT '0' NOT NULL CHECK (imageset_id >= 0),
 	PRIMARY KEY (style_id)
 );
 
@@ -966,12 +968,14 @@ CREATE INDEX phpbb_styles_imageset_id ON phpbb_styles (imageset_id);
 CREATE SEQUENCE phpbb_styles_template_seq;
 
 CREATE TABLE phpbb_styles_template (
-	template_id INT2 DEFAULT nextval('phpbb_styles_template_seq'),
+	template_id INT4 DEFAULT nextval('phpbb_styles_template_seq'),
 	template_name varchar(255) DEFAULT '' NOT NULL,
 	template_copyright varchar(255) DEFAULT '' NOT NULL,
 	template_path varchar(100) DEFAULT '' NOT NULL,
 	bbcode_bitfield varchar(255) DEFAULT 'kNg=' NOT NULL,
 	template_storedb INT2 DEFAULT '0' NOT NULL CHECK (template_storedb >= 0),
+	template_inherits_id INT4 DEFAULT '0' NOT NULL CHECK (template_inherits_id >= 0),
+	template_inherit_path varchar(255) DEFAULT '' NOT NULL,
 	PRIMARY KEY (template_id)
 );
 
@@ -981,7 +985,7 @@ CREATE UNIQUE INDEX phpbb_styles_template_tmplte_nm ON phpbb_styles_template (te
 	Table: 'phpbb_styles_template_data'
 */
 CREATE TABLE phpbb_styles_template_data (
-	template_id INT2 DEFAULT '0' NOT NULL CHECK (template_id >= 0),
+	template_id INT4 DEFAULT '0' NOT NULL CHECK (template_id >= 0),
 	template_filename varchar(100) DEFAULT '' NOT NULL,
 	template_included varchar(8000) DEFAULT '' NOT NULL,
 	template_mtime INT4 DEFAULT '0' NOT NULL CHECK (template_mtime >= 0),
@@ -997,7 +1001,7 @@ CREATE INDEX phpbb_styles_template_data_tfn ON phpbb_styles_template_data (templ
 CREATE SEQUENCE phpbb_styles_theme_seq;
 
 CREATE TABLE phpbb_styles_theme (
-	theme_id INT2 DEFAULT nextval('phpbb_styles_theme_seq'),
+	theme_id INT4 DEFAULT nextval('phpbb_styles_theme_seq'),
 	theme_name varchar(255) DEFAULT '' NOT NULL,
 	theme_copyright varchar(255) DEFAULT '' NOT NULL,
 	theme_path varchar(100) DEFAULT '' NOT NULL,
@@ -1015,7 +1019,7 @@ CREATE UNIQUE INDEX phpbb_styles_theme_theme_name ON phpbb_styles_theme (theme_n
 CREATE SEQUENCE phpbb_styles_imageset_seq;
 
 CREATE TABLE phpbb_styles_imageset (
-	imageset_id INT2 DEFAULT nextval('phpbb_styles_imageset_seq'),
+	imageset_id INT4 DEFAULT nextval('phpbb_styles_imageset_seq'),
 	imageset_name varchar(255) DEFAULT '' NOT NULL,
 	imageset_copyright varchar(255) DEFAULT '' NOT NULL,
 	imageset_path varchar(100) DEFAULT '' NOT NULL,
@@ -1030,13 +1034,13 @@ CREATE UNIQUE INDEX phpbb_styles_imageset_imgset_nm ON phpbb_styles_imageset (im
 CREATE SEQUENCE phpbb_styles_imageset_data_seq;
 
 CREATE TABLE phpbb_styles_imageset_data (
-	image_id INT2 DEFAULT nextval('phpbb_styles_imageset_data_seq'),
+	image_id INT4 DEFAULT nextval('phpbb_styles_imageset_data_seq'),
 	image_name varchar(200) DEFAULT '' NOT NULL,
 	image_filename varchar(200) DEFAULT '' NOT NULL,
 	image_lang varchar(30) DEFAULT '' NOT NULL,
 	image_height INT2 DEFAULT '0' NOT NULL CHECK (image_height >= 0),
 	image_width INT2 DEFAULT '0' NOT NULL CHECK (image_width >= 0),
-	imageset_id INT2 DEFAULT '0' NOT NULL CHECK (imageset_id >= 0),
+	imageset_id INT4 DEFAULT '0' NOT NULL CHECK (imageset_id >= 0),
 	PRIMARY KEY (image_id)
 );
 
@@ -1180,7 +1184,7 @@ CREATE TABLE phpbb_users (
 	user_timezone decimal(5,2) DEFAULT '0' NOT NULL,
 	user_dst INT2 DEFAULT '0' NOT NULL CHECK (user_dst >= 0),
 	user_dateformat varchar(30) DEFAULT 'd M Y H:i' NOT NULL,
-	user_style INT2 DEFAULT '0' NOT NULL CHECK (user_style >= 0),
+	user_style INT4 DEFAULT '0' NOT NULL CHECK (user_style >= 0),
 	user_rank INT4 DEFAULT '0' NOT NULL CHECK (user_rank >= 0),
 	user_colour varchar(6) DEFAULT '' NOT NULL,
 	user_new_privmsg INT4 DEFAULT '0' NOT NULL,

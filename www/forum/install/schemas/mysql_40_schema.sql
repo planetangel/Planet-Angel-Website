@@ -1,5 +1,5 @@
 #
-# $Id: mysql_40_schema.sql 8666 2008-06-21 16:04:13Z acydburn $
+# $Id: mysql_40_schema.sql 9400 2009-03-20 13:22:19Z acydburn $
 #
 
 # Table: 'phpbb_attachments'
@@ -49,7 +49,7 @@ CREATE TABLE phpbb_acl_options (
 	is_local tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	founder_only tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	PRIMARY KEY (auth_option_id),
-	KEY auth_option (auth_option)
+	UNIQUE auth_option (auth_option)
 );
 
 
@@ -228,7 +228,7 @@ CREATE TABLE phpbb_forums (
 	forum_desc_uid varbinary(8) DEFAULT '' NOT NULL,
 	forum_link blob NOT NULL,
 	forum_password varbinary(120) DEFAULT '' NOT NULL,
-	forum_style smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
+	forum_style mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	forum_image varbinary(255) DEFAULT '' NOT NULL,
 	forum_rules blob NOT NULL,
 	forum_rules_link blob NOT NULL,
@@ -312,6 +312,7 @@ CREATE TABLE phpbb_groups (
 	group_sig_chars mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	group_receive_pm tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	group_message_limit mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
+	group_max_recipients mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	group_legend tinyint(1) UNSIGNED DEFAULT '1' NOT NULL,
 	PRIMARY KEY (group_id),
 	KEY group_legend_name (group_legend, group_name(255))
@@ -549,6 +550,7 @@ CREATE TABLE phpbb_profile_fields (
 	field_validation varbinary(60) DEFAULT '' NOT NULL,
 	field_required tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	field_show_on_reg tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
+	field_show_profile tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	field_hide tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	field_no_view tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	field_active tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
@@ -716,13 +718,13 @@ CREATE TABLE phpbb_smilies (
 
 # Table: 'phpbb_styles'
 CREATE TABLE phpbb_styles (
-	style_id smallint(4) UNSIGNED NOT NULL auto_increment,
+	style_id mediumint(8) UNSIGNED NOT NULL auto_increment,
 	style_name blob NOT NULL,
 	style_copyright blob NOT NULL,
 	style_active tinyint(1) UNSIGNED DEFAULT '1' NOT NULL,
-	template_id smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
-	theme_id smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
-	imageset_id smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
+	template_id mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
+	theme_id mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
+	imageset_id mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	PRIMARY KEY (style_id),
 	UNIQUE style_name (style_name(255)),
 	KEY template_id (template_id),
@@ -733,12 +735,14 @@ CREATE TABLE phpbb_styles (
 
 # Table: 'phpbb_styles_template'
 CREATE TABLE phpbb_styles_template (
-	template_id smallint(4) UNSIGNED NOT NULL auto_increment,
+	template_id mediumint(8) UNSIGNED NOT NULL auto_increment,
 	template_name blob NOT NULL,
 	template_copyright blob NOT NULL,
 	template_path varbinary(100) DEFAULT '' NOT NULL,
 	bbcode_bitfield varbinary(255) DEFAULT 'kNg=' NOT NULL,
 	template_storedb tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
+	template_inherits_id int(4) UNSIGNED DEFAULT '0' NOT NULL,
+	template_inherit_path varbinary(255) DEFAULT '' NOT NULL,
 	PRIMARY KEY (template_id),
 	UNIQUE tmplte_nm (template_name(255))
 );
@@ -746,7 +750,7 @@ CREATE TABLE phpbb_styles_template (
 
 # Table: 'phpbb_styles_template_data'
 CREATE TABLE phpbb_styles_template_data (
-	template_id smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
+	template_id mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	template_filename varbinary(100) DEFAULT '' NOT NULL,
 	template_included blob NOT NULL,
 	template_mtime int(11) UNSIGNED DEFAULT '0' NOT NULL,
@@ -758,7 +762,7 @@ CREATE TABLE phpbb_styles_template_data (
 
 # Table: 'phpbb_styles_theme'
 CREATE TABLE phpbb_styles_theme (
-	theme_id smallint(4) UNSIGNED NOT NULL auto_increment,
+	theme_id mediumint(8) UNSIGNED NOT NULL auto_increment,
 	theme_name blob NOT NULL,
 	theme_copyright blob NOT NULL,
 	theme_path varbinary(100) DEFAULT '' NOT NULL,
@@ -772,7 +776,7 @@ CREATE TABLE phpbb_styles_theme (
 
 # Table: 'phpbb_styles_imageset'
 CREATE TABLE phpbb_styles_imageset (
-	imageset_id smallint(4) UNSIGNED NOT NULL auto_increment,
+	imageset_id mediumint(8) UNSIGNED NOT NULL auto_increment,
 	imageset_name blob NOT NULL,
 	imageset_copyright blob NOT NULL,
 	imageset_path varbinary(100) DEFAULT '' NOT NULL,
@@ -783,13 +787,13 @@ CREATE TABLE phpbb_styles_imageset (
 
 # Table: 'phpbb_styles_imageset_data'
 CREATE TABLE phpbb_styles_imageset_data (
-	image_id smallint(4) UNSIGNED NOT NULL auto_increment,
+	image_id mediumint(8) UNSIGNED NOT NULL auto_increment,
 	image_name varbinary(200) DEFAULT '' NOT NULL,
 	image_filename varbinary(200) DEFAULT '' NOT NULL,
 	image_lang varbinary(30) DEFAULT '' NOT NULL,
 	image_height smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
 	image_width smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
-	imageset_id smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
+	imageset_id mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	PRIMARY KEY (image_id),
 	KEY i_d (imageset_id)
 );
@@ -917,7 +921,7 @@ CREATE TABLE phpbb_users (
 	user_timezone decimal(5,2) DEFAULT '0' NOT NULL,
 	user_dst tinyint(1) UNSIGNED DEFAULT '0' NOT NULL,
 	user_dateformat varbinary(90) DEFAULT 'd M Y H:i' NOT NULL,
-	user_style smallint(4) UNSIGNED DEFAULT '0' NOT NULL,
+	user_style mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	user_rank mediumint(8) UNSIGNED DEFAULT '0' NOT NULL,
 	user_colour varbinary(6) DEFAULT '' NOT NULL,
 	user_new_privmsg int(4) DEFAULT '0' NOT NULL,
