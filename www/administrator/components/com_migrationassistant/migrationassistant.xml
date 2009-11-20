@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+ <name>Migration Assistant</name>
+ <!-- The following elements are optional and free of formatting conttraints -->
+ <creationDate>11-Feb-2008</creationDate>
+ <author>Sam Moffatt</author>
+ <authorEmail>pasamio@gmail.com</authorEmail>
+ <authorUrl>http://sammoffatt.com.au</authorUrl>
+ <copyright>Copyright (C) 2008 Toowoomba Regional Council/Sam Moffatt</copyright>
+ <license>GNU GPL</license>
+ <!--  The version string is recorded in the components table -->
+ <version id="3">1.5.2</version>
+ <!-- The description is optional and defaults to the name -->
+ <description>This component copies across the values in the migration configuration table and can perform a full migration.</description>
+ <administration>
+  <!-- Administration Menu Section -->
+  <menu>Migration Assistant</menu>
+  
+  <!-- Administration Main File Copy Section -->
+  <files folder="admin">
+		<filename>admin.migrationassistant.php</filename>
+		<filename>includes/bigdump.php</filename>
+		<filename>includes/mighelper.php</filename>
+		<filename>includes/model.php</filename>
+		<filename>includes/tasks.php</filename>
+		<filename>includes/index.html</filename>
+		<filename>includes/migpage.php</filename>
+		<filename>includes/installation.js</filename>
+		<filename>sql/index.html</filename>
+		<filename>sql/mysql/joomla.sql</filename>
+		<filename>sql/mysql/joomla_backward.sql</filename>
+		<filename>sql/mysql/index.html</filename>
+		<filename>sql/migration/index.html</filename>
+		<filename>index.html</filename>
+  </files>  
+  <languages folder="admin/languages">
+		<language tag="en-GB">en-GB.com_migrationassistant.ini</language>
+  </languages>
+ </administration>
+ <update>http://www.jsitepoint.com/update/components/migrationassistant</update>
+</install>

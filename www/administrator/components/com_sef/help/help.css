@@ -1,0 +1,12 @@
+body {
+	font-family: verdana, arial, sans-serif;
+	font-size: 9pt;
+}
+
+h1 { 
+	color: #30559C;
+	font-size: 1.5em;
+	border-left: 25px solid #30559C;
+	border-bottom: 1px solid #30559C;
+	padding: 0 0 2px 5px;
+}

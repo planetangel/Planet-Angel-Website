@@ -1,0 +1,123 @@
+^ Update
++ Add
+- Remove
+* Bug
+! Note
+
+
+ChangeLog 07/30/2008 ------------------------------ v1.0.2
+
+! Sku, Pricing, Photographer Display Issues
+! Administration Output Filtering & Name Requirement
+! Layout in v1.5.x looks jinky
+* Component Icons are Missing in v1.5.x
+* JS is Breaking MooTools in v1.5.x
+* Recursive Folder Removal Fails on WinOS (maybe just v1.5.x)
+
++ wbGallery.xml
+  <filename>CHANGELOG.txt</filename>
+  <param name="img_sku" ... Sku Flag
++ spanish.ini provided by Joel DeVenney
++ english.ini & spanish.ini
+  SKU_TITLE
+  SKU_NA
+  PRICE_NA
+  PHOTOGRAPHER_NA
+^ classes/image.db.php
+  Added function check()
+  . trim values
+  . require name
+^ includes_public/common.php
+  return number_format($price, 2, $dec, $sep);
+  return $WBG_LANG->_('PRICE_NA');
++ includes_public/image.php
+  if($params->get('img_sku')) ... Show Sku
+  Added to show the SKU if parameter selected
+^ includes_public/image.php
+  if($params->get('img_price')) ... Show Price
+  Updated to show the PRICE correctly
+^ includes_public/image.php
+  if($params->get('img_photog')) ... Show Photographer
+  Updated to show the PHOTOGRAPHER correctly
+^ includes_public/image.php
+  Moved the Sku / Price / Photographer tags BELOW the image
++ includes/category.php
+  mosMakeHtmlSafe( $row, ENT_QUOTES, 'description' );
+  Added for better security, usability issues
++ includes/image.php
+  mosMakeHtmlSafe( $row, ENT_QUOTES, 'description' );
+  Added for better security, usability issues
++ includes/setup.php
+  Added Link to view Change Log
+^ includes_public/category.php
+  Updated Page Title Output Logic
++ load.php
+  Added Global Definitions (for v1.5.x)
++ admin.wbgallery.php
+  Added Global Definitions (for v1.5.x)
+^ includes/image.php
+  Corrected Move Error Call to Invalid Function showImage()
+^ include/category.php
+  Updated Defined Category Image Store Issue (v1.5.x)
++ include/category.php
+  Added [REMOVE] flag for Defined Category Image
++ wbgallery.php
+  Added Global Definitions (for v1.5.x)
+
+ChangeLog 07/30/2008 ------------------------------ v1.0.2
+
+* JS for Administration Toolbar in J1.5.x is not totally right
+* Changing Limit Not Working
+
+ChangeLog 08/01/2008 ------------------------------ v1.0.3
+
+! Updates for Joomla! v1.5.4
+! New Modules CatList & Thumbs
+* Not Deleting Category Images from Folder on Change/Delete
+
++ classes/category.db.php
+  Added Hidden Fields to Store Recursive Data
+  _level  = Level of the Category
+  _name   = True Name of the Category
+  _count  = Number of Children
+  _numsc  = Number of S
+^ classes/category.db.php
+  Corrected Publish Check Glitch or SubCats
+^ Rebuild mod_wbgallery_catlist
++ Built mod_wbgallery_thumbs
+^ includes/category.php
+  Corrected Listing Limit Issues
+^ includes/category.php
+  Rebuild Ordering Logic
+^ includes/image.php
+  Corrected Listing Limit Issues
++ wbgallery.xml
+  Added hidemainmenu="1" to Menus
++ toolbar.wbgallery.html.php
+  Added Back Button to Listing Page
++ toolbar.wbgallery.html.php
+  Added Back Button to Listing Page
++ includes/home.php
+  Home Jump Page
++ images/
+  Images for Home Jump Page
+^ load.php
+  Added home.php
+^ admin.wbgallery.php
+  Added home->manage
+
+ChangeLog 08/04/2008 ------------------------------ v1.0.3
+
+^ classes/image.db.php
+  In j1.5.x for some dumb reason the loadObject method
+  does not properly return the rows for the neighbors query.
+  Changed the call to use loadObjectList and return the first row.
+  * Bug in Joomla loadObject method or am I missing something ??
+^ Added Support Menu Items
+^ Modified image_eng.php to not skip image magick processing
++ Added Selections to Parameters List
+  Lightbox Alternative Option
+  Options for Items Shown on Display Page
+^ includes_public/common.php
+  Updated Pathway Function for j15x
+^ Saved all files UNIX UTF-8 Format

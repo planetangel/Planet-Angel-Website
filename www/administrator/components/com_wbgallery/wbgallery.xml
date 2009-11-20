@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component" version="1.0.0">
+  <name>wbGallery</name>
+  <author>David Hunt</author>
+  <creationDate>2008-06-22</creationDate>
+  <copyright>(c)2008 Webuddha.com, Holodyn Corporation</copyright>
+  <authorEmail>wbgallery@webuddha.com</authorEmail>
+  <authorUrl>www.webuddha.com</authorUrl>
+  <version>1.0.2</version>
+  <description>wbGallery - Image Gallery for Joomla</description>
+  <files>
+    <filename>css/index.html</filename>
+    <filename>index.html</filename>
+    <filename>language/index.html</filename>
+    <filename>lightbox/index.html</filename>
+    <filename>wbgallery.php</filename>
+    <filename>css/bare.css</filename>
+    <filename>css/default.css</filename>
+    <filename>language/english.ini</filename>
+    <filename>language/spanish.ini</filename>
+    <filename>lightbox/css/index.html</filename>
+    <filename>lightbox/images/index.html</filename>
+    <filename>lightbox/js/index.html</filename>
+    <filename>lightbox/css/lightbox.css</filename>
+    <filename>lightbox/images/blank.gif</filename>
+    <filename>lightbox/images/close.gif</filename>
+    <filename>lightbox/images/closelabel.gif</filename>
+    <filename>lightbox/images/loading.gif</filename>
+    <filename>lightbox/images/next.gif</filename>
+    <filename>lightbox/images/nextlabel.gif</filename>
+    <filename>lightbox/images/prev.gif</filename>
+    <filename>lightbox/images/prevlabel.gif</filename>
+    <filename>lightbox/js/effects.js</filename>
+    <filename>lightbox/js/lightbox.js</filename>
+    <filename>lightbox/js/prototype.js</filename>
+    <filename>lightbox/js/scriptaculous.js</filename>
+  </files>
+  <administration>
+    <menu>wbGallery</menu>
+    <submenu>
+      <menu link="option=com_wbgallery&amp;hidemainmenu=1&amp;task=image">Images</menu>
+      <menu task="image.upload">Upload</menu>
+      <menu task="category">Categories</menu>
+      <menu task="setup">Setup</menu>
+      <menu task="support">Support</menu>
+    </submenu>
+    <files>
+      <filename>admin.wbgallery.php</filename>
+      <filename>CHANGELOG.txt</filename>
+      <filename>classes/index.html</filename>
+      <filename>config.php</filename>
+      <filename>css/index.html</filename>
+      <filename>includes/index.html</filename>
+      <filename>includes_public/index.html</filename>
+      <filename>index.html</filename>
+      <filename>install.wbgallery.php</filename>
+      <filename>js/index.html</filename>
+      <filename>load.php</filename>
+      <filename>toolbar.wbgallery.html.php</filename>
+      <filename>toolbar.wbgallery.php</filename>
+      <filename>uninstall.wbgallery.php</filename>
+      <filename>wbgallery.xml</filename>
+      <filename>classes/category.db.php</filename>
+      <filename>classes/image.db.php</filename>
+      <filename>css/default.admin.css</filename>
+      <filename>css/image.manage.css</filename>
+      <filename>images/icon_category.png</filename>
+      <filename>images/icon_config.png</filename>
+      <filename>images/icon_media.png</filename>
+      <filename>images/icon_upload.png</filename>
+      <filename>images/webuddha_logo.jpg</filename>
+      <filename>includes/category.php</filename>
+      <filename>includes/home.php</filename>
+      <filename>includes/image.php</filename>
+      <filename>includes/image_eng.php</filename>
+      <filename>includes/setup.php</filename>
+      <filename>includes_public/category.php</filename>
+      <filename>includes_public/common.php</filename>
+      <filename>includes_public/image.php</filename>
+      <filename>includes_public/language.php</filename>
+      <filename>js/common.js</filename>
+      <filename>js/image.manage.sort.js</filename>
+      <filename>js/scriptaculous/index.html</filename>
+      <filename>js/scriptaculous/builder.js</filename>
+      <filename>js/scriptaculous/controls.js</filename>
+      <filename>js/scriptaculous/dragdrop.js</filename>
+      <filename>js/scriptaculous/effects.js</filename>
+      <filename>js/scriptaculous/prototype.js</filename>
+      <filename>js/scriptaculous/scriptaculous.js</filename>
+      <filename>js/scriptaculous/slider.js</filename>
+    </files>
+  </administration>
+  <params>
+    <param name="cid" type="text" size="20" default="" label="Default Category ID" description="The ID for the Category we will Start from" />
+    <param name="target_itemid" type="text" size="20" default="" label="Itemid for Links" description="The Itemid to use for all Links (not required)" />
+    <param name="css" type="filelist" directory="/components/com_wbgallery/css/" filter=".*css" hide_none="true" default="default.css" label="Selete Format Style" description="The Stylesheet to use instead of the default.css" />
+    <param name="@spacer" type="spacer" default="" label="Page Settings *********" description="" />
+    <param name="wbg_title_show" type="radio" default="1" label="Show Page Titles" description="Choose to Show/Hide the Page Title from displaying on the page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="wbg_title" type="text" size="30" default="" label="Custom Page Title" description="This is a Custom Title for the Window and Content" />
+    <param name="wbg_title_follow" type="radio" default="0" label="Custom Title Always" description="Should the Custom Title be used for all Sub-Pages? Otherwise only displayed on the First Page.">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="@spacer" type="spacer" default="" label="Navigation Settings ***" description="" />
+    <param name="list_limit" type="text" size="5" default="15" label="Image Listing Limit" description="How Many Images should be Shown Per-Page" />
+    <param name="show_pagenav" type="list" default="both" label="Show Page Navigation" description="Choose to Show/Hide the Page Navigation at the Top or Bottom of the screen">
+      <option value="">No</option>
+      <option value="top">Top</option>
+      <option value="bottom">Bottom</option>
+      <option value="both">Both</option>
+    </param>
+    <param name="@spacer" type="spacer" default="" label="Category Listing ******" description="" />
+    <param name="cat_image" type="list" default="3" label="Category Image Option" description="Choose the Method for Selectng the Category Image shown in the Category Listing">
+      <option value="0">No Image</option>
+      <option value="1">Only Child Image</option>
+      <option value="2">Only Custom Image</option>
+      <option value="3">Custom, Child, or None</option>
+    </param>
+    <param name="cat_size" type="list" default="thumb" label="Category Image Size" description="Select the Size of the Image to show during Category Listing">
+      <option value="original">Original</option>
+      <option value="large">Large</option>
+      <option value="medium">Medium</option>
+      <option value="thumb">Thumb</option>
+      <option value="tack">Tack</option>
+    </param>
+    <param name="cat_cols" type="text" size="5" default="3" label="# Columns before Break in Category List" description="Define the number of items to print before a div.clr tag is printed (this tag will only work if the style is defined in the stylesheet)" />
+    <param name="cat_name" type="radio" default="1" label="Show Category Name" description="Choose to Show/Hide the Category Name during Category Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="cat_desc" type="radio" default="0" label="Show Category Description" description="Choose to Show/Hide the Category Description during Category Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="@spacer" type="spacer" default="" label="Image Listing *********" description="" />
+    <param name="img_image" type="radio" default="1" label="Show Image in List" description="Choose to Show/Hide Images during Image Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="img_size" type="list" default="thumb" label="Image Size in List" description="Select the Size of the Image to show during Image Listing">
+      <option value="original">Original</option>
+      <option value="large">Large</option>
+      <option value="medium">Medium</option>
+      <option value="thumb">Thumb</option>
+      <option value="tack">Tack</option>
+    </param>
+    <param name="img_link" type="list" default="lightbox" label="List Image Option" description="Choose what happens when the user clicks on the List Image">
+      <option value="0">Nothing Happens</option>
+      <option value="view">View Detail</option>
+      <option value="lightbox">Load Lightbox</option>
+      <option value="load">Larger Image</option>
+      <option value="load_pop">Larger Image Popup</option>
+    </param>
+    <param name="lightbox_img_size" type="list" default="large" label="Lightbox Image Size" description="Select the Size of the Image to show if the Lightbox is Active">
+      <option value="original">Original</option>
+      <option value="large">Large</option>
+      <option value="medium">Medium</option>
+      <option value="thumb">Thumb</option>
+      <option value="tack">Tack</option>
+    </param>
+    <param name="img_cols" type="text" size="5" default="3" label="# Columns before Break in Image List" description="Define the number of items to print before a div.clr tag is printed (this tag forces a new line)" />
+    <param name="img_name" type="radio" default="1" label="Show Image Name in List" description="Choose to Show/Hide the Image Name during Image Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="img_name_link" type="list" default="view" label="Image Name Link" description="Choose to link the Image Name to the Image Detail, Lightbox, or neither">
+      <option value="0">No</option>
+      <option value="view">View Detail</option>
+      <option value="lightbox">Load Lightbox</option>
+      <option value="load">Larger Image</option>
+      <option value="load_pop">Larger Image Popup</option>
+    </param>
+    <param name="img_desc" type="radio" default="0" label="Show Description in List" description="Choose to Show/Hide the Image Description during Image Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="img_sku" type="radio" default="0" label="Show Sku in List" description="Choose to Show/Hide the Image Sku during Image Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="img_price" type="radio" default="0" label="Show Price in List" description="Choose to Show/Hide the Image Price during Image Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="img_photog" type="radio" default="0" label="Show Photographer in List" description="Choose to Show/Hide the Image Photographer during Image Listing">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="@spacer" type="spacer" default="" label="View Image Details ****" description="" />
+    <param name="view_img_size" type="list" default="large" label="Detail Image View Size" description="Select the Size of the Image to show on the Image Detail page">
+      <option value="original">Original</option>
+      <option value="large">Large</option>
+      <option value="medium">Medium</option>
+      <option value="thumb">Thumb</option>
+      <option value="tack">Tack</option>
+    </param>
+    <param name="view_img_name" type="radio" default="1" label="Image Name in Detail View" description="Choose to Show/Hide the Image Name on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_img_name_cat" type="radio" default="1" label="Category Pathway Link" description="Choose to Show/Hide a the Parent Category Link with Image Name">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_img_cat" type="radio" default="1" label="Category Name in Detail View" description="Choose to Show/Hide the Image Category Name on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_img_desc" type="radio" default="0" label="Description in Detail View" description="Choose to Show/Hide the Image Description on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_img_sku" type="radio" default="0" label="Sku in Detail View" description="Choose to Show/Hide the Image Sku on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_img_price" type="radio" default="0" label="Price in Detail View" description="Choose to Show/Hide the Image Price on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_img_photog" type="radio" default="0" label="Photographer in Detail View" description="Choose to Show/Hide the Image Photographer on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_goback" type="radio" default="1" label="Back Button in Detail View" description="Choose to Show/Hide the Back Button on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_continue" type="radio" default="1" label="Continue Button in Detail View" description="Choose to Show/Hide the Continue to Category Button on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="@spacer" type="spacer" default="" label="Image Neighbors *******" description="" />
+    <param name="view_neighbors" type="radio" default="1" label="Show Prev/Next Links in Detail View" description="Choose to Show/Hide the Prev / Next Image Links on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_related" type="radio" default="1" label="Show Relative Images in Detail View" description="Choose to Show/Hide Relative Category Images on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="view_related_title" type="radio" default="1" label="Show Relative Block Title" description="Choose to Show/Hide the title Denoting the Relative Category Images on the Image Detail page">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </param>
+    <param name="related_img_size" type="list" default="thumb" label="Related Image Size" description="Select the Size of the Image to show in the Related List">
+      <option value="original">Original</option>
+      <option value="large">Large</option>
+      <option value="medium">Medium</option>
+      <option value="thumb">Thumb</option>
+      <option value="tack">Tack</option>
+    </param>
+    <param name="related_list_limit" type="text" size="5" default="15" label="Related Image Listing Limit" description="How Many Related Images should be Shown" />
+    <param name="related_img_cols" type="text" size="5" default="3" label="# Columns before Break in Related Images" description="Define the number of items to print before a div.clr tag is printed (this tag forces a new line)" />
+  </params>
+  <installfile>install.wbgallery.php</installfile>
+  <install>
+    <queries>
+      <query>
+        CREATE TABLE IF NOT EXISTS `#__wbgallery_cat` (
+          `id` int(11) NOT NULL auto_increment,
+          `parent_id` int(11) NOT NULL default '0',
+          `file` varchar(128) NOT NULL default '',
+          `title` varchar(50) NOT NULL default '',
+          `name` varchar(255) NOT NULL default '',
+          `description` text NOT NULL,
+          `published` tinyint(1) NOT NULL default '0',
+          `checked_out` int(11) unsigned NOT NULL default '0',
+          `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+          `editor` varchar(50) default NULL,
+          `ordering` int(11) NOT NULL default '0',
+          `access` tinyint(3) unsigned NOT NULL default '0',
+          `params` text NOT NULL,
+          `hits` int(10) unsigned NOT NULL default '0',
+          `featured` tinyint(1) NOT NULL default '0',
+          PRIMARY KEY  (`id`),
+          KEY `parent_id` (`parent_id`)
+        );
+      </query>
+      <query>
+        CREATE TABLE IF NOT EXISTS `#__wbgallery_img` (
+          `id` int(10) unsigned NOT NULL auto_increment,
+          `cat_id` int(10) unsigned NOT NULL default '0',
+          `file` varchar(128) NOT NULL default '',
+          `name` varchar(255) NOT NULL default '',
+          `sku` varchar(32) NOT NULL default '',
+          `price` double(9,2) NOT NULL default '0.00',
+          `photographer` varchar(64) NOT NULL default '',
+          `description` text NOT NULL,
+          `width` int(10) unsigned NOT NULL default '0',
+          `height` int(10) unsigned NOT NULL default '0',
+          `size` int(10) unsigned NOT NULL default '0',
+          `ordering` int(11) NOT NULL default '0',
+          `published` tinyint(1) NOT NULL default '0',
+          `created` datetime NOT NULL default '0000-00-00 00:00:00',
+          `modified` datetime NOT NULL default '0000-00-00 00:00:00',
+          `hits` int(10) unsigned NOT NULL default '0',
+          `featured` tinyint(1) NOT NULL default '0',
+          PRIMARY KEY  (`id`),
+          KEY `cat_id` (`cat_id`)
+        );
+      </query>
+    </queries>
+  </install>
+  <uninstallfile>uninstall.wbgallery.php</uninstallfile>
+  <uninstall>
+    <queries>
+      <query>DROP TABLE IF EXISTS `#__wbgallery_img`;</query>
+      <query>DROP TABLE IF EXISTS `#__wbgallery_cat`;</query>
+    </queries>
+  </uninstall>
+</mosinstall>

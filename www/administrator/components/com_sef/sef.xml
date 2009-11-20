@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install version="1.5" type="component" method="upgrade">
+	<name>SEF</name>
+	<creationDate>June 2009</creationDate>
+	<author>Emir Sakic</author>
+	<authorEmail>emir@sakic.net</authorEmail>
+	<authorUrl>www.sakic.net</authorUrl>
+	<copyright>Copyright (C) Emir Sakic 2003-2009. All Rights Reserved.</copyright>
+	<license>http://www.sakic.net/products/sef_advance/license/</license>
+	<version>2.0.9</version>
+	<description>
+		<![CDATA[
+		SEF Advance 2008<br />
+		Advanced Search Engine Friendly extension for Joomla! 1.5<br />
+		<br />
+		Copyright &copy; 2003-2009 Emir Sakic, <a href="http://www.sakic.net" target="_blank">http://www.sakic.net</a><br />
+		All Rights Reserved.
+		]]>
+	</description>
+	<installfile>install.sef.php</installfile>
+	<uninstallfile>uninstall.sef.php</uninstallfile>
+	<install>
+		<sql folder="admin">
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql folder="admin">
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<files folder="front">
+		<filename>index.html</filename>
+		<filename>key.txt</filename>
+		<filename>sef.php</filename>
+		<filename>sef_conf.php</filename>
+		<filename>sef_ext.php</filename>
+		<filename>sef_func.php</filename>
+		<filename>sef_incl.php</filename>
+	</files>
+	<media folder="media">
+		<file>sef_advance/index.html</file>
+		<file>sef_advance/css/extlink.css</file>
+		<file>sef_advance/css/index.html</file>
+		<file>sef_advance/img/extlink.png</file>
+		<file>sef_advance/img/index.html</file>
+	</media>
+	<administration>
+		<menu img="components/com_sef/images/icon_sef.png">SEF Advance</menu>
+		<submenu>
+			<menu img="../includes/js/ThemeOffice/config.png" link="option=com_sef&amp;c=config">Configuration</menu>
+			<menu img="../includes/js/ThemeOffice/edit.png" link="option=com_sef&amp;c=alias">Alias &amp; Meta</menu>
+			<menu img="../includes/js/ThemeOffice/search_text.png" link="option=com_sef&amp;c=redirects">Redirects</menu>
+			<menu img="../includes/js/ThemeOffice/query.png" link="option=com_sef&amp;c=logs">Logs</menu>
+			<menu img="../includes/js/ThemeOffice/backup.png" link="option=com_sef&amp;c=backup">Backup</menu>
+			<menu img="../includes/js/ThemeOffice/document.png" link="option=com_sef&amp;c=info">Info</menu>
+			<menu img="../includes/js/ThemeOffice/credits.png" link="option=com_sef&amp;c=about">About</menu>
+		</submenu>
+		<files folder="admin">
+			<folder>controllers</folder>
+			<folder>css</folder>
+			<folder>help</folder>
+			<folder>images</folder>
+			<folder>js</folder>
+			<folder>plugin</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>admin.sef.php</filename>
+			<filename>ajax.php</filename>
+			<filename>index.html</filename>
+			<filename>install.sql</filename>
+			<filename>LICENSE.TXT</filename>
+			<filename>readme.txt</filename>
+			<filename>uninstall.sql</filename>
+		</files>
+	</administration>
+</install>

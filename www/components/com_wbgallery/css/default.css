@@ -1,0 +1,227 @@
+/*
+************************************************************************
+
+wbGallery
+Licensed under the GNU/GPL Open Source License
+(c) 2008 Webuddha.com, The Holodyn Corporation
+
+Public Classes - default
+
+************************************************************************
+
+All should be defined here, most are not used...
+The Objects are tripple wrapped to give many control options
+
+.wbgImgList       : The whole list
+  .wbgImg         : Image Object
+    .block        : Wrapper 1
+      .pad        : Wrapper 2, all items within (name, img, etc..)
+        a.img     : Image Anchor
+          span    : Anchor Span (with background-image set)
+            img   : Anchor Img (with src set)
+
+You can choose to hide the background-image, or the img tag itself so
+that your formatting can force a standard image crop, or show each
+image as it was uploaded.
+
+************************************************************************
+*/
+
+/* ==================================== Category List */
+div.wbgCatList {
+  clear:both;
+  padding:10px 0 0 0;
+}
+div.wbgCatList .wbgCat {
+  float:left;
+  width:230px;
+  text-align:center;
+  margin:0 0 10px 0;
+}
+div.wbgCatList .wbgCat .block {
+  display:block;
+  width:230px;
+  height:220px;
+  overflow:hidden;
+}
+div.wbgCatList .wbgCat .block .pad {
+}
+div.wbgCatList .wbgCat .block .pad a.img span {
+}
+div.wbgCatList .wbgCat .block .pad a.img span img {
+}
+div.wbgCatList .wbgCat .block .pad div {
+}
+div.wbgCatList .wbgCat .block .pad div span {
+}
+div.wbgCatList .wbgCat .block .pad div.name {
+  margin:0 auto;
+  width:210px;
+  line-height:25px;
+  height:25px;
+  overflow:hidden;
+  font-size:14px;
+  font-weight:bold;
+}
+div.wbgCatList .wbgCat .block .pad div.desc {
+}
+
+/* ==================================== Image List */
+div.wbgImgList {
+  clear:both;
+  padding:10px 0 0 0;
+}
+div.wbgImgList .wbgImg {
+  float:left;
+}
+div.wbgImgList .wbgImg .block {
+  display:block;
+  width:230px;
+  margin:0 0 10px 0;
+  text-align:center;
+}
+div.wbgImgList .wbgImg .block .pad {
+}
+div.wbgImgList .wbgImg .block .pad a.img {
+  display:block;
+  margin:0 auto;
+  width:200px;
+}
+div.wbgImgList .wbgImg .block .pad a.img span {
+  display:block;
+  overflow:hidden;
+  width:200px;
+  height:150px;
+  /* Span Image being Hidden */
+  background-image:none!important;
+  /* Span Image being Used
+  background-position:center top;
+  background-repeat:no-repeat;
+  */
+}
+div.wbgImgList .wbgImg .block .pad a.img span img {
+}
+div.wbgImgList .wbgImg .block .pad div {
+}
+div.wbgImgList .wbgImg .block .pad div span {
+}
+div.wbgImgList .wbgImg .block .pad div.name {
+  margin:0 auto;
+  width:210px;
+  line-height:25px;
+  height:25px;
+  overflow:hidden;
+  font-size:12px;
+  font-weight:bold;
+}
+div.wbgImgList .wbgImg .block .pad div.name a {
+  text-decoration:none;
+}
+div.wbgImgList .wbgImg .block .pad div.name a:hover {
+}
+div.wbgImgList .wbgImg .block .pad div.price {
+}
+div.wbgImgList .wbgImg .block .pad div.photog {
+}
+div.wbgImgList .wbgImg .block .pad div.desc {
+}
+
+/* ==================================== Page Navigation */
+div.pagenav_top,
+div.pagenav_bottom {
+  text-align:center;
+}
+div.pagenav_top {
+  margin:0 0 10px 0;
+  padding:0 0 5px 0;
+  border-bottom:1px dashed #aaa;
+}
+div.pagenav_bottom {
+  margin:10px 0 0 0;
+  padding:5px 0;
+  border-top:1px dashed #aaa;
+  border-bottom:1px dashed #aaa;
+}
+div.pagenav_top span,
+div.pagenav_bottom span {
+  font-size:12px;
+  color:#333;
+  font-weight:bold;
+}
+div.pagenav_top a,
+div.pagenav_bottom a {
+  font-size:12px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* ==================================== Image View */
+div.wbgImgView {
+  padding:5px 0 10px 0;
+  text-align:center;
+}
+div.wbgImgView .wbgImg {
+}
+div.wbgImgView .wbgImg .img {
+}
+div.wbgImgView .wbgImg .img img {
+  border:20px solid #666;
+  border-top:4px solid #666;
+  border-bottom:4px solid #666;
+}
+
+/* ==================================== Image View Prev / Next Links */
+div.wbgNeighbor {
+  height:25px;
+}
+div.wbgNeighbor a.prev {
+  float:left;
+}
+div.wbgNeighbor a.next {
+  float:right;
+}
+
+/* ==================================== Image View Footer Controls */
+.wbgFootnav {
+  clear:both;
+  margin:5px 0 0 0;
+  border-top:1px dashed #999;
+}
+.wbgFootnav .wbg_goback {
+  float:left;
+  padding:10px 0;
+  font-weight:bold;
+}
+.wbgFootnav .wbg_goback a {
+  text-decoration:none;
+}
+.wbgFootnav .wbg_continue {
+  text-align:right;
+  padding:10px 0;
+  font-weight:bold;
+}
+.wbgFootnav .wbg_continue a {
+  text-decoration:none;
+}
+
+/* ==================================== General */
+.wbgWrap .clr {
+  clear:both;
+  height:0;
+  line-height:0;
+}
+.wbgWrap .alert_msg {
+  color:#cc0000;
+}
+.wbgWrap .copyright {
+  clear:both;
+  padding:5px 0;
+  font-size:10px;
+  color:#999;
+  text-align:center;
+}
+.wbgWrap .copyright a,
+.wbgWrap .copyright a:visited {
+  font-size:10px;
+  color:#9999cc;
+}

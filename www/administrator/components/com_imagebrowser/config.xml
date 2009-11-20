@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+		<param name="mode" type="radio" default="1" label="Mode" description="">
+			<option value="0">PopUp</option>
+			<option value="1">LightBox</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="root_folder" type="text" default="images/stories/imagebrowser" label="Root Folder" description="Root Folder for image browser gallery. NO preceding slash and NO trailing slash." size="50" />
+		<param name="order_by" type="list" default="date_modified" label="Order by" description="">
+			<option value="file">File name</option>
+			<option value="date_modified">Date Uploaded</option>
+			<option value="caption">Caption</option>
+		</param>
+		<param name="order_direction" type="list" default="DESC" label="Order diection" description="">
+			<option value="DESC">DESC</option>
+			<option value="ASC">ASC</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="show_comp_description" type="radio" default="1" label="Description" description="Show/Hide the Description below">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="comp_description" type="textarea" default="" label="Image Browser Intro" rows="3" cols="50" description="" />		
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="language" type="list" default="" label="Language" description="">
+			<option value="">Auto</option>
+			<option value="cs-CZ">Czech</option>
+			<option value="nl-NL">Dutch</option>
+			<option value="en-GB">English</option>
+			<option value="fr-FR">French</option>
+			<option value="de-DE">German</option>
+			<option value="it-IT">Italian</option>
+			<option value="nb-NO">Norwegian</option>
+			<option value="pl-PL">Polish</option>			
+			<option value="pt-BR">Portuguese (Brazilian)</option>
+			<option value="es-ES">Spanish</option>
+			<option value="ru-RU">Russian</option>
+			<option value="sv-SE">Swedish</option>
+			<option value="tr-TR">Turkish</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="Images" />
+		<param name="max_upload_size" type="text" default="2" label="Max. Upload in Mb" description="Maximum Upload size allowed in Mb." size="3" />
+		<param name="max_width" type="text" default="800" label="Image max. width in pixels" description="" />
+		<param name="max_height" type="text" default="600" label="Image max. height in pixels" description="" />
+		<param name="@spacer" type="spacer" default="" label="Thumbnails" description="" />
+		<param name="thumb_width" type="text" default="120" label="Thumbnail max. width in pixels" description="" />
+		<param name="thumb_height" type="text" default="90" label="Thumbnail max. height in pixels" description="" />
+		<param name="imgcomp" type="text" default="0" label="Image Compression" description="0 best quality | 100 worst quality" />
+	</params>
+</config>

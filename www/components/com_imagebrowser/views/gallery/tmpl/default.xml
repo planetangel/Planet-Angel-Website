@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Default Gallery Layout">
+		<message>
+			<![CDATA[Default Gallery Layout]]>
+		</message>
+	</layout>
+	<state>
+		<name>Default Gallery Layout</name>
+		<description>Default Gallery Layout</description>
+	</state>
+</metadata>

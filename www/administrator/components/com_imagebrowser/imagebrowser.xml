@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+	<name>Image Browser</name>
+	<author>Luis Montero [e-noise.com]</author>
+	<creationDate>Sept 2008</creationDate>
+	<copyright>(C) 2005-2008 E-NOISE.COM LIMITED. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@e-noise.com</authorEmail>
+	<authorUrl>www.e-noise.com</authorUrl>
+	<version>0.1.8</version>
+	<description>Image Browser Component v0.1.8 for Joomla 1.5.x</description>
+	
+	<installfile>install.imagebrowser.php</installfile>
+	<uninstallfile>uninstall.imagebrowser.php</uninstallfile>
+	
+	<files>
+		<filename>lib/slimbox/css/closelabel.gif</filename>
+		<filename>lib/slimbox/css/loading.gif</filename>
+		<filename>lib/slimbox/css/nextlabel.gif</filename>
+		<filename>lib/slimbox/css/prevlabel.gif</filename>
+		<filename>lib/slimbox/css/slimbox.css</filename>
+		<filename>lib/slimbox/js/slimbox.js</filename>
+		<filename>lib/slimbox/index.html</filename>
+		<filename>lib/index.html</filename>
+		<filename>models/gallery.php</filename>
+		<filename>models/index.html</filename>
+		<filename>views/gallery/tmpl/default.php</filename>
+		<filename>views/gallery/tmpl/default.xml</filename>
+		<filename>views/gallery/tmpl/index.html</filename>
+		<filename>views/gallery/index.html</filename>
+		<filename>views/gallery/metadata.xml</filename>
+		<filename>views/gallery/view.html.php</filename>
+		<filename>views/index.html</filename>
+		<filename>controller.php</filename>
+		<filename>imagebrowser.php</filename>
+		<filename>imagebrowser.popup.php</filename>
+		<filename>index.html</filename>
+		<filename>styles.css</filename>
+	</files>
+	
+	<administration>
+		<menu>Image Browser</menu>
+		<files folder="admin">
+			<filename>images/back.png</filename>
+			<filename>images/edit.png</filename>
+			<filename>images/folder.png</filename>
+			<filename>images/folder_images.png</filename>
+			<filename>images/folder_new.png</filename>
+			<filename>images/generate_thumb.png</filename>
+			<filename>images/idea.png</filename>
+			<filename>images/imagegallery.png</filename>
+			<filename>images/next.png</filename>
+			<filename>images/no_thumb.png</filename>
+			<filename>images/ok.png</filename>
+			<filename>images/remove.png</filename>
+			<filename>images/resize.png</filename>
+			<filename>images/spinner.gif</filename>
+			<filename>images/thumbnail.png</filename>
+			<filename>images/up.png</filename>
+			<filename>images/warning.png</filename>			
+			<filename>inc/image.class.php</filename>
+			<filename>inc/sorting.php</filename>
+			<filename>inc/upload.php</filename>
+			<filename>inc/version.php</filename>
+			<filename>js/popup-plugin.js</filename>
+			<filename>lang/de-DE.php</filename>
+			<filename>lang/en-GB.php</filename>
+			<filename>lang/es-ES.php</filename>
+			<filename>lang/it-IT.php</filename>
+			<filename>lang/nb-NO.php</filename>
+			<filename>lang/nl-NL.php</filename>
+			<filename>lang/pt-BR.php</filename>
+			<filename>lang/sk-SK.php</filename>
+			<filename>lang/sv-SE.php</filename>
+			<filename>models/config.php</filename>
+			<filename>admin.imagebrowser.html.php</filename>
+			<filename>admin.imagebrowser.php</filename>
+			<filename>CHANGELOG</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>imagebrowser.class.php</filename>
+			<filename>index.html</filename>
+			<filename>styles.css</filename>
+			<filename>TODO</filename>
+		</files>
+	</administration>
+	
+</install>

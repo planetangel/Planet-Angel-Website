@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
+<head>
+<title>Configuration</title>
+<link href="../help.css" rel="stylesheet" type="text/css" />
+<meta name="copyright" content="(C) 2005 Emir Sakic" />
+</head>
+<body>
+<h1>Configuration</h1>
+
+This page is used to adjust SEF Advance operational settings.<br />
+<br />
+<b>Toolbar Actions</b><br />
+<br />
+<i>Save</i> - Saves the Configuration and returns to presentation list.<br />
+<br />
+<i>Cancel</i> - Cancels the modifications and returns to the control panel.<br />
+<br />
+<b>Field Details</b><br />
+<br />
+<b>Preferences Tab</b><br />
+<i>SEF Advance enabled</i> - You can turn SEF Advance on / off here.<br />
+When turned off, only the built-in SEF will be active (if SEF is activated in Global Configuration).<br />
+<br />
+<i>Fish support</i> - If you are using Joom!Fish / Mambelfish, the multilanguage component, this feature
+will allow you to access multilingual content via URL. For example if you have content in
+English and German you will have unique URL for each content version, e.g.:<br />
+http://www.site.com/en/section/category/item/<br />
+http://www.site.com/de/section/category/item/<br />
+If you turn this feature on a disadvantage is that you can't have two-character section names or items.<br />
+<br />
+<i>Redirect built-in SEF URLs</i> - Redirects all requests for old-style, built-in, core SEF URLs
+to corresponding SEF Advance URLs.
+For example, a request for http://www.site.com/extensions/29-the-cms/26-extensions will be redirected to http://www.site.com/about-joomla/the-cms/extensions/.<br />
+Doing this you avoid duplicate content to be detected by search engines.<br />
+<br />
+<i>Redirect non-SEF URLs</i> - Redirects all requests for non-SEF URLs to corresponding SEF Advance URLs.
+For example, a request for http://www.site.com/index.php?option=com_content&amp;view=article&amp;id=26&amp;catid=29&amp;Itemid=40 will be redirected to http://www.site.com/about-joomla/the-cms/extensions/.<br />
+Note that turning this setting on may break some 3rd party components that still depend on non-SEF URLs.<br />
+<br />
+<i>Redirect legacy SEF URLs</i> - Redirects all requests for legacy SEF URLs to corresponding SEF Advance URLs.
+For example, a request for http://www.site.com/content/view/26/40/ will be redirected to http://www.site.com/about-joomla/the-cms/extensions/.<br />
+This is useful if you upgraded from Joomla! 1.0 which used built-in SEF for a while and get indexed in search engines.<br />
+<br />
+<i>WWW redirect</i> - Redirects all requests for non-www to www URLs.
+For example, a request for http://site.com will be redirected to http://www.site.com.<br />
+This will help search engines decide canonical URL for your site and avoid double page rank and duplicate content penalties.<br />
+<br />
+<i>Log Not Found hits</i> - Logs URL requests that result in 404 Not Found error.<br />
+<br />
+<i>Debug</i> - Use only when troubleshooting the site. Selecting Yes will display some useful information about internal system state at the end of the page.<br />
+Note that 404 Not Found page is disabled when debug is turned on.<br />
+<br />
+<i>Debug IP</i> - When entered, only the users coming from this IP address will be able to see the debug output. If empty, all visitors will see the debug information.<br />
+<br />
+<i>Space</i> - You can define the character that divides the words in URLs.<br />
+Instead of default hyphen you can define an underscore (_) or something else.<br />
+<br />
+<i>Suffix</i> - SEF Advance allows you to define a suffix for the end of your URL.<br />
+Instead of default trailing slash you can define a .html or something else.<br />
+Suffix must be activated in Global Cofigurations.<br />
+<br />
+<i>Use title alias</i> - You can choose whether to have URLs by specified alias (news/latest/) or by titles (the-news/latest-news/) by selecting Yes or No option.<br />
+If you choose Yes, SEF Advance will use section/content aliases instead of titles.<br />
+It will also use title alias for articles so don't forget to enter aliases for each item.<br />
+<br />
+<i>Lower case</i> - Select Yes if you want all links automatically converted to lowercase.<br />
+<br />
+<i>Include section</i> - Selecting Yes includes section title in full article URL so it becomes, for example: section/category/article/<br />
+Selecting No you get: category/article/<br />
+<br />
+<i>Include category</i> - Selecting Yes includes category title in full article URL so it becomes, for example: section/category/article/<br />
+Selecting No you get: section/article/, or only article/ if section is excluded too.<br />
+<br />
+<i>Unique item</i> - To make your URLs more unique you may select Yes here.<br />
+Every item will get creation date and id appended so it becomes unique and Google News friendly.<br />
+<br />
+<i>Fish support</i> - If you are using Joom!Fish, the multilanguage component, this feature
+will allow you to access multilingual content via URL. For example if you have content in
+English and German you will have unique URL for each content version, e.g.:<br />
+http://www.site.com/en/section/category/item/<br />
+http://www.site.com/de/section/category/item/<br />
+If you turn this feature on note that you can't have two-character section names or items.<br />
+<br />
+<i>Skip prefix for def. lang.</i> - You can select whether you want to use the language prefix for default language.<br />
+Check this option if you want to skip the prefix for default language.<br />
+In this case the above example URLs will be:<br />
+http://www.site.com/section/category/item/ - for default, English language<br />
+http://www.site.com/de/section/category/item/ - for German language<br />
+This will help preserve your original URLs if you installed Joom!Fish after the site was in use.<br />
+<br />
+<b>Strings Tab</b><br />
+You can translate the strings used  for content and core components' URL strings here.<br />
+<br />
+If you have a 3rd party component  with SEF Advance extension (sef_ext.php) you can customize its default string by entering the replacement pair.
+For example to replace word "userlist" in the URL with "u" you would enter:<br />
+userlist=>u<br />
+Separate replacement pairs by comma (,).<br />
+<br />
+<b>Replace Tab</b><br />
+<i>URL replace</i> - This feature can be useful to international users having special characters in their languages.<br />
+You can specify the characters that you want replaced rather than URL encoded in the URL string.
+For example instead of having special character "æ" encoded with "%E6" you may choose to replace it
+with "ae" which gives little friendlier URL:<br />
+æ=>ae<br />
+You can have as many replacement combinations as you want, just separate the pairs with a comma (,) in the text field.<br />
+IMPORTANT: This setting should be used very carefully, remember that replacement works both ways. You can't replace a character
+with a string that occurs in regular content titles. An example of wrong usage would be å=>a, as this would break all URLs
+that contain "a". Instead use a string that doesn't occur in regular titles, like å=>aaa.<br />
+<br />
+<i>Encode exceptions</i> - To reduce the error rate, SEF Advance's URL is url encoded.<br />
+This replaces all special characters with a percent (%) sign followed by two hex digits.<br />
+Some users may think this doesn't look very nice in URL and that's why you can make exceptions from this rule.<br />
+Just define the chars you don't want encoded in this text field:<br />
+?|!|,|;|:<br />
+Separate the chars with a pipe (|) in the text field.<br />
+Note that not all characters can be excepted and you will have to test if the settings you enter cause problems for you.<br />
+<br />
+<i>Custom 404 page</i> - This setting allows you to setup a page that user will be directed to if no content has been found.<br />
+This is similar to ordinary server 404 error redirect that user is sent to if non-existing site has been requested.
+You can create an uncategorized article as 404 page and select it from the list or design a physical HTML file and type the relative link to it (example: 404.html).
+You can also choose to use default 404 handler or redirect false requests to homepage. In this latter case a '301 Redirect' header will be returned to web browser and in all other cases a '404 Not Found' header will be returned.<br />
+<br />
+<b>Components Tab</b><br />
+<i>Ignored components</i> - Some 3rd party components could be poorly coded and misbehave when SEF is activated.
+In that case you can specify the components to be excluded from URL rewrite so you can still use them as with SEF turned off.<br />
+Hold "Ctrl" to select multiple components.
+<br />
+<br />
+<b>Cache Tab</b><br />
+Caching can improve the performance for sites with much content by decreasing the database load.
+If turned on, the system will use a cached copy of an URL instead of querying the database and calculating it on each request.<br />
+<br />
+You should use cache only when you have finished building your site. If you make any changes in URL configurations,
+site structure, site menu, change names of existing articles, categories or sections, you must empty the cache!<br />
+<br />
+<i>Use cache</i> - Turns the caching system on or off.<br />
+<br />
+<i>Cache time</i> - Time of cached URL validity (in seconds), if the cache is turned on.<br />
+Use a longer value for an established site and shorter for a site that still might be under construction.
+The default is 86400 seconds (24 hours).<br />
+<br />
+<i>Empty Cache</i> - Flushes the cache. Empty the cache after each change of your site's structure.
+<br />
+<br />
+<b>SEO Tab</b><br />
+You can improve search engines optimization by automatically adding some important SEO elements to your website content.<br />
+<br />
+<i>Add H1 tags</i> - Inserts h1 tags on article titles styled with contentheading and h3 tags on titles styled with componentheading.
+You can style the h1 tags in CSS.<br />
+<br />
+<i>Titles on Read more...</i> - Appends article title on Read more... hypertext links, thus helping identify the target of each link.<br />
+<br />
+<i>Add Alt-text</i> - Inserts description on article images with missing or empty alt-text.<br />
+<br />
+<i>Add NoFollow</i> - Inserts nofollow relation attribute to anchor tags for outgoing links.<br />
+<br />
+<i>Target Blank</i> - Inserts target=_blank to anchor tags for outgoing links to open them in new window, if target is not already specified.<br />
+<br />
+<i>New Window Icon</i> - Adds new window icon next to outgoing links.<br />
+<br />
+<i>Add Canonical</i> - Inserts Canonical tag to the page header to help Google decide the prefered URL in case of duplicate URLs leading to same content.
+
+</body>
+</html>

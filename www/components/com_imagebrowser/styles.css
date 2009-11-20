@@ -1,0 +1,43 @@
+/**
+* @package		Joomla
+* @subpackage	com_imagebrowser
+* @copyright	Copyright (C) 2008 E-NOISE.COM LIMITED. All rights reserved.
+* @license		GNU/GPL.
+* @author 		Luis Montero [e-noise.com]
+* @version 		0.1.6
+* Joomla! and com_imagebrowser are free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed they include or
+* are derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+
+@charset "utf-8";
+
+div.thumbnail {
+float:left;
+padding:10px; 
+border:1px dotted #CCCCCC;
+vertical-align:middle;
+margin: 0px 8px 12px 0px;
+}
+
+div.imagebrowser_breadcrumbs {
+padding-bottom:10px;
+}
+
+div.dir {
+background-image:url(../../administrator/components/com_imagebrowser/images/folder.png);
+background-repeat:no-repeat;
+padding-left:36px;
+padding-top:6px;
+min-height:36px;
+}
+
+div.imagebrowser_description {
+padding-bottom:10px;
+}
+
+h3.folder_title {
+font-size:14px;
+font-weight:normal;
+}

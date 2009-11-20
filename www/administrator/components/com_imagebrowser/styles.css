@@ -1,0 +1,60 @@
+/**
+* @package		Joomla
+* @subpackage	com_imagebrowser
+* @copyright	Copyright (C) 2008 E-NOISE.COM LIMITED. All rights reserved.
+* @license		GNU/GPL.
+* @author 		Luis Montero [e-noise.com]
+* @version 		0.1.7
+* Joomla! and com_imagebrowser are free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed they include or
+* are derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+
+div.imagebrowser_success {
+color:#336600;
+background-image:url(images/ok.png);
+background-repeat:no-repeat;
+padding:5px 0px 10px 40px;
+}
+
+div.imagebrowser_warning {
+color:#CC0000;
+background-image:url(images/warning.png);
+background-repeat:no-repeat;
+padding:5px 0px 10px 40px;
+}
+
+/* Styles for mootools/ajax multi thumb generation */
+dl#req-states dt {
+	width: 200px;
+	float: left;
+}
+dl#req-states dd {
+	padding-left: 20px;
+	margin-left: 200px;
+}
+dl#req-states dd.ajax-loading {
+	margin-left: 200px;
+	background:	url(images/spinner.gif) no-repeat 0 0;
+}
+ 
+.tool-tip {
+	color: #444;
+	background-color: #eee;
+	width: 300px;
+	z-index: 13000;
+}
+ 
+.tool-title {
+	font-weight: bold;
+	font-size: 11px;
+	margin: 0;
+	color: #222;
+	padding: 8px 8px 4px;
+}
+ 
+.tool-text {
+	font-size: 11px;
+	padding: 4px 8px 8px;
+}

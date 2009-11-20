@@ -1,0 +1,162 @@
+/*
+************************************************************************
+
+wbGallery
+Licensed under the GNU/GPL Open Source License
+(c) 2008 Webuddha.com, The Holodyn Corporation
+
+Public Classes - bare
+
+************************************************************************
+
+All should be defined here, most are not used...
+The Objects are tripple wrapped to give many control options
+
+.wbgImgList       : The whole list
+  .wbgImg         : Image Object
+    .block        : Wrapper 1
+      .pad        : Wrapper 2, all items within (name, img, etc..)
+        a.img     : Image Anchor
+          span    : Anchor Span (with background-image set)
+            img   : Anchor Img (with src set)
+
+You can choose to hide the background-image, or the img tag itself so
+that your formatting can force a standard image crop, or show each
+image as it was uploaded.
+
+************************************************************************
+*/
+
+/* ==================================== Category List */
+div.wbgCatList {
+  clear:both;
+}
+div.wbgCatList .wbgCat {
+  float:left;
+  padding:5px 0 0 5px;
+}
+div.wbgCatList .wbgCat .block {
+}
+div.wbgCatList .wbgCat .block .pad {
+}
+div.wbgCatList .wbgCat .block .pad a.img span {
+}
+div.wbgCatList .wbgCat .block .pad a.img span img {
+}
+div.wbgCatList .wbgCat .block .pad div {
+}
+div.wbgCatList .wbgCat .block .pad div span {
+}
+div.wbgCatList .wbgCat .block .pad div.name {
+}
+div.wbgCatList .wbgCat .block .pad div.desc {
+}
+
+/* ==================================== Image List */
+div.wbgImgList {
+  clear:both;
+}
+div.wbgImgList .wbgImg {
+  float:left;
+  padding:5px;
+}
+div.wbgImgList .wbgImg .block {
+}
+div.wbgImgList .wbgImg .block .pad {
+}
+div.wbgImgList .wbgImg .block .pad a.img {
+  display:block;
+}
+div.wbgImgList .wbgImg .block .pad a.img span {
+  display:block;
+  /* Span Image being Hidden */
+  background-image:none!important;
+  /* Span Image being Used
+  background-position:center top;
+  background-repeat:no-repeat;
+  */
+}
+div.wbgImgList .wbgImg .block .pad a.img span img {
+}
+div.wbgImgList .wbgImg .block .pad div {
+}
+div.wbgImgList .wbgImg .block .pad div span {
+}
+div.wbgImgList .wbgImg .block .pad div.name {
+}
+div.wbgImgList .wbgImg .block .pad div.name a {
+}
+div.wbgImgList .wbgImg .block .pad div.name a:hover {
+}
+div.wbgImgList .wbgImg .block .pad div.price {
+}
+div.wbgImgList .wbgImg .block .pad div.photog {
+}
+div.wbgImgList .wbgImg .block .pad div.desc {
+}
+
+/* ==================================== Page Navigation */
+div.pagenav_top,
+div.pagenav_bottom {
+}
+div.pagenav_top {
+}
+div.pagenav_bottom {
+}
+div.pagenav_top span,
+div.pagenav_bottom span {
+}
+div.pagenav_top a,
+div.pagenav_bottom a {
+}
+
+/* ==================================== Image View */
+div.wbgImgView {
+  clear:both;
+}
+div.wbgImgView .wbgImg {
+  padding:5px 0 0 5px;
+}
+div.wbgImgView .wbgImg .block {
+}
+div.wbgImgView .wbgImg .block .pad {
+}
+div.wbgImgView .wbgImg .block .pad .img {
+}
+
+/* ==================================== Image View Prev / Next Links */
+div.wbgNeighbor {
+}
+div.wbgNeighbor a.prev {
+  float:left;
+}
+div.wbgNeighbor a.next {
+  float:right;
+}
+
+/* ==================================== Image View Footer Controls */
+.wbgFootnav {
+}
+.wbgFootnav .wbg_goback {
+  float:left;
+}
+.wbgFootnav .wbg_goback a {
+}
+.wbgFootnav .wbg_continue {
+  text-align:right;
+}
+.wbgFootnav .wbg_continue a {
+}
+
+/* ==================================== General */
+.wbgWrap .clr {
+  clear:both;
+  height:0;
+  line-height:0;
+}
+.wbgWrap .copyright {
+  clear:both;
+}
+.wbgWrap .copyright a,
+.wbgWrap .copyright a:visited {
+}

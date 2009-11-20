@@ -1,0 +1,27 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+License for use of SEF Advance 2008 (the product)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. All copyrights to the product are exclusively owned by the author - Emir Sakic.
+
+2. This license issued for the product is:
+A single site USAGE license. The purchaser of this license can use the product on a single site / domain. For usage on more than one site the user must buy additional licenses or buy a server usage license. Once purchased, the user is granted a non-exclusive license to use the product as defined by these licensing terms, for any legal purpose.
+
+3. To use the product you must send a license fee to the author, see the product's homepage.
+
+4. THIS PRODUCT IS DISTRIBUTED "AS IS". NO WARRANTY OF ANY KIND IS EXPRESSED OR IMPLIED. YOU USE IT AT YOUR OWN RISK. THE AUTHOR WILL NOT BE LIABLE FOR ANY DAMAGES, INCLUDING BUT NOT LIMITED TO DATA LOSS, LOSS OF PROFITS OR ANY OTHER KIND OF LOSS WHILE USING OR MISUSING THIS PRODUCT.
+
+5. This product is NOT open source software. Buying it does not grant you access to its source code. Thus, the product can not be modified apart from configurations described in its manual. The product's source code can not be received or bought.
+
+6. There are NO additional license fees, apart from the cost of usage license, associated with the creation and use of the product's package. Legally licensed owners may use their copies of the product to produce their own sites and to publish those free of any additional royalties.
+
+7. You may not use, copy, emulate, clone, rent, lease, sell, or transfer the licensed product, or any subset of it, except as provided for in this agreement. You may not distribute licensed product, or any part of it. You may not reverse engineer the product in order to gain access to its source code.
+Any such unauthorized use shall result in immediate and automatic termination of this license and may result in criminal and/or civil prosecution.
+
+8. Due to the non-tangible nature of the product, the refunds are not offered. You are responsible of making sure that you can run the product and that it fulfills your requirements prior to purchase. You can do so by reading the documentation and FAQ, testing the demo and downloading and installing the free trial.
+
+9. Installing and using the product signifies acceptance of these terms and conditions of the license.
+
+10. If you do not agree with the terms of this license do not purchase the product. If you already purchased it, you must remove the product files from your storage devices and cease to use the product.
+
+All rights not expressly granted here are reserved by Emir Sakic, http://www.sakic.net

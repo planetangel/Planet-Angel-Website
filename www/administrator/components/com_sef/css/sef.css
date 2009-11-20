@@ -1,0 +1,58 @@
+.icon-48-credits { background-image: url(../../../images/credits.png); }
+
+#sefcp {  text-align: center;  vertical-align: middle; }
+
+#sefcp div.seficon   { margin: 3px; }
+#sefcp div.seficon a {
+	display: block; float: left;
+	height: 97px !important;
+	height: 100px;
+	width: 108px !important;
+	width: 110px;
+	vertical-align: middle;
+	text-decoration : none;
+	border: 1px solid #DDD;
+	padding: 2px 5px 1px 5px;
+}
+
+#sefcp div.seficon a:link    {  color : #808080;  }
+#sefcp div.seficon a:hover   {
+	color : #333;
+	background-color: #f1e8e6;
+	border: 1px solid #c24733;
+	padding: 3px 4px 0px 6px;
+}
+#sefcp div.seficon a:active  {  color : #808080;  }
+#sefcp div.seficon a:visited {  color : #808080;  }
+
+#sefcp div.seficon img { margin-top: 13px; }
+#sefcp div.seficon span { display: block; padding-top: 3px;}
+
+div.rss_container {
+	text-align: center;
+	vertical-align: middle;
+	padding: 3px;
+}
+
+div.scroll {
+	height: 178px;
+	width: 96%;
+	overflow: auto;
+	border: 1px solid #DDD;
+	padding: 5px;
+	text-align: left;
+	vertical-align: top;
+}
+
+input#title, textarea#metadesc, textarea#metakey {
+	width: 90%;
+}
+
+div.cnt {
+	font-weight: bold;
+	display: inline;
+}
+
+div.red {
+	color: red;
+}

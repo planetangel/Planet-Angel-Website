@@ -1,0 +1,99 @@
+---------------------------------
+IMAGE BROWSER COMPONENT CHANGELOG
+---------------------------------
+
+Legend:
+* -> Security Fix
+# -> Bug Fix
++ -> Addition
+^ -> Change
+- -> Removed
+! -> Note
+
+-------------------- VERSION 0.1.8 Released [23-Nov-2008] ---------------------
+23-Nov-2008 Luis Montero
+ # Fixed [#13191] constants defined using quotes in language files (fixed in en-GB.php)
+ + Added: Folder renaming and moving
+ + Added: Folder sorting using same parameters as images
+ + Added: Batch resize images using max_width and max_height settings in parameters
+ 
+-------------------- VERSION 0.1.7b Released [30-Sep-2008] ---------------------
+30-Sep-2008 Luis Montero
+ # Fixed [#10991] spezial chars in function custom_uploadFile
+ ^ Change: English, Spanish, Italian and German language files updated.
+ ^ Change: Slimbox images replaced with non language specific versions to improve localization
+ ^ Change: Javascript alert messages now print error strings using JText with jsafe mode, so language files should be fine using their original characters.
+ 
+
+-------------------- VERSION 0.1.7 Released [29-Sep-2008] ---------------------
+29-Sep-2008 Luis Montero
+# Fixed [#8137], [#8247] [#8795], [#8291] getMimeType rewritten using regular exp to get extension instead of checking real mime type 
+# Fixed: Security vulnerability: ../../../ in folder passed via get request.
+
+-------------------- VERSION 0.1.6 BETA Released [10-Jun-2008] ---------------------
+ 10-Jun-2008 Luis Montero
+ # Fixed [#8417] Safari Browser compatibility issue
+ + Added: Czech language file
+ + Added: Polish language file by Tomasz Stańczyk
+ + Added: Path support by Tomasz Stańczyk
+
+10-Apr-2008 Luis Montero
+ + Added: Multiple file thumbnail generation (for whole folder)
+ + Added: ZIP upload
+ + Change: Language file require modified to handle languages for which there is no language file - Contributed by Koichi Senada
+ + Change: New mime type option added for compatibility with Windows platform in function getContents() in administrator/components/com_imagebrowser/imagebrowser.class.php:121 - Contributed by Koichi Senada
+ 
+12-Feb-2008 Luis Montero
+ + Added: Brazilian portuguese language file by Alexandro Kozio
+ + Added: ImageBrowser Plugin support for adding images to articles
+ 
+-------------------- VERSION 0.1.5 BETA Released [07-February-2008] ---------------------
+07-Feb-2008 Luis Montero
+ # Fixed [#8653] [#8858] [#8862] JLanguageHelper - Added if to test whether class exists and if it doesnt we require languange helper file.
+ # Fixed [#8291] [#8795] [#9046] [#9168] - exec() function to get file mime type replaced with function using different methods (mime_content_type, finfo and exec)
+ # Fixed [#9169] Can't upload/browser gif files - GIF files have now been enabled
+ # Fixed [#8848] Problem with special characters - upload.php updated to filter out special characters
+ # Fixed [#9170] Png and gif thumbnails are not created - Fix provided by Jean-Guilhem Rouel 
+ + Added: Swedish language file by Tomas Carlsson
+ + Change: German file updated by Frederik Niedernolte
+
+
+-------------------- VERSION 0.1.4 BETA Released [27-November-2007] ---------------------
+27-Nov-2007 Luis Montero
+ + Added: Spanish Language File
+ + Added: German File by Sven Lito
+ + Added: Norwegian language file by Martijn Koekkoek
+ + Added: Dutch language file by Lars Bjarte Myren
+ + Added: Image sorting by file name, date uploaded and caption (set in preferences)
+
+22-Nov-2007 Luis Montero
+ # Fixed [#8186] Problem browsing subfolders in backend - Missing slash
+ 
+21-Nov-2007 Luis Montero
+ # Fixed [#8155] Fatal error: Call to undefined function curl_init() in \administrator\components\com_imagebrowser\inc\version.php on line 23
+ + Added: check whether cURL functions are available before remotely checking version.
+ + Added: style sheet for backend
+ + Added: Language option and auto detect 
+ 
+-------------------- VERSION 0.1.3 BETA Released [18-November-2007] ---------------------
+18-Nov-2007 Luis Montero
+ # Fixed [#8126] Parse error: unexpected $end in \components\com_imagebrowser\imagebrowser.html.php on line 130
+ # Fixed [#8134] Notice: Trying to get property of non-object in ...\administrator\components\com_imagebrowser\params.php on line 30
+ + Added: version_check() function to check if running current version against e-noise.com server
+ + Added: PNG (Portable Network Graphics) compatibility
+ + Added: Error handling for file uploads shows javascrip alert window
+ + Added: Config parameters for resizing images on upload to avoid having huge images in lightbox or popup
+ + Added: File size and date modified is now diplayed in backend
+
+-------------------- VERSION 0.1.2 BETA Released [16-November-2007] ---------------------
+16-Nov-2007 Luis Montero
+ # Fixed [#8108] Fatal Error: call to undefined function (imagebrowser.class.php)
+ # Fixed [#8121] Notice: Undefined variable: breadcrumbs imagebrowser.class.php on line 71
+ # Fixed [#8122] Notice: Undefined variable: str in imagebrowser.class.php on line 73
+ # Fixed [#8123] Notice: Undefined index: Itemid in imagebrowser.class.php on line 74
+ # Fixed [#8124] Notice: Undefined variable: str in imagebrowser.class.php on line 78
+ # Fixed [#8125] Notice: Trying to get property of non-object in params.php on line 29
+ 
+-------------------- VERSION 0.1.1 BETA Released [15-November-2007] ---------------------
+15-Nov-2007 Luis Montero
+ ^ prototype, scriptaculous and lightbox javascript scripts have been replaced by Joomla's native mootools and slimbox.
