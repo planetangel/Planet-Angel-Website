@@ -1,0 +1,93 @@
+/* --------- EVENTS modifiers */
+
+h1, h2, h3 { color: #0065cc; }
+a { color: #0065cc; }
+a:visited{ color: #003299; }
+
+#center {
+background-color: #F9FBFE;
+}
+
+.pathway { background: #0098ff; }
+
+.pa_quote_left {
+background-color: #0065cc;
+}
+.pa_quote_right {
+background-color: #0065cc;
+}
+
+.sectiontableheader {
+background-color: #c4e0FF;
+}
+
+.moduleeventssection {
+	background: url('/templates/planetangelx/images/title_events.jpg') no-repeat top left;
+	height: 220px;
+	width: 152px;
+	background-color: #0098ff;
+	margin-bottom: 4px;
+}
+
+.moduleeventssection div { 
+	padding-top: 12px;
+}
+
+ul.sectioncategorylist {
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 0px;
+}
+
+ul.sectioncategorylist li {
+	background: url('/templates/planetangelx/images/sectcontents_events.gif') -2px 0px no-repeat #F4FBFF;
+	min-height: 46px;
+	padding-left: 74px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin: 10px 0 10px 0;
+	list-style-type: none;
+}
+
+.sectioncategory a {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+
+.moduleeventssection a { color: white; }
+.moduleeventssection a:visited { color: #ccedff; }
+.moduleeventssection li { color: white; }
+
+#modules_features DIV.module {
+	border-color: #0065cc;
+	background-color: #c4e0FF;
+}
+
+#modules_features DIV.module .modhead {
+	background-color: #0065cc;
+}
+
+table.contenttoc {
+	color: #0065cc;
+	border-bottom: 2px solid #0065cc;
+	border-right: 2px solid #0065cc;
+	border-left: 1px solid #0065cc;
+}
+
+table.contenttoc th {
+	background-color: #0065cc;
+}
+
+table.contenttoc td {
+	border-top: 1px solid #0065cc;
+}
+
+.pagenavcounter {
+	background-color: #0065cc;
+}
+
+.pagenavbar {
+	color: #0065cc;
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.5/template-install.dtd">
+<install version="1.5" type="template">
+	<name>Planet Angel</name>
+	<creationDate>01/03/09</creationDate>
+	<author>Graham Crockford</author>
+	<authorEmail>webmaster@planetangel.net</authorEmail>
+	<authorUrl>http://www.planetangel.net</authorUrl>
+	<copyright></copyright>
+	<license>Commercial</license>
+	<version>1.0.2</version>
+	<description>Planet Angel Joomla 1.5</description>
+	<files>
+	</files>
+	<positions>
+		<position>breadcrumb</position>
+		<position>searchbox</position>
+		<position>eyecatcher</position>
+		<position>floaters</position>
+		<position>specialnav</position>
+		<position>newspopup</position>
+		<position>aboutpopup</position>
+		<position>commpopup</position>
+		<position>eventpopup</position>
+		<position>shoppopup</position>
+		<position>contpopup</position>
+		<position>mainmenu</position>
+		<position>context</position>
+		<position>features</position>
+		<position>emergency</position>
+		<position>footnotes</position>
+		<position>footnotes-left</position>
+		<position>footnotes-right</position>
+		<position>homemenu</position>
+		<position>aboutmenu</position>
+		<position>communitymenu</position>
+		<position>eventsmenu</position>
+		<position>contactmenu</position>
+		<position>shopmenu</position>
+		<position>newsmenu</position>
+	</positions>
+</install>

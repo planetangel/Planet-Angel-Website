@@ -1,0 +1,51 @@
+/* SHOP MODULE */
+
+.pathway { background: #650098; }
+
+.modheadshopsection { padding-top: 35px; }
+.moduleshopsection {
+	background: url('/templates/planetangelx/images/title_shop.jpg') no-repeat top left;
+	height: 220px;
+	width: 152px;
+	background-color: #650098;
+	margin-bottom: 4px;
+}
+
+.moduleshopsection a { color: white; }
+.moduleshopsection a:visited { color: #EAC0FF; }
+.moduleshopsection li { color: white; }
+.moduleshopsection div { padding-top: 12px; }
+
+.paShop_center {
+margin: 0;
+padding: 4px;
+clear: both;
+}
+
+.pashop_OptDesc {
+font-size: 0.9em;
+clear: both;
+}
+
+.pashop_OptSel {
+font-family: verdana, arial, helvetica, sans-serif;
+font-size: 0.9em;
+}
+
+.pashop_Opt {
+margin-bottom: 4px;
+margin-top: 0;
+}
+
+.paShop_price {
+font-weight: bold;
+margin-bottom: 4px;
+}
+
+.pashop_Form {
+margin-bottom: 0px;
+}
+
+.paShop_shipping {
+font-weight: normal;
+}

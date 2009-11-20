@@ -1,0 +1,58 @@
+#modules_features DIV.module div div,
+#main_body_hack_features DIV.module div div,
+DIV.modulefrontpage div div,
+DIV.moduleevents div div,
+DIV.modulecontact div div,
+DIV.modulecommunity div div,
+DIV.modulenews div div {
+	border: none !important;
+}
+
+#modules_features DIV.module div div div,
+#main_body_hack_features DIV.module div div div,
+DIV.modulefrontpage div div div,
+DIV.moduleevents div div div,
+DIV.modulecontact div div div,
+DIV.modulecommunity div div div,
+DIV.modulenews div div div {
+	border: 1px solid #FCF1FD !important;
+}
+
+#modules_features DIV.module div div div div,
+#main_body_hack_features DIV.module div div div div,
+DIV.modulefrontpage div div div div,
+DIV.moduleevents div div div div,
+DIV.modulecontact div div div div,
+DIV.modulecommunity div div div div,
+DIV.modulenews div div div div {
+	border: none !important;
+}
+
+#modules_features DIV.module .modhead,
+#main_body_hack_features DIV.module .modhead,
+DIV.modulefrontpage .modheadfrontpage,
+DIV.moduleevents .modheadevents,
+DIV.modulecontact .modheadcontact,
+DIV.modulecommunity .modheadcommunity,
+DIV.modulenews .modheadnews {
+	border: none !important;
+}
+
+#modules_features DIV.module .modhead h3,
+#main_body_hack_features DIV.module .modhead h3,
+DIV.modulefrontpage .modheadfrontpage h3
+DIV.modulecontact .modheadcontact h3,
+DIV.modulecommunity .modheadcommunity h3,
+DIV.modulenews .modheadnews h3 {
+	border: none !important;
+}
+
+#modules_features DIV.module .modbody,
+#main_body_hack_features DIV.module .modbody,
+DIV.modulefrontpage .modbodyfrontpage,
+DIV.moduleevents .modbodyevents,
+DIV.modulecontact .modbodycontact,
+DIV.modulecommunity .modbodycommunity,
+DIV.modulenews .modbodynews {
+	border: none !important;
+}

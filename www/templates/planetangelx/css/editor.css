@@ -1,0 +1,94 @@
+body
+{ 
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 11px;
+    color: black;
+    background-color: #FFEEFF;
+    padding: 4px;
+    border: 4px #FFE9FF  solid;
+}
+
+h1 {
+    font-size: 1em;
+    font-weight: normal;
+    
+}
+
+h1:before {
+    content: 'DO NOT USE H1';
+}
+
+h2 {
+    font-size: 1em;
+    font-weight: normal;
+    
+}
+
+h2:before {
+    content: 'DO NOT USE H2';
+}
+
+h3 {
+	font-size: 1.1em;
+	color: #660099;
+	margin-top: 0px;
+	margin-bottom: 1em;
+}
+
+h4 {
+	font-size: 1em;
+	color: black;
+	margin-top: 0px;
+	margin-bottom: 0.25em;
+}
+
+ul {
+	padding-bottom: 6px;
+	margin-bottom: 0px;
+}
+
+ul li {
+	margin-bottom: 4px;
+}
+
+.small
+{
+	font-size: 0.9em;
+	margin: 0px;
+	padding: 0px;
+}
+
+A {
+	color: #660099;
+}
+
+A:visited {
+	color: #440077;
+}
+
+A:hover {
+	text-decoration: underline
+}
+
+.pa_quote_left {
+	width: 30%;
+	padding: 10px;
+	color: white;
+	background-color: #660099;
+	float: left;
+	margin: 10px;
+}
+
+.pa_quote_right {
+	width: 30%;
+	padding: 10px;
+	color: white;
+	background-color: #660099;
+	float: right;
+	margin: 10px;
+}
+
+.pa_quote_inline {
+	font-weight: bold;
+	font-size: 0.9em;
+}

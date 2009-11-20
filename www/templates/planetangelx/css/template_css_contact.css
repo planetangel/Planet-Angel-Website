@@ -1,0 +1,41 @@
+/* ----------- CONTACT modifiers */
+
+h1, h2, h3 { color: #ee8700; }
+a { color: #dd7600; }
+a:visited { color: #aa5400; }
+
+#center {
+background-color: #FEF7EE;
+}
+
+.pathway { background: #ff9800; }
+
+.sectiontableheader {
+background-color: #FFECD1;
+}
+
+.modheadcontactsection { padding-top: 35px; }
+.modulecontactsection {
+	background: url('/templates/planetangelx/images/title_contact.jpg') no-repeat top left;
+	height: 220px;
+	width: 152px;
+	background-color: #ff9800;
+	margin-bottom: 4px;
+}
+
+.modulecontactsection div {
+padding-top: 12px;
+}
+
+.modulecontactsection a { color: #003299; }
+.modulecontactsection a:visited { color: #3f1600; }
+.modulecontactsection li { color: #3f1600; }
+
+#modules_features DIV.module {
+	border-color: #ee8700;
+	background-color: #FFECD1;
+}
+
+#modules_features DIV.module .modhead {
+	background-color: #ee8700;
+}

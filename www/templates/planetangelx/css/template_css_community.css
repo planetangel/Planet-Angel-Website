@@ -1,0 +1,79 @@
+/* ----- Community modifiers */
+
+h1, h2, h3, a { color: #cb0000; }
+a:visited{ color: #870000; }
+#center { background-color: #FBEAEA; }
+.pathway { background: #cb0000; }
+.author, .createdate, .linkcategory, .linksection {
+	color: #cb0000; 
+}
+
+
+.modheadcommunitysection { padding-top: 35px; }
+.modulecommunitysection {
+	background: url('/templates/planetangelx/images/title_community.jpg') no-repeat top left;
+	height: 220px;
+	width: 152px;
+	background-color: #cb0000;
+	margin-bottom: 4px;
+}
+
+.modulecommunitysection a { color: #f7e7e7; }
+.modulecommunitysection a:visited { color: #d4b4b4; }
+.modulecommunitysection li { color: #f7e7e7; }
+.modulecommunitysection div { padding-top: 12px; }
+
+ul.sectioncategorylist {
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 0px;
+}
+
+ul.sectioncategorylist li {
+	background: url('/templates/planetangelx/images/sectcontents_community.gif') -2px 0px no-repeat #F8DEDE;
+	min-height: 46px;
+	padding-left: 74px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	margin: 10px 0 10px 0;
+	list-style-type: none;
+}
+
+.sectioncategory a {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+a.readon {
+	background-image: url('/templates/planetangelx/images/more_community.gif');
+}
+
+#modules_sect_tit a.mainlevel {
+	font-weight: bold;
+}
+
+#modules_sect_tit a.sublevel {
+	font-weight: normal;
+}
+
+.modbodycommunitysection {
+	padding: 10px;
+}
+
+.modbodycommunitysection td {
+	padding: 0px 0px 0px 0px;
+}
+
+#modules_features DIV.module {
+	border-color: #cb0000;
+	background-color: #F8DEDE;
+}
+
+#modules_features DIV.module .modhead {
+	background-color: #cb0000;
+}
+
+.blogarticle h2 {
+	background-color: #cb0000;
+}

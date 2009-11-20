@@ -1,0 +1,1304 @@
+/* -------------------------------- Globals -------------------*/
+
+body {
+	background-color: #29005C;
+	font-family: verdana, arial, helvetica, sans-serif;
+	margin: 10px 10px 18px 10px;
+	font-size: 69%;
+	color: white;
+}
+
+h1 {
+	margin: 0px 16px 8px 0px;
+	padding: 0px;
+	color: #660099;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+h2 {
+	margin: 0px 16px 8px 0px;
+	padding: 0px;
+	color: #660099;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+A {
+	color: #660099;
+}
+
+A:visited {
+	color: #440077;
+}
+
+A:hover {
+	text-decoration: underline;
+}
+
+h3 {
+	font-size: 1.1em;
+	color: #660099;
+	margin-top: 0px;
+	margin-bottom: 1em;
+}
+
+h4 {
+	font-size: 1em;
+	color: black;
+	margin-top: 0px;
+	margin-bottom: 0.25em;
+}
+
+P {
+	margin-bottom: 1em;
+	margin-top: 0px;
+}
+
+fieldset {
+	border: none;
+	background-color: #F5D9FD; 
+}
+
+fieldset div {
+	margin-bottom: 4px;
+}
+
+fieldset div a {
+	font-weight: bold;
+}
+
+INPUT {
+	font-family: "ms sans serif", verdana, arial, helvetica, sans-serif;
+}   
+
+P.highlight {
+	color: #660099;
+	font-weight: bold;
+}
+
+/* -------------------------- Page -------------------------- */
+
+/* Hides from IE5-mac \*/
+* html #wholepage {height: 1%;}
+/* End hide from IE5-mac */
+
+#wholepage {
+	position: relative;
+	width: 726px;
+	width: expression(document.body.clientWidth > 900 ? "900px" : "auto");
+	margin: auto;
+	color: black;
+}
+	
+html>body #wholepage {
+	width: auto;
+	min-width: 617px;
+	max-width: 900px;
+}  
+
+/* -------------------------- Header section -------------------------- */
+
+#topsection {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	height: 92px;
+	width: 100%;
+}
+
+#header {
+	position: relative;
+	float: left;
+	width: 224px;
+	height: 88px;
+}
+
+#header h1
+{
+	margin: 0;
+	padding: 0;
+}
+
+#header h1 a
+{
+	float: left;
+	padding: 88px 0 0 0;
+	position: relative;
+	overflow: hidden;
+	width: 224px;
+	background: url('/templates/planetangelx/images/glowlogo.jpg') top left no-repeat;
+	height: 0px !important;
+	height /**/:88px; /* for IE5 Win only */
+}
+
+#angelouter {
+	position: absolute;
+	top: 4px;
+	left: 9px;
+	float: left;
+	width: 27px;
+	height: 52px;
+	overflow: hidden;
+}
+
+#theangel a {
+	float: left;
+	padding: 52px 0 0 0;
+	position: relative;
+	overflow: hidden;
+	width: 27px;
+	height: 0px !important;
+	height /**/:52px; /* for IE5 Win only */
+	background: url('/templates/planetangelx/images/glowtitleoverlay.jpg') no-repeat;
+	background-position: 0px -52px;
+}
+
+#theangel a:hover{
+	background-position: 0px 0px;
+}
+
+#eyecatchers {
+	height: 88px;
+	overflow: auto;
+	margin: 0px 90px 0px 0px;
+}
+
+#modules_eyecatcher {
+	margin: 30px 0px 0 10px;
+}
+
+/* ------------------------- Ticker --------------------------- */
+
+.scrolltitle {
+	font-family: "ms sans serif", verdana, arial, helvetica, sans-serif;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.scrollcontent {
+	font-family: "ms sans serif", verdana, arial, helvetica, sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 1.1em;
+	padding-right: 100px;
+}
+
+#eyecatchers .contentheading {
+	background-color: transparent;
+	background-image: none;
+}
+
+#eyecatchers .contentpaneheader {
+	background-color: transparent;
+	margin: 20px 0px 0px -2px;
+	padding: 0px;
+}
+
+#eyecatchers. contentpaneopen {
+	margin: 0px;
+	padding: 0px;
+}
+
+.moduletablenewsflash {
+	padding: 4px;
+}
+
+#modules_eyecatcher td {
+	color: #ad9aca; /* color: yellow */
+	padding: 0px;
+	
+}
+
+#modules_eyecatcher a, #modules_eyecatcher a:visited {
+	color: white;
+}
+
+#modules_eyecatcher h3 {
+	color: #9380ae;
+	margin: 2px;
+	font-size: 110%;
+}
+
+
+/* ----------------------- Menu -------------------------- */
+
+#menuouter {
+	position: relative;
+	height: 29px;
+	width: 100%;
+}
+
+#menuinner {
+	float: right;
+	padding: 0px 4px 0px 0px;
+	margin: 0px;
+	height: 29px;
+	width: 594px;
+}
+
+/* Hides from IE6 to make menu flush to right edge \*/
+* html #menuinner {padding-right: 0px;}
+/* End hide from IE6 */
+
+
+#menu {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	height: 29px;
+	width: 594px;
+	list-style: none;
+	margin-right: 4px;
+}
+
+#menu li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline;
+	width: 99px;
+	height: 29px;
+}
+
+#menu a {
+	float: left;
+	padding: 0;
+	text-indent: -5000px;
+	width: 99px;
+	height: 29px;
+	background-position: 0px 0px;
+	background-repeat: repeat;
+	outline: none;
+}
+
+#menu a:hover {
+	background-position: 0px -29px;	
+}
+#menu a:active, #menu a.selected {
+	background-position: 0px 0px;	
+}
+
+#mcommunity a { background-image: url(/templates/planetangelx/images/community.jpg); }
+#mshop a { background-image: url(/templates/planetangelx/images/shop.jpg); }
+#mnews a { background-image: url(/templates/planetangelx/images/news.jpg); }
+#mabout a { background-image: url(/templates/planetangelx/images/story.jpg); }
+#mevents a { background-image: url(/templates/planetangelx/images/events.jpg); }
+#mcontact a { background-image: url(/templates/planetangelx/images/contact.jpg);}
+
+#mcommunitysel a { background-image: url(/templates/planetangelx/images/community_on.jpg); }
+#mshopsel a { background-image: url(/templates/planetangelx/images/shop_on.jpg); }
+#mnewssel a { background-image: url(/templates/planetangelx/images/news_on.jpg); }
+#maboutsel a { background-image: url(/templates/planetangelx/images/story_on.jpg); }
+#meventssel a { background-image: url(/templates/planetangelx/images/events_on.jpg); }
+#mcontactsel a { background-image: url(/templates/planetangelx/images/contact_on.jpg);}
+
+/* ------------------------ Left section ---------------------------- */
+
+#mainmodules {
+	position: absolute;
+	top: 121px;
+	left: 0px;
+}
+
+#subcontext {
+	width: 152px;
+}
+
+#modules_searchbox {
+	width: 100%;
+	position: absolute;
+	top: 65px;
+	left: 0px;
+	z-index: 1;
+}
+
+#modules_searchbox .module {
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+#modules_searchbox form {
+	padding: 0; margin 0;
+}
+
+#modules_searchbox .inputbox {
+	font-size: 0.9em;
+	background-color: #3C176B;
+	color: #8a78a8;;
+	border: 1px solid #502E7A;
+	margin: 0 8px 0 0;
+}
+
+#modules_searchbox .inputbox:hover {
+	background-color: #502E7A;
+	color: #9b89b9;
+	border: 1px solid #705492;
+}
+
+#modules_searchbox .button {
+	color: #29005C;
+}
+
+/* HOME MODULE */
+
+
+.modulehomessection {
+	background: url('/templates/planetangelx/images/title_home.jpg') no-repeat top left;
+	height: 220px;
+	width: 152px;
+	background-color: #FFF5FF;
+	margin-bottom: 4px;
+}
+
+.modulehomessection div {
+	padding-top: 12px;
+}
+
+.pathway {
+	background: #D5A9DD;
+}
+.modulehomessection a { color: #4a3b4d; }
+.modulehomessection a:visited { color: #624e7f; }
+.modulehomessection li { color: #4a3b4d; }
+
+
+/* GENERAL MODULE STUFF */
+
+#modules_sect_tit {
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+
+#mainlevel,
+#modules_context ul {
+	padding: 0 0 2px 0;
+	margin: 0px;
+	list-style: inside;
+}
+
+#modules_sect_tit #mainlevel {
+	padding: 10px 4px 10px 10px;
+	margin: 0px;
+	list-style: inside;
+}
+
+#active_menu {
+	color: white;
+}
+
+.sublevel {
+	padding-left: 4px;
+}
+
+#modules_context ul li {
+	margin: 0;
+	padding: 0.1em 0 0.1em 0;
+}
+
+#modules_context ul li:hover {
+	background-color: #7700AA;
+}
+
+#mainlevel li a {
+	padding: 0px;
+	margin: 0px;
+}
+
+#modules_sect_tit #mainlevel li a {
+	font-weight: bold;
+}
+
+#mainmodules DIV.module
+{
+	color: white;
+	padding: 0px;
+	margin-top: 8px;
+	width: 123px;
+}
+
+#modules_floaters DIV.module
+{
+	margin-right: 20px;
+}
+
+#mainmodules DIV.module input.inputbox
+{
+	color: white;
+	background-color: #47006b;
+	border: 1px solid black;
+	font-size: 1em;
+	margin: 2px 0px 4px 0px;
+	padding: 2px 2px 2px 2px;
+}
+
+
+#mainmodules DIV.module input.button
+{
+	color: white;
+	background-color: #9900BB;
+	margin: 4px;
+	border: 2px outset #9900BB;
+	font-size: 1em;
+	padding: 1px;
+}
+
+#mainmodules DIV.module a
+{
+	color: #ddddff;
+}
+
+#mainmodules div.module {
+	background: url('/templates/planetangelx/images/modbody.gif') -1px 0px repeat-y;
+	width: 142px;
+	overflow: hidden;
+}
+
+#mainmodules div.module div {
+	background: url('/templates/planetangelx/images/modhead.gif') -1px 0px no-repeat;
+	overflow: hidden;
+}
+
+#mainmodules div.module div div {
+	background: url('/templates/planetangelx/images/modfoot.gif') bottom repeat-x;
+}
+
+#mainmodules div.module div div div {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 16px;
+}
+
+#mainmodules .module {
+	margin-bottom: 20px; 
+}
+
+#mainmodules div.module h3 {
+	font-size: 1em;
+	text-transform: uppercase;
+	margin: 0px;
+	color: white;
+	padding: 4px 0 6px 0;
+}
+
+#countdown {
+	margin-bottom: 6px;
+	margin-right: 6px;
+	font-family: "georgia", serif;
+	font-size: 1em;
+	text-align: right;
+	color: yellow;
+	font-weight: bold;
+}
+
+#nextparty_shoplink {
+	padding: 4px;
+	text-align: center;
+	color: white;
+}
+
+#nextparty_shoplink a {
+	font-weight: bold;
+}
+
+/* ------------------ Main section ------------------------ */
+
+#center {
+	background-color: #FCF1FD;
+	_height: 338px; /* IE6 and below */
+	min-height: 338px; /* Everything else */
+	margin: 0px 0px 0px 152px;
+	background-image: url('/templates/planetangelx/images/rightborder.png');
+	background-position: top right;
+	background-repeat: repeat-y;
+	padding: 0px;
+}
+
+#bottombar {
+	height: 8px;
+	width: 100%;
+	background-image: url('/templates/planetangelx/images/bottomedge.png');
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+#main_body_outer {
+	padding: 0px 216px 10px 10px;
+}
+
+#main_body_outer_wide {
+	padding: 0px 20px 10px 10px;
+}
+
+/* THIS IS EVIL - DIFFERENT FLOAT TECHNIQUE ON IE6 */
+/* Hides from IE5-mac \*/
+* html #main_body_outer {
+	float: left;
+	padding-right: 10px;
+}
+* html #main_body_outer_wide{
+	float: left;
+	padding-right: 10px;
+}
+/* End hide from IE5-mac */
+
+#main_body {
+	width: 100%;
+	min-height: 396px;
+}
+
+
+#pathway {
+	font-weight: normal;
+	color: white;
+	margin-bottom: 10px;
+	margin-right: 7px;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 2px 10px 4px 10px;
+	text-transform: uppercase;
+	font-size: 0.9em;
+}
+
+/* Nasty hack just to get it working for the moment */
+
+#main_body_hack_table {
+	margin: 0 17px 10px 10px;
+}
+
+#main_body_hack_main {
+	vertical-align: top;
+}
+
+#main_body_hack_features {
+	vertical-align: top;
+	padding: 15px 0 0 10px;
+	width: 186px;
+}
+
+#main_body_hack_features #nextparty_shoplink a {
+	color: white;
+	font-weight: bold;
+}
+
+table.contenttoc {
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	border-left: 1px solid black;
+	padding: 0;
+	margin: 0 0 10px 10px;
+	float: right;
+	background-color: white;
+	color: #660099;
+}
+
+table.contenttoc th {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 3px;
+}
+
+table.contenttoc td {
+	padding: 0.2em 8px 0.2em 8px;
+	color: white;
+	border-top: 1px solid black;
+	font-family: arial;
+	font-weight: bold;
+}
+
+.pagenavcounter {
+	margin: 0 0 10px 0;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: white;
+	background-color: #660099;
+	padding: 4px;
+}
+
+.pagenavbar {
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #660099;
+	text-align: center;
+	clear: both;
+}
+
+
+/* ------------------ Right hand column ------------------------ */
+
+#modules_features {
+	margin-right: 16px;
+	padding: 15px 0 0 0;
+	float: right;
+	width: 186px;
+}
+
+/* Hides from IE5-mac \*/
+* html #modules_features {
+	margin-right: 8px;
+}
+/* End hide from IE5-mac */
+
+/* RIght hand modules */
+
+#modules_features DIV.module,
+#main_body_hack_features DIV.module,
+DIV.modulefrontpage,
+DIV.moduleevents,
+DIV.modulecontact,
+DIV.modulecommunity,
+DIV.modulenews {
+	margin: 0 0 8px 0;
+	padding: 0;
+}
+
+#modules_features DIV.module,
+#main_body_hack_features DIV.module,
+DIV.modulefrontpage {
+	background: #660099 url(/templates/planetangelx/images/features_module_top_left.gif) no-repeat top left;
+}
+DIV.moduleevents {
+	background: #0065cc url(/templates/planetangelx/images/features_events_top_left.gif) no-repeat top left;
+}
+DIV.modulecontact {
+	background: #0065cc url(/templates/planetangelx/images/features_contact_top_left.gif) no-repeat top left;
+}
+DIV.modulecommunity {
+	background: #cb0000 url(/templates/planetangelx/images/features_community_top_left.gif) no-repeat top left;
+}
+DIV.modulenews {
+	background: #ee5400 url(/templates/planetangelx/images/features_news_top_left.gif) no-repeat top left;
+}
+
+
+DIV.modulefrontpage,
+DIV.moduleevents,
+DIV.modulecontact,
+DIV.modulecommunity,
+DIV.modulenews {
+	width: 350px;
+	float: left;
+	margin-right: 10px;
+}
+
+#modules_features DIV.module div,
+#main_body_hack_features DIV.module div,
+DIV.modulefrontpage div {
+	background: transparent url(/templates/planetangelx/images/features_module_top_right.gif) no-repeat top right;
+}
+DIV.moduleevents div {
+	background: transparent url(/templates/planetangelx/images/features_events_top_right.gif) no-repeat top right;
+}
+DIV.modulecontact div {
+	background: transparent url(/templates/planetangelx/images/features_contact_top_right.gif) no-repeat top right;
+}
+DIV.modulecommunity div {
+	background: transparent url(/templates/planetangelx/images/features_community_top_right.gif) no-repeat top right;
+}
+DIV.modulenews div {
+	background: transparent url(/templates/planetangelx/images/features_news_top_right.gif) no-repeat top right;
+}
+
+#modules_features DIV.module div div,
+#main_body_hack_features DIV.module div div,
+DIV.modulefrontpage div div {
+	background: url(/templates/planetangelx/images/features_module_bottom_left.gif) no-repeat bottom left;
+}
+DIV.moduleevents div div {
+	background: url(/templates/planetangelx/images/features_events_bottom_left.gif) no-repeat bottom left;
+}
+DIV.modulecontact div div {
+	background: url(/templates/planetangelx/images/features_contact_bottom_left.gif) no-repeat bottom left;
+}
+DIV.modulecommunity div div {
+	background: url(/templates/planetangelx/images/features_community_bottom_left.gif) no-repeat bottom left;
+}
+DIV.modulenews div div {
+	background: url(/templates/planetangelx/images/features_news_bottom_left.gif) no-repeat bottom left;
+}
+
+#modules_features DIV.module div div div,
+#main_body_hack_features DIV.module div div div,
+DIV.modulefrontpage div div div {
+	background: url(/templates/planetangelx/images/features_module_bottom_right.gif) no-repeat bottom right;
+}
+DIV.moduleevents div div div {
+	background: url(/templates/planetangelx/images/features_events_bottom_right.gif) no-repeat bottom right;
+}
+DIV.modulecontact div div div {
+	background: url(/templates/planetangelx/images/features_contact_bottom_right.gif) no-repeat bottom right;
+}
+DIV.modulecommunity div div div {
+	background: url(/templates/planetangelx/images/features_community_bottom_right.gif) no-repeat bottom right;
+}
+DIV.modulenews div div div {
+	background: url(/templates/planetangelx/images/features_news_bottom_right.gif) no-repeat bottom right;
+}
+
+#modules_features DIV.module div div div,
+#main_body_hack_features DIV.module div div div,
+DIV.modulefrontpage div div div,
+DIV.moduleevents div div div,
+DIV.modulecontact div div div,
+DIV.modulecommunity div div div,
+DIV.modulenews div div div {
+	padding: 4px 8px 8px 8px;
+}
+
+#modules_features DIV.module div div div div,
+#main_body_hack_features DIV.module div div div div,
+DIV.modulefrontpage div div div div,
+DIV.moduleevents div div div div,
+DIV.modulecontact div div div div,
+DIV.modulecommunity div div div div,
+DIV.modulenews div div div div  {
+	background: none;
+}
+
+#modules_features DIV.module h3,
+#main_body_hack_features DIV.module h3,
+DIV.modulefrontpage h3,
+DIV.moduleevents h3,
+DIV.modulecontact h3,
+DIV.modulecommunity h3,
+DIV.modulenews h3 {
+	color: white;
+	margin: 0px;
+	font-size: 1em;
+	text-transform: uppercase;
+	padding: 0px 4px 6px 0px;
+}
+
+#modules_features DIV.module,
+#main_body_hack_features DIV.module,
+DIV.modulefrontpage,
+DIV.moduleevents,
+DIV.modulecontact,
+DIV.modulecommunity,
+DIV.modulenews {
+	color: white;
+}
+
+#modules_features DIV.module ul li,
+#main_body_hack_features DIV.module ul li,
+DIV.modulefrontpage ul li,
+DIV.moduleevents ul li,
+DIV.modulecontact ul li,
+DIV.modulecommunity ul li,
+DIV.modulenews ul li {
+	color: white;
+}
+
+#modules_features DIV.module a,
+#main_body_hack_features DIV.module a,
+DIV.modulefrontpage a,
+DIV.moduleevents a,
+DIV.modulecontact a,
+DIV.modulecommunity a {
+	color: #D5A9DD;
+	text-decoration: none;
+}
+
+DIV.modulenews a {
+	color: white;
+	text-decoration: none;
+}
+
+#modules_features DIV.module a:hover,
+#main_body_hack_features DIV.module a:hover,
+DIV.modulefrontpage a:hover,
+DIV.moduleevents a:hover,
+DIV.modulecontact a:hover,
+DIV.modulecommunity a:hover,
+DIV.modulenews a:hover {
+	text-decoration: underline;
+}
+
+/* Player */
+
+DIV.moduleplayer {
+	padding: 0px;
+	margin: 0px 0px 8px 0px;
+}
+
+DIV.moduleplayer .modheadplayer {
+	margin: 0;
+	padding: 4px 4px 4px 10px;
+	background-color: #660099;
+}
+
+DIV.moduleplayer .modheadplayer h3 {
+	color: white;
+	padding: 0px;
+	margin: 0px;
+	font-size: 1em;
+	text-transform: uppercase;
+}
+
+DIV.moduleplayer .modbodyplayer {
+	background-color: #660099;
+	color: #DDDDDD;
+	font-size: 0.9em;
+}
+DIV.moduleplayer .modbodyplayer a {
+	color: white;
+	font-weight: bold;
+}
+
+DIV.moduleplayer p {
+	padding: 0px 0px 4px 10px;
+	margin: 0;
+}
+
+DIV.moduleplayer ul {
+	padding: 0px 0px 8px 18px;
+	margin: 4px;
+}
+
+DIV.moduleplayer ul li {
+	padding: 0 0 0.5em 0;
+	margin: 0;
+}
+
+/* Latest news */
+
+ul.latestnews {
+	padding: 0 0 0 14px;
+	margin: 0px;
+}
+
+ul.latestnews li {
+	padding: 0 0 0.3em 0;
+	margin: 0px;
+}
+
+#modules_features .contentpaneheader,
+#main_body_hack_features .contentpaneheader {
+	padding: 0px;
+	margin: 0px;
+}
+
+#modules_features .contentheading,
+#main_body_hack_features .contentheading {
+	padding: 4px;
+	margin: 0px;
+}
+
+#modules_features .contentpaneinfo,
+#main_body_hack_features .contentpaneinfo {
+	padding: 2px;
+	margin: 0px;
+}
+
+#modules_features .contentpaneopen,
+#main_body_hack_features .contentpaneopen {
+	padding: 2px;
+	margin: 0px;
+}
+
+/* ------------------ Other ------------------------ */
+
+#pathway a {
+	color: white;
+	font-weight: bold;
+}
+
+#modules_emergency th
+{
+	font-size: 1.5em;
+	padding: 0 0 10px 0;
+	text-align: left;
+}
+	
+#modules_emergency td {
+	padding-bottom: 8px;
+}
+
+#footer
+{
+	padding-top: 10px;
+	color: #9380ae;
+	background-color: #29005C;
+	padding-bottom: 10px;
+}
+
+#footer a { color: #da8ef7; }
+
+#modules_emergency {
+}
+
+
+#modules_floaters { }
+
+#modules_footnotes, #footer { }
+
+.author, .createdate, .linkcategory, .linksection {
+	color: #660099;
+	font-weight: bold;
+	font-size: 1em;
+	color: #660099;
+}
+
+
+.contentpane  {
+	clear: both;
+	margin: 20px 0 40px 0;
+}
+
+.contentpane ul {
+	padding-bottom: 6px;
+	margin-bottom: 0px;
+	list-style: none;
+}
+
+.contentpane li {
+	margin-bottom: 10px;
+}
+
+.contentpaneopen ul li {
+	margin-bottom: 4px;
+}
+
+.articlecontent {
+	margin-top: 10px;
+}
+
+.blogdescription {
+	margin-bottom: 10px;
+}
+
+.readmore {
+	clear: both;
+	margin: 10px 0 10px 0;
+}
+
+.modulepoll {
+	margin: 0px 0px 0px 4px;
+	padding: 0px;
+	width: 300px;
+}
+
+.modulepoll h3 {
+	color: #774444;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+.modbodypoll {
+	border: 1px solid black;
+	margin: 0px;
+	padding: 10px;
+	background-color: #F5D9FD;
+}
+
+.modbodypoll TD.poll {
+	color: #774444;
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 10px 0px 10px 0px;
+}
+
+.createdate,
+.small
+{
+	font-size: 0.9em;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mosimage_caption {
+	background: #660099 url('/templates/planetangelx/images/underpic.png') top right no-repeat;
+	margin: 0px 6px 2px 6px;
+	padding: 0px 6px 2px 6px;
+	font-size: 0.8em;
+	color: white;
+	text-align: right; 
+}
+
+.sectiontableheader {
+	border-bottom: 1px solid #660099;
+	background-color: #F5D9FD;
+	padding-top: 2px;
+	font-weight: bold;
+	padding-bottom: 2px;
+}
+
+.sectiontableentry1 td {
+	padding-top: 4px;
+}
+
+.sectiontableentry2 td {
+	padding-top: 4px;
+}
+
+a.category {
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+a.readon {
+	font-size: 1.0em;
+	font-weight: bold;
+	background: url('/templates/planetangelx/images/more.gif') no-repeat top left;
+	float: left;
+	padding: 14px 0 0 0;
+	position: relative;
+	overflow: hidden;
+	height: 0px !important;
+	height /**/:14px; /* for IE5 Win only */
+	margin: 0;
+	width: 113px;
+}
+
+table.blog {
+	width: 100%;
+}
+
+.pa_quote_left {
+	width: 30%;
+	padding: 10px;
+	color: white;
+	background-color: #660099;
+	float: left;
+	margin: 10px;
+	clear: both;
+}
+
+.pa_quote_right {
+	width: 30%;
+	padding: 10px;
+	color: white;
+	background-color: #660099;
+	float: right;
+	margin: 10px;
+	clear: both;
+}
+
+.pa_quote_right {
+	width: 30%;
+	padding: 10px;
+	color: white;
+	background-color: #660099;
+	float: right;
+	margin: 10px;
+	clear: both;
+}
+
+/* Special nav */
+
+#modules_specialnav {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #ad9aca;
+}
+
+#modules_specialnav #mainlevel {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#modules_specialnav a.mainlevel {
+	text-decoration: none;
+	color: #ad9aca;
+	font-size: 90%;
+	display: inline;
+	padding: 0;
+	margin: 0;
+}
+
+#modules_specialnav a.mainlevel:visited {
+	text-decoration: none;
+	color: #ad9aca;
+}
+
+#modules_specialnav a.mainlevel:hover{
+	text-decoration: underline;
+}
+
+/* Drop downs */
+
+#menuinner {
+  position: relative;
+}
+
+#menuinner li ul {
+  position: absolute;
+  display: none;
+  width: 130px;
+  top: 29px;
+  z-index: 999;
+}
+
+#menuinner li:hover ul { display: block; }
+#menuinner li.over ul { display: block; }
+
+
+#menuinner #mnews ul, #menuinner #mnewssel ul {
+  left: 0px;
+}
+
+#menuinner #mabout ul, #menuinner #maboutsel ul {
+  left: 99px;
+}
+
+#menuinner #mcommunity ul, #menuinner #mcommunitysel ul {
+  left: 198px;
+}
+
+#menuinner #mevents ul, #menuinner #meventssel ul {
+  left: 297px;
+}
+
+#menuinner #mshop ul, #menuinner #mshopsel ul {
+  left: 396px;
+}
+
+#menuinner #mcontact ul, #menuinner #mcontactsel ul {
+  left: 449px;
+}
+
+/* Hides from IE6 to make menu flush to right edge \*/
+* html #menuinner #mcontact ul { left: 455px; }
+* html #menuinner #mcontactsel ul { left: 455px; }
+/* End hide from IE6 */
+
+
+#menuinner li ul li {
+	padding: 0;
+	margin: 0;
+        background-image: none;
+	text-align: left;
+	width: auto;
+	height: 21px;
+}
+
+#menuinner li ul li a {
+	filter:alpha(opacity=95);
+	-moz-opacity:.95;
+	opacity:.95;
+	background-color: #440077;
+	text-indent: 0px; /* override the #m<thing> menu item li's */
+	margin: 0px;
+        color: white;
+        text-decoration: none;
+	font-family: arial, sans-serif;
+	font-weight: bold;
+	padding: 3px 0 0 6px;
+	background-image: none;
+	width: 130px;
+	height: 20px;
+	vertical-align: middle;
+}
+
+/* Fix IE. Hide from IE Mac \*/
+* html #menuinner li ul li { float: left; }
+* html #menuinner li ul li a { height: 1%; padding-top: 4px; padding-bottom: 3px; border: none;  }
+/* End */
+
+#menuinner li ul li a:visited {
+	color: white; 
+}
+
+#menuinner li ul li a:hover {
+        background-color: #330066;
+	color: white; 
+	filter:alpha(opacity=100);
+	-moz-opacity:1;
+	opacity:1;
+}
+
+#menuinner #mnews ul li a,
+#menuinner #mnewssel ul li a {
+	background-color: #ee5400;
+}
+
+#menuinner #mnews ul li a:hover,
+#menuinner #mnewssel ul li a:hover {
+	background-color: #dd4300;
+}
+
+#menuinner #mabout ul li a,
+#menuinner #maboutsel ul li a {
+	background-color: #54bb00;
+}
+
+#menuinner #mabout ul li a:hover,
+#menuinner #maboutsel ul li a:hover {
+	background-color: #43aa00;
+}
+
+#menuinner #mcommunity ul li a,
+#menuinner #mcommunitysel ul li a {
+	background-color: #cb0000;
+}
+
+#menuinner #mcommunity ul li a:hover,
+#menuinner #mcommunitysel ul li a:hover {
+	background-color: #ba0000;
+}
+
+#menuinner #mevents ul li a,
+#menuinner #meventssel ul li a {
+	background-color: #0076ee;
+}
+
+#menuinner #mevents ul li a:hover,
+#menuinner #meventssel ul lia :hover {
+	background-color: #0065dd;
+}
+
+#menuinner #mcontact ul li a,
+#menuinner #mcontactsel ul li a {
+	background-color: #ee8711;
+}
+
+#menuinner #mcontact ul li a:hover,
+#menuinner #mcontactsel ul li a:hover  {
+	background-color: #cc6700;
+}
+
+#bottombar {
+	clear: both;
+}
+
+.thumbnail {
+	overflow: hidden;
+	height: 270px;
+	width: 328px;
+	position: relative;
+	margin-bottom: 6px;
+}
+
+.thumbnail img {
+	border: none;
+
+}
+
+.thumbnailportrait {
+	overflow: hidden;
+	height: 340px;
+	width: 328px;
+	position: relative;
+	margin-bottom: 6px;
+}
+
+.thumbnailportrait img {
+	border: none;
+	position: relative;
+	top: -50px;
+}
+
+#frontpageimage {
+	height: 108px;
+	position: relative;
+	left: 14px;
+}
+
+ul.latestnewsfrontpage {
+	padding: 0 0 0 20px;
+	margin: 4px 0 6px 0;
+}

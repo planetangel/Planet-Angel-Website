@@ -1,0 +1,9 @@
+#modules_features DIV.module,
+#main_body_hack_features DIV.module,
+DIV.modulefrontpage,
+DIV.moduleevents,
+DIV.modulecontact,
+DIV.modulecommunity,
+DIV.modulenews {
+	border-bottom: 1px solid transparent; /* IE hack To eliminate margins collapsing */
+}

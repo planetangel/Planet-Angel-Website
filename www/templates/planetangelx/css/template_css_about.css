@@ -1,0 +1,59 @@
+/* ------ About Modifiers */
+
+h2 { color: #43aa00; }
+h3 { color: #43aa00; }
+a { color: #43aa00; }
+a:visited{ color: #108800; }
+
+#center {
+background-color: #F4FAF0;
+}
+
+.componentheading { color: #43aa00; }
+.contentpaneinfo { color: #43aa00; }
+.contentheading {
+	background-image: url('/templates/planetangelx/images/contentheading_about.gif');
+	background-color: #43aa00;
+}
+
+.pathway { background: #65cc00; }
+
+.modheadaboutsection { padding-top: 45px; }
+.moduleaboutsection {
+	background: url('/templates/planetangelx/images/title_about.jpg') no-repeat top left;
+	height: 220px;
+	width: 152px;
+	background-color: #65cc00;
+	margin-bottom: 4px;
+}
+
+.modbodyaboutsection table {
+padding-left: 10px;
+padding-top: 0px;
+}
+
+
+.moduleaboutsection div {
+	padding-top: 12px; 
+}
+
+.sublevel {
+font-style: italic;
+list-style: none;
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+.moduleaboutsection a { color: white; }
+.moduleaboutsection a:visited { color: #edffcc; }
+.moduleaboutsection li { color: white; }
+
+#modules_features DIV.module {
+	border-color: #43aa00;
+	background-color: #E3EBE0;
+}
+
+
+#modules_features DIV.module .modhead {
+	background-color: #43aa00;
+}
