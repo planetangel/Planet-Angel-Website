@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content">
+	<name>Simple Image Gallery Plugin</name>
+	<author>Fotis Evangelou - George Chouliaras (JoomlaWorks)</author>
+	<creationDate>06/01/2007</creationDate>	
+	<copyright>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</copyright>
+	<authorEmail>joomlaworks@gmail.com</authorEmail>
+	<authorUrl>http://www.joomlaworks.gr</authorUrl>
+	<version>1.2.1</version>
+	<description>JWSIG_DESC</description>
+	<params>
+		<param name="th_width" type="text" default="200" size="5" label="Image thumbnail width" description="Adjust the maximum image thumbnail width in pixels." />
+		<param name="th_height" type="text" default="200" size="5" label="Image thumbnail height" description="Adjust the maximum image thumbnail height in pixels." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="th_quality" type="text" default="80" size="5" label="Image thumbnail quality" description="Adjust the quality of the generated image thumbnail. Values range from 0 to 100, with 100 giving the best possible result. Values between 60 to 70 should be OK, too! Remember: the lower this value is, the lower the size of the generated thumbnail will be." />
+		<param name="displaynavtip" type="radio" default="1" label="Should we display a navigation tip for the slideshow?" description="If set to yes, the tip you enter below will display in the popup window containing the image.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>		
+		<param name="navtip" type="text" default="Navigation tip: Hover mouse on top of the right or left side of the image to see the next or previous image respectively." size="50" label="Popup window navigation tip message" description="Insert here the text that will be displayed on the preview popup window, next to the content item title. Valid only if the above setting is set to 'Yes'." />
+		<param name="displaymessage" type="radio" default="1" label="Should we display a nice message?" description="If set to yes, the message you enter below will display in the popup window containing the image, along with the content item's title. If set to no, then the filename of the image will only be displayed.">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="message" type="text" default="You are browsing images from the article:" size="50" label="Popup window message" description="Insert here the text that will be displayed on the preview popup window, next to the content item title. Valid only if the above setting is set to 'Yes'." />	
+	</params>
+	<files>
+		<filename plugin="jwsig">jwsig.php</filename>
+		<filename plugin="jwsig">plugin_jw_sig/closelabel.gif</filename>
+		<filename plugin="jwsig">plugin_jw_sig/loading.gif</filename>
+		<filename plugin="jwsig">plugin_jw_sig/logo.gif</filename>
+		<!--<filename plugin="jwsig">plugin_jw_sig/mootools.js</filename>-->
+		<filename plugin="jwsig">plugin_jw_sig/nextlabel.gif</filename>
+		<filename plugin="jwsig">plugin_jw_sig/prevlabel.gif</filename>
+		<filename plugin="jwsig">plugin_jw_sig/shadow.gif</filename>
+		<filename plugin="jwsig">plugin_jw_sig/shadowAlpha.png</filename>		
+		<filename plugin="jwsig">plugin_jw_sig/showthumb.php</filename>
+		<filename plugin="jwsig">plugin_jw_sig/sig.css</filename>
+		<filename plugin="jwsig">plugin_jw_sig/slimbox.js</filename>				
+	</files>
+    <languages>
+    <language tag="en-GB">language/en-GB/en-GB.plg_content_jwsig.ini</language>
+  </languages>
+</install>

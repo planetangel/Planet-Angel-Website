@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Google Analytics Tracking Module</name>
+	<author>Estime Oy</author>
+	<creationDate>October 2007</creationDate>
+	<copyright>(C) 2007 Estime Oy. All rights reserved.</copyright>
+	<license>(C) 2007 Estime Oy. All rights reserved.</license>
+	<authorEmail>info@estime.fi</authorEmail>
+	<authorUrl>www.estime.fi</authorUrl>
+	<version>1.0</version>
+	<description>
+	<![CDATA[<p>This module allows you to insert Google Analytics tracking code into your Joomla 1.5 as a module. You should use the debug position.</p>
+	<p>Set the module title to no and module published yes, other settings according to your needs. Refer our user guide or forum at <a href="http://www.estimetemplates.com/?utm_source=trackingmodule&utm_medium=help">http://www.estimetemplates.com</a></p>]]>
+	</description>
+	<files>
+		<filename module="mod_analytics">mod_analytics.php</filename>
+	</files>
+	<params>
+		<param name="ucode" type="text" default="" label="Analytics _uacct code" description="Analytics _uacct code E.g. UA-123456-1. You get this from Google, when you sign in Google Analytics and add new site profile." />
+		<param name="udn" type="text" default="" label="Analytics _udn site" description="Analytics _udn site name. Leave empty, if you don't know, what this is." />
+<param name="state" type="radio" default="1" label="Module published?" description="You can set the module offline by choosing No.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="https" type="radio" default="0" label="https" description="Click this, if your site uses ssl. Also, change your error reporting level from Maximum to simple from Site > Global Configuration > Server tab.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>		
+	</params>
+</install>

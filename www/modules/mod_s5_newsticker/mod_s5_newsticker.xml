@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5.0">
+	<name>S5 News Ticker</name>
+	<author>Shape5.com</author>
+	<creationDate>July 2008</creationDate>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL, Copyright 2008</license>
+	<authorEmail>contact@shape5.com</authorEmail>
+	<authorUrl>www.shape5.com</authorUrl>
+	<version>1.0.0</version>
+	<description>This module will display one line of text in a fading transition.</description>
+	<files>
+		<filename module="mod_s5_newsticker">mod_s5_newsticker.php</filename>
+                <filename>s5_newsticker/fader.js</filename>
+				<filename>s5_newsticker/timing.js</filename>
+	</files>
+	<params>
+        <param name="pretext" type="textarea" cols="40" rows="5" default="" label="Pre-Text" description="Enter any pre-text message." />
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+                
+				
+				<param name="tween_time" type="text" default="0.75" label="Tween Time (in seconds)" description="The amount of time in seconds an text line takes to fade." />
+                <param name="display_time" type="text" default="4" label="Display Time (in seconds)" description="How many seconds will each text line display for?" />
+                <param name="height" type="text" default="183px" label="Height" description="Enter the height of the text fader." />
+                <param name="width" type="text" default="100%" label="Width" description="Enter the width of the text fader." />
+                <param name="" type="spacer" default="You may enter up to 10 lines of text with HTML code included. If you do not wish to use 10 simply leave the extra fields blank. IMPORTANT - Do not leave fields blank between text lines, ie: If you are only using 4 text lines then fields for text lines 1,2,3,4 should be filled in, not text lines 1,3,5,6 or any other order like it." label="Note:" description="" />
+                <param name="text1line" type="textarea" cols="40" rows="5" default="S5 Text Fader, Author: http://www.shape5.com" label="Text Line 1 (leave blank if none)" description="Enter the text of line 1, leave blank if none." />
+	
+				<param name="text2line" type="textarea" cols="40" rows="5" default="Shape 5 provides professional, script confliction free templates" label="Text Line 2 (leave blank if none)" description="Enter the text of line 2, leave blank if none." />
+		
+				<param name="text3line" type="textarea" cols="40" rows="5" default="" label="Text Line 3 (leave blank if none)" description="Enter the text of line 3, leave blank if none." />
+	
+				<param name="text4line" type="textarea" cols="40" rows="5" default="" label="Text Line 4 (leave blank if none)" description="Enter the text of line 4, leave blank if none." />
+	
+				<param name="text5line" type="textarea" cols="40" rows="5" default="" label="Text Line 5 (leave blank if none)" description="Enter the text of line 5, leave blank if none." />
+	
+				<param name="text6line" type="textarea" cols="40" rows="5" default="" label="Text Line 6 (leave blank if none)" description="Enter the text of line 6, leave blank if none." />
+	
+				<param name="text7line" type="textarea" cols="40" rows="5" default="" label="Text Line 7 (leave blank if none)" description="Enter the text of line 7, leave blank if none." />
+	
+				<param name="text8line" type="textarea" cols="40" rows="5" default="" label="Text Line 8 (leave blank if none)" description="Enter the text of line 8, leave blank if none." />
+	
+				<param name="text9line" type="textarea" cols="40" rows="5" default="" label="Text Line 9 (leave blank if none)" description="Enter the text of line 9, leave blank if none." />
+	
+				<param name="text10line" type="textarea" cols="40" rows="5" default="" label="Text Line 10 (leave blank if none)" description="Enter the text of line 10, leave blank if none." />
+	</params>
+</install>

@@ -1,0 +1,27 @@
+/* ---Simple Image Gallery--- */
+.sig {clear:both;margin:16px 4px;padding:0px;display:table-cell;}
+.sig_clr {clear:both;}
+.sig_cont {float:left;}
+.sig_thumb {float:left;margin:0px 10px 10px 10px;padding:0px;background:url(shadowAlpha.png) no-repeat bottom right !important;background:url(shadow.gif) no-repeat bottom right;}
+.sig_thumb img {display:block;position:relative;background:#FFF;border:1px solid #ccc;margin:-5px 5px 5px -5px;padding:4px;}
+/* ---Slimbox--- */
+/*#lbOverlay {position:absolute;left:0;width:100%;background-color:#000;cursor:pointer;}*/
+#lbOverlay {left:0;top:0;width:100%;height:100%;position:fixed;background-color:#000;cursor:pointer;z-index:9999}
+#lbCenter,#lbBottom {position:absolute;background-color:#fff;}
+/*#lbCenter,#lbBottom {position:absolute;left:50%;overflow:hidden;background-color:#fff;}
+#lbCenter {position:absolute;left:50%;overflow:hidden;background-color:#fff;}
+#lbBottom {position:absolute;left:50%;overflow:hidden;background-color:#fff;}*/
+.lbLoading {background:#fff url(loading.gif) no-repeat center;}
+#lbImage {border:10px solid #fff;}
+#lbPrevLink, #lbNextLink {display:block;position:absolute;top:0;width:50%;outline:none;}
+#lbPrevLink {left:0;}
+#lbPrevLink:hover {background:transparent url(prevlabel.gif) no-repeat 0% 15%;}
+#lbNextLink {right:0;}
+#lbNextLink:hover {background:transparent url(nextlabel.gif) no-repeat 100% 15%;}
+#lbBottom {font-family:Verdana, Helvetica, sans-serif;font-size:10px;color:#666;line-height:1.4em;text-align:left;border:10px solid #fff;border-top-style:none;}
+#lbCloseLink {display:block;float:right;width:66px;height:22px;background:transparent url(closelabel.gif) no-repeat center;margin:5px 0;}
+#lbCaption, #lbNumber {margin-right:71px;}
+#lbCaption {font-weight:normal;}
+#lbCaption b {color:#C63C13;font-size:11px;}
+#lbOverlay,#lbCenter,#lbBottom,#lbPrevLink,#lbNextLink {z-index:999;} /* JoomlaWorks fix for Slimbox */
+/* --- END --- */

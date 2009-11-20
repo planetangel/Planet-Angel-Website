@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.10" method="upgrade">
+	<name>DphpBB3 Last Topics</name>
+	<creationDate>2009-08-02</creationDate>
+	<author>Darkick</author>
+	<authorEmail>darkick@darkick.ru</authorEmail>
+	<authorUrl>http://darkick.ru</authorUrl>
+	<copyright>Darkick</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>1.2</version>
+	<description>This module shows the last topics from your phpBB3 forum</description>
+	<files>
+		<filename module="mod_dphpbb3_last_topics">mod_dphpbb3_last_topics.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param type="spacer" default="DPLT Forum database settings" />
+		<param name="phpbb_prefix" type="text" default="phpbb_" label="DPLT phpBB prefix" description="DPLT phpBB prefix DESC" />
+		<param name="forum_db" type="list" default="joomla" label="DPLT Forum DB" description="DPLT Forum DB DESC">
+			<option value="joomla">DPLT Joomla! DB</option>
+			<option value="specific">DPLT Specific DB</option>
+		</param>
+		<param name="phpbb_driver" type="list" default="mysql" label="DPLT Database driver" description="DPLT Database driver DESC">
+			<option value="mysql">MySQL</option>
+			<option value="mysqli">MySQLi</option>
+		</param>
+		<param name="phpbb_host" type="text" default="localhost" label="DPLT Host" description="DPLT Host DESC" />
+		<param name="phpbb_database" type="text" default="phpbb3" label="DPLT Database Name" description="DPLT Database Name DESC" />
+		<param name="phpbb_user" type="text" default="root" label="DPLT Database User" description="DPLT Database User DESC" />
+		<param name="phpbb_password" type="password" default="" label="DPLT Database Password" description="DPLT Database Password DESC" />
+		<param type="spacer" default="DPLT Forum URLs settings" />
+		<param name="forum_url" type="text" size="60" default="/forum/" label="DPLT Forum base URL" description="DPLT Forum base URL DESC" />
+		<param name="viewforum_format" type="text" size="60" default="viewforum.php?f=$forum_id" label="DPLT viewforum format" description="DPLT viewforum format DESC" />
+		<param name="viewtopic_format" type="text" size="60" default="viewtopic.php?p=$post_id#p$post_id" label="DPLT viewtopic format" description="DPLT viewtopic format DESC" />
+		<param name="memberlist_format" type="text" size="60" default="memberlist.php?mode=viewprofile&amp;u=$user_id" label="DPLT memberlist format" description="DPLT memberlist format DESC" />
+		<param name="forum_target" type="text" default="" label="DPLT Forum link target" description="DPLT Forum link target DESC" />
+		<param name="profilelink_target" type="text" default="" label="DPLT Profile link target" description="DPLT Profile link target DESC" />
+		<param type="spacer" default="DPLT Forums settings" />
+		<param name="forums_groups" type="textarea" default="0:10" label="DPLT Forums groups" description="DPLT Forums groups DESC" rows="6" cols="30" />
+		<param name="exclude_forums" type="text" size="60" default="" label="DPLT Exclude forums" description="DPLT Exclude forums DESC" />
+		<param type="spacer" default="DPLT Module View settings" />
+		<param name="columns_rows" type="list" default="columns" label="DPLT Columns or Rows" description="DPLT Columns or Rows DESC">
+			<option value="columns">DPLT Columns</option>
+			<option value="rows">DPLT Rows</option>
+		</param>
+		<param name="columns_rows_count" type="text" default="1" label="DPLT Columns/Rows count" description="DPLT Columns/Rows count DESC" />
+		<param name="ul_columns" type="radio" default="0" label="DPLT UL columns" description="DPLT UL columns DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embed_style" type="list" default="vert" label="DPLT Embed style" description="DPLT Embed style DESC">
+			<option value="">No</option>
+			<option value="vertical">DPLT Vertical columns</option>
+			<option value="horizontal">DPLT Horizontal columns</option>
+		</param>
+		<param name="width_correction" type="text" default="0" label="DPLT Width correction" description="DPLT Width correction DESC" />
+		<param name="clear_floats" type="radio" default="0" label="DPLT Clear floats" description="DPLT Clear floats DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="show_groups_titles" type="radio" default="1" label="DPLT Show groups titles" description="DPLT Show groups titles DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="max_titles_length" type="text" default="" label="DPLT Max titles length" description="DPLT Max titles length DESC" />
+		<param name="show_posts_count" type="list" default="hide" label="DPLT Show posts count" description="DPLT Show posts count DESC">
+			<option value="hide">DPLT Do not show</option>
+			<option value="posts">DPLT Posts count</option>
+			<option value="replies">DPLT Replies count</option>
+		</param>
+		<param name="date_format" type="text" default="" label="DPLT Date format" description="DPLT Date format DESC" />
+		<param name="timezone" type="list" default="user" label="Time zone" description="DPLT Time zone DESC">
+			<option value="global">DPLT Global time zone</option>
+			<option value="user">DPLT User time zone</option>
+		</param>
+		
+		<param name="topic_output_format" type="text" size="60" default="" label="DPLT Topic output format" description="DPLT Topic output format DESC" />
+	</params>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB.mod_dphpbb3_last_topics.ini</language>
+		<language tag="es-ES">es-ES.mod_dphpbb3_last_topics.ini</language>
+		<language tag="ru-RU">ru-RU.mod_dphpbb3_last_topics.ini</language>
+	</languages>
+</install>

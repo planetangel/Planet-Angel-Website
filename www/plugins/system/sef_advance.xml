@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<install version="1.5" type="plugin" group="system" method="upgrade">
+	<name>System - SEF Advance</name>
+	<creationDate>January 2009</creationDate>
+	<author>Emir Sakic</author>
+	<authorEmail>emir@sakic.net</authorEmail>
+	<authorUrl>www.sakic.net</authorUrl>
+	<copyright>Copyright (C) Emir Sakic 2003-2009. All Rights Reserved.</copyright>
+	<license>http://www.sakic.net/products/sef_advance/license/</license>
+	<version>1.1</version>
+	<description>
+		System plugin for SEF Advance 2008
+	</description>
+	<files>
+		<filename plugin="sef_advance">sef_advance.php</filename>
+	</files>
+	<params/>
+</install>

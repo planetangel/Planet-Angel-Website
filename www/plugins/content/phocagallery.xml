@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install method="upgrade" version="1.5" type="plugin" group="content">
+	<name>Phoca Gallery Plugin</name>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<creationDate>17/06/2009</creationDate>
+	<copyright>(C) 2005 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.phoca.cz</authorUrl>
+	<version>2.5.0</version>
+	<description>Shows Phoca Gallery images in content. Examples: http://www.phoca.cz/phocagallery/demo/ - Phoca Gallery Plugin</description>
+	<files>
+		<filename plugin="phocagallery">phocagallery.php</filename>
+	</files>
+	
+	<!-- Language -->
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_phocagallery.ini</language>
+	</languages>
+	<params/>
+</install>

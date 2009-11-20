@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install version="1.5" type="plugin" group="content">
+    <name>Content - Flickr Album</name>
+    <author>Paul Thompson</author>
+    <creationDate>October 2008</creationDate>
+    <copyright>(C) 2008 - 2009 Paul Thompson. All rights reserved.</copyright>
+    <license>GNU/GPL</license>
+    <authorEmail>captbunzo@gmail.com</authorEmail>
+    <authorUrl>http://joomla.paulthompson.net</authorUrl>
+    <version>1.1.0</version>
+    <description>Embed a flickr album within an article. These albums can be sourced from a particular flickr photoset, user, group or search string. Photos are displayed according to a user defined grid. This plugin uses 3 javascript libraries to create Flickr Albums. These libraries are jQuery (http://jquery.com), jQuery Flickr (http://www.projectatomic.com/2008/04/jquery-flickr) and jQuery Lightbox (http://leandrovieira.com/projects/jquery/lightbox). Before using this plugin you must apply for your own Flickr API Key (http://www.flickr.com/services/api/keys).</description>
+    <files>
+        <filename plugin="flickrAlbum">flickrAlbum.php</filename>
+        <filename>flickrAlbum/index.html</filename>
+        <filename>flickrAlbum/jquery-1.3.1.min.js</filename>
+        <filename>flickrAlbum/jquery.flickr-1.0-min.js</filename>
+        <filename>flickrAlbum/jquery.lightbox-0.5.pjt1-min.js</filename>
+        <filename>flickrAlbum/css/flickrAlbum.css.php</filename>
+        <filename>flickrAlbum/css/jquery.lightbox-0.5.css</filename>
+        <filename>flickrAlbum/images/lightbox-blank.gif</filename>
+        <filename>flickrAlbum/images/lightbox-btn-close.gif</filename>
+        <filename>flickrAlbum/images/lightbox-btn-next.gif</filename>
+        <filename>flickrAlbum/images/lightbox-btn-prev.gif</filename>
+        <filename>flickrAlbum/images/lightbox-ico-loading.gif</filename>
+    </files>
+    <params>
+        <param name="flickr_api_key" type="text" size="50" default="" label="Flickr API Key" description="To get your own Flickr API key visit http://www.flickr.com/services/api/keys."/>
+        <param name="albumtitledef"  type="text" size="50" default="Photo Album:" label="Album Title Default" description="Default value used for Flickr Album titles."/>
+        <param name="linktextdef"    type="text" size="50" default="View Photos &amp; Add Your Comments on Flickr" label="Link Text Default" description="Default value used for Flickr link text."/>
+        <param name="userdef"        type="text" size="30" label="Default User" description="Default user used when linking to photoset groups."/>
+        <param name="colorthemedef"  type="list" default="grey" label="Color Theme" description="Default set of colors used in displaying your Flickr Albums.">
+            <option value="grey" >grey</option>
+            <option value="blue" >blue</option>
+            <option value="red"  >red</option>
+            <option value="green">green</option>
+            <option value="black">black</option>
+            <option value="brown">brown</option>
+            <option value="none" >none</option>
+        </param>
+        <param name="thumbsizedef"   type="list" default="square" label="Thumb Size Default" description="Default Flickr photo size used for thumbnail images.">
+            <option value="square"   >square</option>
+            <option value="thumbnail">thumbnail</option>
+            <option value="small"    >small</option>
+        </param>
+        <param name="imagesizedef"   type="list" default="medium" label="Enlarged Size Default" description="Default Flickr photo size used for enlarged (clicked on) view of images.">
+            <option value="small" >small</option>
+            <option value="medium">medium</option>
+            <option value="large" >large</option>
+        </param>
+        <param name="sortdef"        type="list" default="relevance" label="Sort Order Default" description="Default sort order used for showing Flickr album images.">
+            <option value="date-posted-asc"     >date-posted-asc</option>
+            <option value="date-posted-desc"    >date-posted-desc</option>
+            <option value="date-taken-asc"      >date-taken-asc</option>
+            <option value="date-taken-desc"     >date-taken-desc</option>
+            <option value="interestingness-desc">interestingness-desc</option>
+            <option value="interestingness-asc" >interestingness-asc</option>
+            <option value="relevance"           >relevance</option>
+        </param>
+        <param name="colsdef"        type="text" size="3" default="6" label="Col Count Default" description="Default number of columns shown in a Flickr album grid."/>
+        <param name="rowsdef"        type="text" size="3" default="2" label="Row Count Default" description="Default number of rows shown in a Flickr album grid."/>
+        <param name="thumbpadding"   type="text" size="3" default="2" label="Thumb Padding Size" description="Size of the css padding for thumbnail images (pixels)."/>
+        <param name="thumbborder"    type="text" size="3" default="1" label="Thumb Border Size"  description="Size of the css border for thumbnail images (pixels)."/>
+        <param name="thumbmargin"    type="text" size="3" default="6" label="Thumb Margin Size"  description="Size of the css margin between thumbnail images (pixels)."/>
+        <param name="incjquery"       type="list" default="yes" label="Include jQuery" description="Use this plugin to include the jQuery javascript file. Do not set this to 'DO NOT INCLUDE' unless you are including jQuery elsewhere - for instance in another extension or in your template.">
+            <option value="yes">Include jQuery javascript file</option>
+            <option value="no" >Do not include jQuery javascript file</option>
+        </param>
+        <param name="incjqueryflickr" type="list" default="yes" label="Include jQuery Flickr" description="Use this plugin to include the jQuery Flickr javascript file. Do not set this to 'DO NOT INCLUDE' unless you are including jQuery Flickr elsewhere - for instance in another extension or in your template.">
+            <option value="yes">Include jQuery Flickr javascript file</option>
+            <option value="no" >Do not include jQuery Flickr javascript file</option>
+        </param>
+        <param name="enabledebug" type="list" default="no" label="Debugging Comments" description="Disable/Enable the output of helpful debugging HTML comments on your Joomla site.">
+            <option value="no" >Disable debugging comments</option>
+            <option value="yes">Enable debugging comments</option>
+        </param>
+    </params>
+</install>
