@@ -1,9 +1,14 @@
 /* -------------------------------- Globals -------------------*/
 
+html {
+	background: #000 url('/templates/planetangelx/images/main_back.jpg') repeat-x left top;
+	margin: 0;
+	padding: 0;
+}
+
 body {
-	background-color: #29005C;
 	font-family: verdana, arial, helvetica, sans-serif;
-	margin: 10px 10px 18px 10px;
+	margin: 0px 10px 18px 10px;
 	font-size: 69%;
 	color: white;
 }
@@ -24,15 +29,15 @@ h2 {
 	font-weight: bold;
 }
 
-A {
+a {
 	color: #660099;
 }
 
-A:visited {
+a:visited {
 	color: #440077;
 }
 
-A:hover {
+a:hover {
 	text-decoration: underline;
 }
 
@@ -50,7 +55,7 @@ h4 {
 	margin-bottom: 0.25em;
 }
 
-P {
+p {
 	margin-bottom: 1em;
 	margin-top: 0px;
 }
@@ -68,11 +73,11 @@ fieldset div a {
 	font-weight: bold;
 }
 
-INPUT {
+input {
 	font-family: "ms sans serif", verdana, arial, helvetica, sans-serif;
 }   
 
-P.highlight {
+p.highlight {
 	color: #660099;
 	font-weight: bold;
 }
@@ -88,17 +93,19 @@ P.highlight {
 /* End hide from IE5-mac */
 
 #wholepage {
+	background: transparent url('/templates/planetangelx/images/angel_back.jpg') no-repeat left top;
+	padding-left: 88px;
 	position: relative;
 	width: 726px;
-	width: expression(document.body.clientWidth > 900 ? "900px" : "auto");
+	width: expression(document.body.clientWidth > 802 ? "802px" : "auto");
 	margin: auto;
 	color: black;
 }
 	
 html>body #wholepage {
 	width: auto;
-	min-width: 617px;
-	max-width: 900px;
+	min-width: 638px;
+	max-width: 910px;
 }  
 
 /* -------------------------- Header section -------------------------- */
@@ -130,46 +137,47 @@ html>body #wholepage {
 	padding: 88px 0 0 0;
 	position: relative;
 	overflow: hidden;
-	width: 224px;
+	width: 239px;
 	background: url('/templates/planetangelx/images/glowlogo.jpg') top left no-repeat;
 	height: 0px !important;
-	height /**/:88px; /* for IE5 Win only */
+	height /**/:71px; /* for IE5 Win only */
+	left: 99px;
+	top: 22px;
 }
 
 #angelouter {
 	position: absolute;
-	top: 4px;
-	left: 9px;
+	top: 12px;
+	left: -3px;
 	float: left;
-	width: 27px;
-	height: 52px;
+	width: 94px;
+	height: 86px;
 	overflow: hidden;
 }
 
 #theangel a {
 	float: left;
-	padding: 52px 0 0 0;
+	padding: 89px 0 0 0;
 	position: relative;
 	overflow: hidden;
-	width: 27px;
+	width: 94px;
 	height: 0px !important;
-	height /**/:52px; /* for IE5 Win only */
+	height /**/:89px; /* for IE5 Win only */
 	background: url('/templates/planetangelx/images/glowtitleoverlay.jpg') no-repeat;
-	background-position: 0px -52px;
+	background-position: 0px 0px;
 }
 
 #theangel a:hover{
-	background-position: 0px 0px;
+	background-position: 0px -89px;
 }
 
 #eyecatchers {
 	height: 88px;
-	overflow: auto;
-	margin: 0px 90px 0px 0px;
+	overflow: hidden;
 }
 
 #modules_eyecatcher {
-	margin: 30px 0px 0 10px;
+	margin: 30px 0px 0 75px;
 	padding: 0 0 0 64px;
 }
 
@@ -194,7 +202,7 @@ html>body #wholepage {
 
 #menuouter {
 	position: relative;
-	height: 29px;
+	height: 27px;
 	width: 100%;
 }
 
@@ -202,8 +210,8 @@ html>body #wholepage {
 	float: right;
 	padding: 0px 4px 0px 0px;
 	margin: 0px;
-	height: 29px;
-	width: 594px;
+	height: 27px;
+	width: 524px;
 }
 
 /* Hides from IE6 to make menu flush to right edge \*/
@@ -215,7 +223,7 @@ html>body #wholepage {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	height: 29px;
+	height: 27px;
 	width: 594px;
 	list-style: none;
 	margin-right: 4px;
@@ -227,7 +235,6 @@ html>body #wholepage {
 	list-style: none;
 	display: inline;
 	width: 99px;
-	height: 29px;
 }
 
 #menu a {
@@ -235,10 +242,11 @@ html>body #wholepage {
 	padding: 0;
 	text-indent: -5000px;
 	width: 99px;
-	height: 29px;
+	height: 27px;
 	background-position: 0px 0px;
 	background-repeat: repeat;
 	outline: none;
+	margin-right: 2px;
 }
 
 #menu a:hover {
@@ -248,26 +256,29 @@ html>body #wholepage {
 	background-position: 0px 0px;	
 }
 
-#mcommunity a { background-image: url(/templates/planetangelx/images/community.jpg); }
-#mshop a { background-image: url(/templates/planetangelx/images/shop.jpg); }
-#mnews a { background-image: url(/templates/planetangelx/images/news.jpg); }
-#mabout a { background-image: url(/templates/planetangelx/images/story.jpg); }
-#mevents a { background-image: url(/templates/planetangelx/images/events.jpg); }
-#mcontact a { background-image: url(/templates/planetangelx/images/contact.jpg);}
+#mcommunity a, #mcommunitysel a { background-image: url(/templates/planetangelx/images/community.jpg); width: 112px;}
+#mshop a, #mshopsel a { background-image: url(/templates/planetangelx/images/shop.jpg); width: 72px;}
+#mnews a, #mnewssel a { background-image: url(/templates/planetangelx/images/news.jpg); width: 73px;}
+#mabout a, #maboutsel a { background-image: url(/templates/planetangelx/images/story.jpg); width: 81px;}
+#mevents a, #meventssel a { background-image: url(/templates/planetangelx/images/events.jpg); width: 83px;}
+#mcontact a, #mcontactsel a { background-image: url(/templates/planetangelx/images/contact.jpg); width: 90px;}
 
-#mcommunitysel a { background-image: url(/templates/planetangelx/images/community_on.jpg); }
-#mshopsel a { background-image: url(/templates/planetangelx/images/shop_on.jpg); }
-#mnewssel a { background-image: url(/templates/planetangelx/images/news_on.jpg); }
-#maboutsel a { background-image: url(/templates/planetangelx/images/story_on.jpg); }
-#meventssel a { background-image: url(/templates/planetangelx/images/events_on.jpg); }
-#mcontactsel a { background-image: url(/templates/planetangelx/images/contact_on.jpg);}
+#mcommunitysel a, 
+#mshopsel a, 
+#mnewssel a, 
+#maboutsel a, 
+#meventssel a, 
+#mcontactsel a, 
+#menu a:hover {background-position: 0px -27px;}
+
+
 
 /* ------------------------ Left section ---------------------------- */
 
 #mainmodules {
 	position: absolute;
-	top: 121px;
-	left: 0px;
+	top: 119px;
+	left: 88px;
 }
 
 #subcontext {
@@ -476,19 +487,11 @@ html>body #wholepage {
 	background-color: #FCF1FD;
 	_height: 338px; /* IE6 and below */
 	min-height: 338px; /* Everything else */
-	margin: 0px 0px 0px 152px;
-	background-image: url('/templates/planetangelx/images/rightborder.png');
-	background-position: top right;
-	background-repeat: repeat-y;
+	margin: 0px 7px 0px 152px;
 	padding: 0px;
 }
 
 #bottombar {
-	height: 8px;
-	width: 100%;
-	background-image: url('/templates/planetangelx/images/bottomedge.png');
-	background-position: bottom left;
-	background-repeat: repeat-x;
 }
 
 #main_body_outer {
@@ -521,9 +524,6 @@ html>body #wholepage {
 	font-weight: normal;
 	color: white;
 	margin-bottom: 10px;
-	margin-right: 7px;
-	margin-top: 0px;
-	margin-left: 0px;
 	padding: 2px 10px 4px 10px;
 	text-transform: uppercase;
 	font-size: 0.9em;
@@ -977,8 +977,8 @@ ul.latestnews li {
 {
 	padding-top: 10px;
 	color: #9380ae;
-	background-color: #29005C;
 	padding-bottom: 10px;
+	background: #000;
 }
 
 #footer a { color: #da8ef7; }
@@ -1177,7 +1177,7 @@ table.blog {
 	display: block;
 	visibility: hidden;
 	width: 130px;
-	top: 29px;
+	top: 27px;
 	z-index: 999;
 	padding: 0;
 }
@@ -1190,23 +1190,23 @@ table.blog {
 }
 
 #menuinner #mabout ul, #menuinner #maboutsel ul {
-	left: 99px;
+	left: 75px;
 }
 
 #menuinner #mcommunity ul, #menuinner #mcommunitysel ul {
-	left: 198px;
+	left: 158px;
 }
 
 #menuinner #mevents ul, #menuinner #meventssel ul {
-	left: 297px;
+	left: 272px;
 }
 
 #menuinner #mshop ul, #menuinner #mshopsel ul {
-	left: 396px;
+	left: 357px;
 }
 
 #menuinner #mcontact ul, #menuinner #mcontactsel ul {
-	left: 449px;
+	left: 431px;
 }
 
 /* Hides from IE6 to make menu flush to right edge \*/
@@ -1280,7 +1280,7 @@ table.blog {
 
 #menuinner #mcommunity ul li a:hover,
 #menuinner #mcommunitysel ul li a:hover {
-	background-color: #ba0000;
+	background-color: #ff0000;
 }
 
 #menuinner #mevents ul li a,
