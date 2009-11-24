@@ -11,8 +11,7 @@ define('DB_MANAGER_CLASS_NAME', 'DBManager');
 
 $ticketTypes = Config::$ticketTypes;
 
-function kaput($msg)
-{
+function kaput($msg) {
     Logger::error("KAPUT: $msg");
     $mail = SingletonFactory::getInstance()->getSingleton('MailManager');
     $mail->sendErrorMailToAdmins($msg);
@@ -43,21 +42,17 @@ $paypalUrl = $isSandbox ? Config::$paypalUrlBeta : Config::$paypalUrl;
 Logger::debug("isSandbox = $isSandbox, paypal URL = $paypalUrl");
 $fp = fsockopen($paypalUrl, 80, $errno, $errstr, 30);
 
-if (!$fp)
-{
+if(!$fp) {
     kaput("HTTP error! Couldn't open socket to $paypalUrl");
     // HTTP ERROR
 }
 fputs ($fp, $header . $req);
-while (false === feof($fp))
-{
+while (false === feof($fp)) {
     $res = fgets($fp, 1024);
-    if(0 != strcmp($res, "VERIFIED"))
-    {
+    if(0 != strcmp($res, "VERIFIED")) {
         // Do nothing
     }
-    if (strcmp ($res, "VERIFIED") == 0)
-    {
+    if (strcmp ($res, "VERIFIED") == 0) {
         
         Logger::info("Transaction verified! res = $res");
         
@@ -66,12 +61,9 @@ while (false === feof($fp))
             kaput("No transaction ID was found in the request. You need one of them.");
         }
         $txn_id = $_POST['txn_id'];
-        if(true === isDuplicateTxnId($txn_id, $db))
-        {
+        if(true === isDuplicateTxnId($txn_id, $db)) {
             kaput("Duplicate transaction id: $txn_id");
-        }
-        else
-        {
+        } else {
             //Logger::debug("Transaction ID $txn_id isn't duplicate");
         }
         
@@ -88,41 +80,32 @@ while (false === feof($fp))
         Logger::debug("Parameters all valid: txn_id[$txn_id], receiverEmail[$receiverEmail]");
         
         // process payment
-        if(true === Config::DB_ENABLED)
-        {
+        if(true === Config::DB_ENABLED) {
             //Logger::debug("Creating new transaction");
 
-            try
-            {
+            try {
                 $txn = new Transaction($_POST);
-            }
-            catch(Exception $e)
-            {
+            } catch(Exception $e) {
                 kaput($e->getMessage());
             }
 
             //Logger::debug("Adding transaction to database");
             // get an instance of the database from the singleton factory
             $db = SingletonFactory::getInstance()->getSingleton(DB_MANAGER_CLASS_NAME);
-            try
-            {
+            try {
                 $db->addTransaction($txn);
-            }
-            catch(Exception $e)
-            {
+            } catch(Exception $e) {
                 kaput("Error adding payment with txn_id=$txn_id to database: " . $e->getMessage());
             }
             
             $payment_status = $txn->getField('payment_status');
             
-            if(Config::MAIL_ENABLED == true)
-            {
-                foreach($ticketTypes as $oneType)
-                {
+            if(Config::MAIL_ENABLED == true) {
+                foreach($ticketTypes as $oneType) {
                     $params = array();
                     // @TODO Update these with dynamic quantities
                     $payer_email = $txn->getField('payer_email');
-                    $to = "tickets@planetangel.net,$payer_email";
+                    $to = "$payer_email, tickets@planetangel.net";
 
                     $params['pa_ticket_id'] = $txn->getPaTicketId();
                     $params['first_name']   = $txn->getField('first_name');
@@ -137,50 +120,34 @@ while (false === feof($fp))
                     //Logger::debug("prepay item: " . print_r($prepayItem, true));
 
                     $params['quantity'] = $prepayItem['quantity'];
-
                     $params['item_name']    = $prepayItem['item_name'];
-
                     $mail = SingletonFactory::getInstance()->getSingleton('MailManager');
-
-                    if("Completed" === $payment_status)
-                    {
+                    if("Completed" === $payment_status) {
                         //Logger::debug("Sending confirmation mail ($oneType) to $to...");
-                        try
-                        {
+                        try {
                             $status = $mail->sendConfirmationMailToUser($to, $params, $oneType);
-                        }
-                        catch(Exception $e)
-                        {
+                        } catch(Exception $e) {
                             kaput($e->getMessage());
                         }
                         Logger::notice("Sent confirmation mail (type=$oneType) successfully to $to");
-                
                     }
                     $params['payment_status'] = $payment_status;
-                    try
-                    {
+                    try {
                         $mail->sendTransactionMailToAdmins($params);
-                    }
-                    catch(Exception $e)
-                    {
+                    } catch(Exception $e) {
                         kaput($e->getMessage());
                     }
                     Logger::debug("Sent notification mail to admins successfully, payment_status=$payment_status");
                 }
                 
-            }
-            else
-            {
+            } else {
                 Logger::debug("Mail disabled, not sending mail");
             }
-        }
-        else
-        {
+        } else {
             Logger::debug("DB disabled, not adding transaction");
         }
 
-    }
-    else if (strcmp ($res, "INVALID") == 0) {
+    } elseif(strcmp ($res, "INVALID") == 0) {
         $txn_id = isset($_POST['txn_id']) ? $_POST['txn_id'] : 'none supplied';
         $msg = "Invalid transaction received (response from Paypal: $res)! Transaction ID: $txn_id";
         Logger::warn($msg);
@@ -191,8 +158,11 @@ while (false === feof($fp))
 }
 fclose ($fp);
 
-function isDuplicateTxnId($txn_id)
-{
+/**
+ * Checks the database for an existing transaction ID.
+ * @return true if it's duplicate, false if not.
+ */
+function isDuplicateTxnId($txn_id) {
     $db = SingletonFactory::getInstance()->getSingleton(DB_MANAGER_CLASS_NAME);
     $dupFound = $db->checkDuplicateRow('txn_id', $txn_id);
     if($dupFound == Constants::DUPLICATE_FOUND) {
