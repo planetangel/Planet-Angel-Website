@@ -2,47 +2,87 @@
 <head>
 <title>Planet Angel</title>
 <style>
+
+:-moz-any-link:focus {
+  outline: none;
+}
+
+html {
+	background: #000 url('/templates/planetangelx/images/main_back.jpg') repeat-x left top;
+	margin: 0;
+	padding: 0;
+}
+
 body {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 11px;
+    font-family: 'Lucida Grande', verdana, arial, helvetica, sans-serif;
     color: white;
-    background-color: rgb(41, 0, 92);
+	font-size: 80%;
+	margin-top: 0;
 }
 #content {
-    /*background-color: rgb(213, 169, 221); */
-    width: 500px; 
-    margin:0 auto;
+	background: transparent url('/templates/planetangelx/images/angel_back.jpg') no-repeat left top;
+	width: 701px;
+	height: 365px;
+	margin-left: -350px;
+	position: relative;
+	left: 50%;
 }
-#logo {
-    -webkit-background-clip: border-box;
-    -webkit-background-origin: padding-box;
-    background-attachment: scroll;
-    background-color: transparent;
-    background-image: url(/templates/planetangelx/images/glowlogo.jpg);
-    background-repeat: no-repeat;
-    color: rgb(68, 0, 119);
-    cursor: auto;
-    display: block;
-    height: 0px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 88px;
-    position: relative;
-    text-decoration: underline;
-    width: 224px;
+
+h1, h2, h3 {margin: 0px;}
+
+h2, h3, p {line-height: 1.8em;margin: 0 94px 10px 94px;}
+
+h2 {margin-bottom: 10px;}
+
+h1
+{
+	clear: both;
+	float: left;
+	height: 110px;
+	padding: 14px 0 0 86px;
+	margin: 0;
+	width: 100%;
 }
+
+h1 a {
+	display: block;
+	float: left;
+	margin-right: 3px;
+	text-indent: -5000em;
+}
+
+h1 a.words
+{
+	background: transparent url('/templates/planetangelx/images/glowlogo.jpg') top left no-repeat;
+	height: 88px;
+	margin: 8px 0 0 4px;
+	width: 239px;
+}
+
+h1 a.device {
+	background: transparent url('/templates/planetangelx/images/glowtitleoverlay.jpg') no-repeat;
+	height: 89px;
+	width: 94px;
+}
+
+h1 a.device:hover{
+	background-position: 0px -89px;
+}
+
+
 </style>
 </head>
 <body>
-    <div align="center" id="content">
-        <a href="/" id="logo">Planet Angel</a>
-        <h1>THANK YOU...</h1>
-        <h2>for your payment!</h2>
-        <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you.</p>
-        <p>You may log into your account at <a href="https://www.paypal.com/uk/">www.paypal.com/uk</a> to view details of this transaction.</p>
+    <div id="content">
+
+		<h1>
+			<a class="device" href="/nextparty/">The Angel</a>
+			<a class="words" href="/">Planet Angel - Live an Ordinary Life in an Extraordinary Way</a>
+		</h1>
+		
+		<h2>Thank you for your payment!</h2>
+
+        <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you. You may log into your account at <a href="https://www.paypal.com/uk/">www.paypal.com/uk</a> to view details of this transaction.</p>
         <p>Live an ordinary life, in an extraordinary way!</p>
     </div>
 </body>
