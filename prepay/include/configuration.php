@@ -16,7 +16,7 @@ class Config {
     static $dbDatabase          = 'pa';
     static $dbTable             = "prepay_tickets";
 
-    static $admins		= "dafyddmtjames@yahoo.co.uk,party@planetangel.net";
+    static $admins              = "dafyddmtjames@yahoo.co.uk, dafydd.james.test@gmail.com, party@planetangel.net";
 
     static $mailFromAddress     = "Planet Angel <party@planetangel.net>";
     static $logFile             = "/home/www/www.planetangel.net/prepay/prepay.log";
