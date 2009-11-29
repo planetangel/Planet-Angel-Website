@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Flickr Set</name>
+	<author>Graham Crockford</author>
+	<creationDate>November 2009</creationDate>
+	<copyright>Copyright (C) 2009 Planet Angel. All rights reserved.</copyright>
+	<license>None</license>
+	<authorEmail>webmaster@planetangel.net</authorEmail>
+	<authorUrl>www.planetangel.net</authorUrl>
+	<version>1.0.0</version>
+	<description>This module shows a random image from a flickr set and three additional thumbnails</description>
+	<files>
+		<filename module="mod_flickrset">mod_flickrset.php</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="userid" type="text" size="30" default="" label="User ID" description="Flickr user ID" />
+		<param name="apikey" type="text" size="30" default="" label="API Key" description="The Flickr API key" />
+		<param name="setid" type="text" size="30" default="" label="Set ID" description="The set ID to display from Flickr" />
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>
