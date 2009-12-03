@@ -9,6 +9,8 @@ class modFlickrSetHelper
 		$params->def('setid', '');
 		$params->def('userid', '');
 		$params->def('apikey', '');
+		$params->def('url', '');
+		$params->def('width', '');
 		return $params;
 	}
 }

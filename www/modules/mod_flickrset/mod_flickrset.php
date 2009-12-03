@@ -11,6 +11,8 @@ $params = modFlickrSetHelper::getParams($params);
 $setid	= $params->get( 'setid');
 $userid	= $params->get( 'userid' );
 $apikey	= $params->get( 'apikey' );
+$url	= $params->get( 'url' );
+$width	= $params->get( 'width' );
 $class	= $params->get( 'moduleclass_sfx' );
 
 require(JModuleHelper::getLayoutPath('mod_flickrset'));

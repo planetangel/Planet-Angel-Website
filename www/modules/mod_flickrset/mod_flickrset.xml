@@ -8,7 +8,7 @@
 	<authorEmail>webmaster@planetangel.net</authorEmail>
 	<authorUrl>www.planetangel.net</authorUrl>
 	<version>1.0.0</version>
-	<description>This module shows a random image from a flickr set and three additional thumbnails</description>
+	<description>This module shows a random image from a flickr set</description>
 	<files>
 		<filename module="mod_flickrset">mod_flickrset.php</filename>
 	</files>
@@ -18,6 +18,8 @@
 		<param name="userid" type="text" size="30" default="" label="User ID" description="Flickr user ID" />
 		<param name="apikey" type="text" size="30" default="" label="API Key" description="The Flickr API key" />
 		<param name="setid" type="text" size="30" default="" label="Set ID" description="The set ID to display from Flickr" />
+		<param name="url" type="text" size="50" default="" label="Link to" description="The URL that clicking an image should take you to" />
+		<param name="width" type="text" size="4" default="" label="Width" description="The width to which to scale the image" />
 	</params>
 	<params group="advanced">
 		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">

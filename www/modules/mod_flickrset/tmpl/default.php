@@ -4,8 +4,8 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <script type="text/javascript">
 <!--
 
-function img(photo, size) {
- return '<a href="http://www.planetangel.net/photos"><img src="http://farm' +
+function img(photo, width) {
+ return '<a href="<?php echo $url; ?>"><img border="0" width="' + width + '" src="http://farm' +
         photo.farm +
         '.static.flickr.com/' +
         photo.server +
@@ -13,12 +13,10 @@ function img(photo, size) {
         photo.id +
         "_" +
         photo.secret +
-        '_' +
-        size +
         '.jpg' +
         '" alt="' +
         photo.title +
-        '" />';
+        '" /></a>';
 }
 
 function jsonFlickrApi(rsp) {
@@ -29,23 +27,7 @@ function jsonFlickrApi(rsp) {
 
  // First, a random photo
  randomPhoto = rsp.photoset.photo[Math.floor(Math.random() * rsp.photoset.photo.length)];
-
- var s = '<table border="0" class="photostream"><tr><td class="photostream-main">';
- s += img(randomPhoto, 'm');
- s += '</td><td class="photostream-small>';
-
- var max = rsp.photoset.photo.length;
- if (max > 3) {
-  max = 3;
- }
-
- for (var i=0; i < max; i++) {
-  photo = rsp.photoset.photo[i];
-  s += img(photo, 's');
- }
-
- s += '</td></tr></table>';
- document.writeln(s);
+ document.writeln(img(randomPhoto, <?php echo $width; ?>));
 
 }
 // -->
