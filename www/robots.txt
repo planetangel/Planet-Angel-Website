@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /nextparty/
 Disallow: /administrator/
 Disallow: /cache/
 Disallow: /components/
