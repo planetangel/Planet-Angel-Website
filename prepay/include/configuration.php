@@ -36,8 +36,5 @@ class Config {
     static $idFmtLetters        = "ABCDEF";
     static $idFmtDigits         = "4";
 
-    static $ticketTypes         = array('PREPAY', 'CHILLED', 'CHILLED-ADULT', 'CHILLED-CHILD', 'CHILLED-FAMILY', 'SPECIAL', 'NYE');
-
-//    static $ticketTypes         = "PREPAY, CHILLED-ADULT, CHILLED-CHILD, CHILLED-FAMILY, SPECIAL, NYE";
+    static $ticketTypes         = array('PREPAY', 'CHILLED', 'CHILLED-ADULT', 'CHILLED-CHILD', 'CHILLED-FAMILY', 'SPECIAL', 'NYE', 'NYECREW');
 }
-?>
