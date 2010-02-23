@@ -233,7 +233,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 						</div>
 					<div>Planet Angel is a not-for-profit company, limited by guarantee.</div>
 					<div>&copy; Planet Angel 1999 - 2009</div>
-					<div>All Rights Reserved. <a href="/listc/credits/">Click here</a> for a full list of credits.</div>
+					<div>All Rights Reserved. <a href="/credits">Click here</a> for a full list of credits.</div>
 				</div>
 
 
