@@ -63,13 +63,11 @@ while (false === feof($fp)) {
     $res = fgets($fp, 1024);
     if(0 != strcmp($res, "VERIFIED")) {
         // Do nothing
-    }
-    if (strcmp ($res, "VERIFIED") == 0) {
-        
+    } else {
         Logger::info("Transaction verified! res = $res");
         
         // check that txn_id has not been previously processed
-        if(!isset($_POST['txn_id']) || empty($_POST['txn_id'])) {
+        if(false === isset($_POST['txn_id']) || empty($_POST['txn_id'])) {
             kaput("No transaction ID was found in the request. You need one of them.");
         }
         $txn_id = $_POST['txn_id'];
@@ -112,7 +110,8 @@ while (false === feof($fp)) {
             
             $payment_status = $txn->getField('payment_status');
             
-            if(Config::MAIL_ENABLED == true) {
+            if(true === Config::MAIL_ENABLED) {
+                $templateFound = false;
                 foreach($ticketTypes as $oneType) {
                     $params = array();
                     // @TODO Update these with dynamic quantities
@@ -124,18 +123,16 @@ while (false === feof($fp)) {
                     $params['last_name']    = $txn->getField('last_name');
 
                     $prepayItem = $txn->getPrepayItem($oneType);
-
                     if(true === is_null($prepayItem)) {
                         //Logger::debug("No match for $oneType");
                         continue;
                     }
-                    //Logger::debug("prepay item: " . print_r($prepayItem, true));
+                    $templateFound = true;
 
                     $params['quantity'] = $prepayItem['quantity'];
                     $params['item_name']    = $prepayItem['item_name'];
                     $mail = SingletonFactory::getInstance()->getSingleton('MailManager');
                     if("Completed" === $payment_status) {
-                        //Logger::debug("Sending confirmation mail ($oneType) to $to...");
                         try {
                             $status = $mail->sendConfirmationMailToUser($to, $params, $oneType);
                         } catch(Exception $e) {
@@ -151,7 +148,9 @@ while (false === feof($fp)) {
                     }
                     Logger::debug("Sent notification mail to admins successfully, payment_status=$payment_status");
                 }
-                
+                if(false === $templateFound) {
+                    Logger::error("Unable to find e-mail template");
+                }
             } else {
                 Logger::debug("Mail disabled, not sending mail");
             }
@@ -159,7 +158,8 @@ while (false === feof($fp)) {
             Logger::debug("DB disabled, not adding transaction");
         }
 
-    } elseif(strcmp ($res, "INVALID") == 0) {
+    }
+    if(strcmp ($res, "INVALID") == 0) {
         $txn_id = isset($_POST['txn_id']) ? $_POST['txn_id'] : 'none supplied';
         $msg = "Invalid transaction received (response from Paypal: $res)! Transaction ID: $txn_id";
         Logger::warn($msg);
