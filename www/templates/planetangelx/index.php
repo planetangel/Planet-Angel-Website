@@ -30,6 +30,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	}
 
 ?>
+<script language="javascript" src="/templates/planetangelx/js/countdown_clock.js"></script>
 </head>
 <body>
 	<div id="wrapper" align="center">
