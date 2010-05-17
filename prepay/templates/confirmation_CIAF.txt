@@ -1,0 +1,47 @@
+Hiya %first_name% %last_name%,
+
+Thank you for your order! This is your ticket confirmation to our first *Chilled* in a Field, we're planning a magical gathering!
+
+This is to confirm that %quantity% ticket/s have been purchased in the name of %first_name% %last_name%.
+
+Your Unique Ticket ID is: %pa_ticket_id%
+
+There are two very important things you must know:
+
+1.  You and your guests will NOT GET IN WITHOUT YOUR UNIQUE TICKET ID!  You only need to be able to quote your Unique Ticket ID and the name of the person who bought them when you arrive, you do not have to bring any print-outs and we do not send physical tickets.
+
+2.  By purchasing your tickets, you are SPECIFICALLY AGREEING TO THE TERMS & CONDITIONS detailed below, please ensure you have read and understood them all, they contain important information about the event.
+
+That's it! We'll be emailing you soon with more details about this special event and you can always check the *Chilled* in a Field page at http://www.planetangel.net/chilledinafield/ for latest info.
+
+We look forward to seeing you there...
+
+Big love, Planet Angel
+
+Instructions
+============
+
+* We do not send physical tickets, your Unique Ticket ID is all you need to be granted entry.
+
+* When you order Tickets, you will receive two confirmation emails:
+- One (almost instantly) from PayPal confirming your purchase and
+- This email confirmation.
+
+* Emails will be sent to the email address you specified in PayPal.
+
+* Tickets can only be in the name of the person who bought them, this cannot be changed.
+
+* Please quote your Unique Ticket ID when you arrive please note; WE CANNOT LET YOU IN WITHOUT your Unique Ticket ID.
+
+Ticket FAQ
+==========
+
+Q: My friend bought my Ticket, what do I do?
+A: You need to get the Unique Ticket ID from your friend and make a note of the name of the person who ordered the Tickets and bring that information with you.
+
+Q: The Tickets are no longer online, can I call and buy some?
+A: Sorry no, this is an Advance Ticket only event.
+
+Q: Am I guaranteed entry with my Ticket?
+A: Provided you pass ID and security checks, your Ticket guarantees you entry in accordance with the Terms & Conditions.
+
