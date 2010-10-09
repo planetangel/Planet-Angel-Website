@@ -1,6 +1,7 @@
 <?php
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+error_log(print_r($this, true));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
@@ -31,6 +32,17 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 ?>
 <script language="javascript" src="/templates/planetangelx/js/countdown_clock.js"></script>
+
+<?php // BEGIN GREYBOX ?>
+<script type="text/javascript">
+    var GB_ROOT_DIR = "<?php echo $this->base ?>lib/greybox/";
+</script>
+<script type="text/javascript" src="/lib/greybox/AJS.js"></script>
+<script type="text/javascript" src="/lib/greybox/AJS_fx.js"></script>
+<script type="text/javascript" src="/lib/greybox/gb_scripts.js"></script>
+<link href="/lib/greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+<?php // END GREYBOX ?>
+
 </head>
 <body>
 	<div id="wrapper" align="center">
@@ -234,7 +246,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 						</div>
 					<div>Planet Angel is a not-for-profit company, limited by guarantee.</div>
 					<div>&copy; Planet Angel 1999 - 2009</div>
-					<div>All Rights Reserved. <a href="/credits">Click here</a> for a full list of credits.</div>
+					<div>All Rights Reserved. <a href="/listc/credits/">Click here</a> for a full list of credits.</div>
 				</div>
 
 
