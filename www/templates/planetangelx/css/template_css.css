@@ -674,7 +674,7 @@ DIV.modulenews {
 }
 
 DIV.moduleevents div {
-	min-height: 300px;
+/*	min-height: 300px;*/
 }
 
 #modules_features DIV.module,
@@ -692,14 +692,22 @@ DIV.modulecommunity {
 	background: #cb0000 url(/templates/planetangelx/images/features_community_top_left.gif) no-repeat top left;
 }
 DIV.modulenews {
-	background: #ee5400 url(/templates/planetangelx/images/features_news_top_left.gif) no-repeat top left;
+	background: #ef6316 url(/templates/planetangelx/images/features_news_top_left.gif) no-repeat top left;
+}
+DIV.moduleyellow {
+	background: #ffff00 url(/templates/planetangelx/images/features_yellow_top_left.gif) no-repeat top left;
+}
+DIV.modulegreen {
+	background: #9CCD0B url(/templates/planetangelx/images/features_green_top_left.gif) no-repeat top left;
 }
 
 DIV.modulefrontpage,
 DIV.moduleevents,
 DIV.modulecontact,
 DIV.modulecommunity,
-DIV.modulenews {
+DIV.modulenews,
+DIV.modulegreen,
+DIV.moduleyellow {
 	width: 353px;
 }
 
@@ -720,6 +728,12 @@ DIV.modulecommunity div {
 DIV.modulenews div {
 	background: transparent url(/templates/planetangelx/images/features_news_top_right.gif) no-repeat top right;
 }
+DIV.moduleyellow div {
+	background: transparent url(/templates/planetangelx/images/features_yellow_top_right.gif) no-repeat top right;
+}
+DIV.modulegreen div {
+	background: transparent url(/templates/planetangelx/images/features_green_top_right.gif) no-repeat top right;
+}
 
 #modules_features DIV.module div div,
 #main_body_hack_features DIV.module div div,
@@ -737,6 +751,12 @@ DIV.modulecommunity div div {
 }
 DIV.modulenews div div {
 	background: url(/templates/planetangelx/images/features_news_bottom_left.gif) no-repeat bottom left;
+}
+DIV.moduleyellow div div {
+	background: url(/templates/planetangelx/images/features_yellow_bottom_left.gif) no-repeat bottom left;
+}
+DIV.modulegreen div div {
+	background: url(/templates/planetangelx/images/features_green_bottom_left.gif) no-repeat bottom left;
 }
 
 #modules_features DIV.module div div div,
@@ -756,6 +776,12 @@ DIV.modulecommunity div div div {
 DIV.modulenews div div div {
 	background: url(/templates/planetangelx/images/features_news_bottom_right.gif) no-repeat bottom right;
 }
+DIV.moduleyellow div div div {
+	background: url(/templates/planetangelx/images/features_yellow_bottom_right.gif) no-repeat bottom right;
+}
+DIV.modulegreen div div div {
+	background: url(/templates/planetangelx/images/features_green_bottom_right.gif) no-repeat bottom right;
+}
 
 #modules_features DIV.module div div div,
 #main_body_hack_features DIV.module div div div,
@@ -763,7 +789,9 @@ DIV.modulefrontpage div div div,
 DIV.moduleevents div div div,
 DIV.modulecontact div div div,
 DIV.modulecommunity div div div,
-DIV.modulenews div div div {
+DIV.modulenews div div div,
+DIV.modulegreen div div div,
+DIV.moduleyellow div div div {
 	padding: 4px 8px 8px 8px;
 }
 
@@ -773,6 +801,8 @@ DIV.modulefrontpage div div div div,
 DIV.moduleevents div div div div,
 DIV.modulecontact div div div div,
 DIV.modulecommunity div div div div,
+DIV.moduleyellow div div div div,
+DIV.modulegreen div div div div,
 DIV.modulenews div div div div  {
 	background: none;
 }
@@ -783,6 +813,8 @@ DIV.modulefrontpage h3,
 DIV.moduleevents h3,
 DIV.modulecontact h3,
 DIV.modulecommunity h3,
+DIV.moduleyellow h3,
+DIV.modulegreen h3,
 DIV.modulenews h3 {
 	color: white;
 	margin: 0px;
@@ -791,12 +823,19 @@ DIV.modulenews h3 {
 	padding: 0px 4px 6px 0px;
 }
 
+/*
+DIV.moduleyellow h3 {
+	color: black;
+}
+*/
+
 #modules_features DIV.module,
 #main_body_hack_features DIV.module,
 DIV.modulefrontpage,
 DIV.moduleevents,
 DIV.modulecontact,
 DIV.modulecommunity,
+DIV.moduleyellow,
 DIV.modulenews {
 	color: white;
 }
