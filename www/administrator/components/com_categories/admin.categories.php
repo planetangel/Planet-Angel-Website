@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: admin.categories.php 11633 2009-02-19 23:59:09Z willebil $
+ * @version		$Id: admin.categories.php 19343 2010-11-03 18:12:02Z ian $
  * @package		Joomla
  * @subpackage	Categories
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -110,11 +110,17 @@ function showCategories( $section, $option )
 
 	$db					=& JFactory::getDBO();
 	$filter_order		= $mainframe->getUserStateFromRequest( $option.'.filter_order',					'filter_order',		'c.ordering',	'cmd' );
+	if ($filter_order == 'section_name' && ($section == 'com_newsfeeds' || $section == 'com_banner' || $section == 'com_weblinks' || $section == 'com_contact_details')){
+						     $filter_order = 'c.ordering';
+						 } 
 	$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'.filter_order_Dir',				'filter_order_Dir',	'',				'word' );
 	$filter_state		= $mainframe->getUserStateFromRequest( $option.'.'.$section.'.filter_state',	'filter_state',		'',				'word' );
 	$sectionid			= $mainframe->getUserStateFromRequest( $option.'.'.$section.'.sectionid',		'sectionid',		0,				'int' );
 	$search				= $mainframe->getUserStateFromRequest( $option.'.search',						'search',			'',				'string' );
-	$search				= JString::strtolower( $search );
+	if (strpos($search, '"') !== false) {
+		$search = str_replace(array('=', '<'), '', $search);
+	}
+	$search = JString::strtolower($search);
 
 	$limit		= $mainframe->getUserStateFromRequest( 'global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int' );
 	$limitstart	= $mainframe->getUserStateFromRequest( $option.'.limitstart', 'limitstart', 0, 'int' );
@@ -122,6 +128,20 @@ function showCategories( $section, $option )
 	$section_name 	= '';
 	$content_add 	= '';
 	$content_join 	= '';
+
+	// ensure we have a good value for $filter_order
+	if (!in_array($filter_order, array('c.title', 'c.published', 'c.ordering', 'groupname', 'section_name', 'c.id'))) {
+		$filter_order = 'c.ordering';
+	}
+
+	if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+		$filter_order_Dir = '';
+	}
+
+	if (intval($section) <= 0 && $section != 'com_content' && $filter_order == 'section_name') {
+		$filter_order = 'c.ordering';
+	}
+
 	$order 			= ' ORDER BY '. $filter_order .' '. $filter_order_Dir .', c.ordering';
 	if (intval( $section ) > 0) {
 		$table = 'content';
@@ -187,6 +207,7 @@ function showCategories( $section, $option )
 		$content_add 	= ' , z.title AS section_name';
 		$content_join 	= ' LEFT JOIN #__sections AS z ON z.id = c.section';
 		$where 			= ' WHERE c.section NOT LIKE "%com_%"';
+
 		if ($filter_order == 'c.ordering'){
 			$order 			= ' ORDER BY  z.title, c.ordering '. $filter_order_Dir;
 		} else {
@@ -418,7 +439,7 @@ function saveCategory()
 
 	// Initialize variables
 	$db		 =& JFactory::getDBO();
-	$menu 		= JRequest::getCmd( 'menu', 'mainmenu', 'post' );
+	$menu 		= JRequest::getVar( 'menu', 'mainmenu', 'post', 'menutype' );
 	$menuid		= JRequest::getVar( 'menuid', 0, 'post', 'int' );
 	$redirect 	= JRequest::getCmd( 'redirect', '', 'post' );
 	$oldtitle 	= JRequest::getString( 'oldtitle', '', 'post' );
@@ -483,11 +504,14 @@ function saveCategory()
 	switch ( JRequest::getCmd('task') )
 	{
 		case 'go2menu':
-			$mainframe->redirect( 'index.php?option=com_menus&menutype='. $menu );
+			$mainframe->redirect('index.php?option=com_menus&menutype=' . $menu);
 			break;
 
 		case 'go2menuitem':
-			$mainframe->redirect( 'index.php?option=com_menus&menutype='. $menu .'&task=edit&id='. $menuid );
+			$mainframe->redirect(
+				'index.php?option=com_menus&menutype=' . $menu 
+				. '&task=edit&id='. $menuid 
+			);
 			break;
 
 		case 'apply':

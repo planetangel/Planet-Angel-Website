@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: mod_search.php 10855 2008-08-29 22:47:34Z willebil $
+* @version		$Id: mod_search.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -30,4 +30,5 @@ $moduleclass_sfx = $params->get('moduleclass_sfx', '');
 if ($imagebutton) {
     $img = modSearchHelper::getSearchImage( $button_text );
 }
+$mitemid = $set_Itemid > 0 ? $set_Itemid : JRequest::getInt('Itemid');
 require(JModuleHelper::getLayoutPath('mod_search'));

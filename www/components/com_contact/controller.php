@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: controller.php 11679 2009-03-08 20:50:06Z willebil $
+ * @version		$Id: controller.php 14974 2010-02-21 14:32:22Z ian $
  * @package		Joomla
  * @subpackage	Contact
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -69,7 +69,39 @@ class ContactController extends JController
 
 		// Display the view
 		$view->assign('error', $this->getError());
-		$view->display();
+		
+		// View caching logic -- simple... are we logged in?
+		$user = &JFactory::getUser();
+		$viewnow = JRequest::getVar('view');
+		$viewcache = JRequest::getVar('viewcache','1','POST','INT');
+		
+		if ($user->get('id') || ($viewnow == 'category' && $viewcache == 0)) {
+			$view->display();
+		} else {
+
+			// Workaround for token caching
+			if ($viewName == 'contact')
+			{
+				ob_start();
+			}
+			
+			$option = JRequest::getCmd('option');
+			$cache =& JFactory::getCache($option, 'view');
+			$cache->get($view, 'display');
+			
+			// Workaround for token caching
+			if ($viewName == 'contact')
+			{
+				$contents = ob_get_contents();
+				ob_end_clean();
+				
+				$token			= JUtility::getToken();
+				$search 		= '#<input type="hidden" name="[0-9a-f]{32}" value="1" />#';
+				$replacement 	= '<input type="hidden" name="'.$token.'" value="1" />';
+
+				echo preg_replace($search, $replacement, $contents);
+			}
+		}
 	}
 
 	/**

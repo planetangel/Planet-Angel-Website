@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: weblinks.php 10381 2008-06-01 03:35:53Z pasamio $
+ * @version		$Id: weblinks.php 19343 2010-11-03 18:12:02Z ian $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -147,6 +147,15 @@ class WeblinksModelWeblinks extends JModel
 		$filter_order		= $mainframe->getUserStateFromRequest( $option.'filter_order',		'filter_order',		'a.ordering',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',				'word' );
 
+		// sanitize $filter_order
+		if (!in_array($filter_order, array('a.title', 'a.published', 'a.ordering', 'category', 'a.hits', 'a.id'))) {
+			$filter_order = 'a.ordering';
+		}
+
+		if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+			$filter_order_Dir = '';
+		}
+
 		if ($filter_order == 'a.ordering'){
 			$orderby 	= ' ORDER BY category, a.ordering '.$filter_order_Dir;
 		} else {
@@ -165,7 +174,10 @@ class WeblinksModelWeblinks extends JModel
 		$filter_order		= $mainframe->getUserStateFromRequest( $option.'filter_order',		'filter_order',		'a.ordering',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',				'word' );
 		$search				= $mainframe->getUserStateFromRequest( $option.'search',			'search',			'',				'string' );
-		$search				= JString::strtolower( $search );
+		if (strpos($search, '"') !== false) {
+			$search = str_replace(array('=', '<'), '', $search);
+		}
+		$search = JString::strtolower($search);
 
 		$where = array();
 

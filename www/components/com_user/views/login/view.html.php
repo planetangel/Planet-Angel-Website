@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: view.html.php 10381 2008-06-01 03:35:53Z pasamio $
+* @version		$Id: view.html.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla
 * @subpackage	Login
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -47,7 +47,10 @@ class UserViewLogin extends JView
 		$type = (!$user->get('guest')) ? 'logout' : 'login';
 
 		// Set some default page parameters if not set
-		$params->def( 'page_title', 				1 );
+		$params->def( 'show_page_title', 				1 );
+		if (!$params->get( 'page_title')) {
+				$params->set('page_title',	JText::_( 'Login' ));
+			}
 		if(!$item)
 		{
 			$params->def( 'header_login', 			'' );

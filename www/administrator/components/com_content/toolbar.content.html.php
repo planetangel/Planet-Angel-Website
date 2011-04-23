@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: toolbar.content.html.php 11798 2009-05-06 02:11:47Z ian $
+* @version		$Id: toolbar.content.html.php 19173 2010-10-21 03:00:28Z ian $
 * @package		Joomla
 * @subpackage	Content
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -11,6 +11,9 @@
 * other free or open source software licenses.
 * See COPYRIGHT.php for copyright notices and details.
 */
+
+// no direct access
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 /**
 * @package		Joomla

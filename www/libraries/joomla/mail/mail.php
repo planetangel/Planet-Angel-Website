@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: mail.php 10707 2008-08-21 09:52:47Z eddieajau $
+ * @version		$Id: mail.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla.Framework
  * @subpackage	Mail
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -298,22 +298,24 @@ class JMail extends PHPMailer
 	 * @param string $host SMTP Host [optional]
 	 * @param string $user SMTP Username [optional]
 	 * @param string $pass SMTP Password [optional]
+	 * @param string $secure SMTP Secure ssl,tls [optinal]
+	 * @param string $port SMTP Port [optional]
 	 * @return boolean True on success
 	 * @since 1.5
 	 */
-	function useSMTP($auth = null, $host = null, $user = null, $pass = null)
+	function useSMTP($auth = null, $host = null, $user = null, $pass = null,$secure = null, $port = 25)
 	{
 		$this->SMTPAuth = $auth;
 		$this->Host 	= $host;
 		$this->Username = $user;
 		$this->Password = $pass;
+		$this->Port     = $port;
+		if ($secure == 'ssl' || $secure == 'tls') {
+			$this->SMTPSecure = $secure;
+		}
 
 		if ($this->SMTPAuth !== null && $this->Host !== null && $this->Username !== null && $this->Password !== null) {
 			$this->IsSMTP();
-			return true;
-		} else {
-			$this->IsMail();
-			return false;
 		}
 	}
 }

@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: admin.modules.html.php 11672 2009-03-08 20:39:41Z willebil $
+* @version		$Id: admin.modules.html.php 18162 2010-07-16 07:00:47Z ian $
 * @package		Joomla
 * @subpackage	Modules
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -40,7 +40,7 @@ class HTML_modules
 			<tr>
 				<td align="left" width="100%">
 					<?php echo JText::_( 'Filter' ); ?>:
-					<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+					<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 					<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 					<button onclick="document.getElementById('search').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
 				</td>
@@ -128,12 +128,12 @@ class HTML_modules
 					<td>
 					<?php
 					if (  JTable::isCheckedOut($user->get ('id'), $row->checked_out ) ) {
-						echo $row->title;
+						echo htmlspecialchars($row->title);
 					} else {
 						?>
-						<span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Module' );?>::<?php echo $row->title; ?>">
+						<span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Module' );?>::<?php echo htmlspecialchars($row->title); ?>">
 						<a href="<?php echo $link; ?>">
-							<?php echo $row->title; ?></a>
+							<?php echo htmlspecialchars($row->title); ?></a>
 						</span>
 						<?php
 					}
@@ -313,8 +313,7 @@ class HTML_modules
 								foreach ($positions as $position) {
 									echo '<li>'.$position.'</li>';
 								}
-							?>
-							</ul>
+							?></ul>
 							<script language="javascript" type="text/javascript">
 								window.addEvent('domready', function() { 
 									$('combobox-position-select').addEvent('change', function() {

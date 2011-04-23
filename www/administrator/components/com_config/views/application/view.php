@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: view.php 10882 2008-08-31 17:55:14Z willebil $
+ * @version		$Id: view.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla
  * @subpackage	Config
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -52,7 +52,7 @@ class ConfigApplicationView
 		jimport('joomla.client.helper');
 		$ftp =& JClientHelper::setCredentialsFromRequest('ftp');
 		?>
-		<form action="index.php" method="post" name="adminForm">
+		<form action="index.php" method="post" name="adminForm" autocomplete="off">
 		<?php if ($ftp) {
 			require_once($tmplpath.DS.'ftp.php');
 		} ?>

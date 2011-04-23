@@ -1,8 +1,8 @@
 <?php
 /**
- * @version		$Id: CREDITS.php 11924 2009-05-30 08:11:59Z pasamio $
+ * @version		$Id: CREDITS.php 20439 2011-01-25 17:42:22Z infograf768 $
  * @package		Joomla
- * @copyright	Copyright (C) 2005 - 2009 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -66,13 +66,12 @@ Andy Wallace
 
 Translation contributors:
 -------------------------
-Translation contributors:
--------------------------
 Albanian (sp-AL) - Blendi Kraja
-Arabic Algeria (ar-DZ) - Saber Bousba
-Basque (eu-ES) - Basque Translation Team (Basque Language School of Santurtzi) - Abel Camacho, Pedro Lonbide
+Arabic Unitag (ar-AA) - Arabic Unitag Translation Team - Mahmood Alhaj Kassem
+Azeri (az-AZ) - Azeri Translation Team - Mahmud and Yusif
 Belarusian (be-BY) - Dennis Hermacki
 Bengali (bn-BD) – Kamal Sikder
+Bosnian (bs-BA) - Bosnian Translation Team - Admir Agic
 Bulgarian (bg-BG) - Bulgarian Translation Team - Bultrans
 Catalan (ca-ES) - Catalan Translation Team - Damià Verger
 Chinese Simplified (zh-CN) - Johnathan Cheung
@@ -80,6 +79,7 @@ Chinese Traditional (zh-TW) - Traditional Chinese Translation Team - Eddy Chang
 Croatian (hr-HR) - Croatian Translation Team - Klaudia B.
 Czech (cs-CZ) - Czech Translation Team - Svatopluk Vit
 Danish (da-DK) - Danish Translation Team - Ronny Buelund, Mikael Winther, Ole Bang Ottosen
+Dari (Afghanistan) (fa-AF) - Dari (Afghanistan) Translation Team - Daud Nigaresh
 Dutch (nl-NL) - Dutch Translation Team - Vancanneyt Sander, Marijke Stuivenberg
 English (en-US) -  US English Translation Team - Jennifer Marriott
 Esperanto (eo-XX) - Esperanto Translation Team - Cindy McKee, Fabien Tschudy
@@ -89,34 +89,40 @@ French (fr-FR) - French Translation Team - Nicolas Ogier
 German (de-DE)/(de-CH)/(de-AT) - J!German - Jan Erik Zassenhaus, Karin Nikolaj, David Jakob, Antonio Cambule\
 Greek (el-GR) - Greek Joomla Community - Aris Ntatsis
 Gujarati (gu-IN) - Gujarati Translation Team
-Hebrew (he-IL) - Joomla!Hebrew - Mati (MtK) Kochen
-Hindi-Devanagari (hi-IN) - IndicJoomla! Team - Vishal Pahuja
+Hindi (India) (hi-IN) - Hindi (India) Translation Team - Sanjeev Naroliya, Ronak Bhagdev, Aminuddin Sheikh
 Hungarian (hu-HU) - Magyar Joomla! Felhasznalok Nemzetkozi Egyesulete - Jozsef Tamas Herczeg, Annamaria Ban
 Icelandic (is-IS) - Joomlis! Icelandic Joomla Community [joomlis.net] - Magnús Guðlaugsson
+Indonesian (id-ID) - Indonesian (Bahasa Indonesia) Translation Community - Andy Sikumbang
 Italian (it-IT) - Italian Translation Team - Stefania Gaianigo, Alessandro Rossi
 Japanese (ja-JP) - Japanese Translation Team - Noriaki Koide, Hiroko Hirano
+Khmer (Cambodia) (km-KH) - Khmer (Cambodia) Translation Team - Heng Sovann
 Laotian (lo-LA) - Joomla LaiLao Team (LaoOpenSource) - Akarawuth Tamrareang , Viengsakhone phanthanousy , Outhai Saioudom
 Latvian (lv-LV) - Joomla Latvian Team - Edgars Piruška, Iveta Rītiņa-Namiķe, Ingars Stepkāns
 Lithuanian (lt-LT) - Lithuanian Translation Team - Stasys Svabas
 Mongolian (mn-MN) - Mongolian Translation Team, Altansukh T.
 Montenegrin (sr-ME) - Montenegrin Translation Team (joomlamontenegro.com) - Miljan Vujosevic, Dragan Djordjevic
 Norwegian bokmål (nb-NO) - Joomla! i Norge - Jens-Christian Skibakk, Rune Rasmussen
+Pashto (Afghanistan) (ps-AF) - Pashto (Afghanistan) Translation Team - Daud Nigaresh
 Persian/Farsi (fa-IR) - Joomfa Team(Joomla Farsi) - M.Alavi nik, Hamid abolhasani,Amin bagheri,Sayyed Saeed farzad,Sayyed ahmad sayyedi,Vahid Hosein Khani,Omid pileh var
-Polish - Poland (pl-PL) - Polskie Centrum Joomla! - Michał Sobkowiak, Stefan Wajda
+Polish - Poland (pl-PL) - Polskie Centrum Joomla! - Stefan Wajda
 Portuguese Brazilian (pt-BR) - Joomla! Brasil - Fabricio Elias Costa (FaBMak)
 Portuguese (pt-PT) - Joomla! Portugal - Paulo Izidoro
 Romanian (ro-RO) - Romanian Joomla! Community - Cosmin Lebu
 Russian (ru-RU) - Russian Translation Team - Serge Litvinov
-Serbian (sr-RS) - Joomla! Serbia team - Marko Milenovic
+Serbian (sr-RS) - Joomla! Serbia team - Svetlana Zec
+Serbian (sr-YU) - Joomla! Serbia team - Svetlana ZecSvetlana Zec
 Sindhi (sd-PK) - Raheel H. Kaghzi, Shafiq-ur-rehman Khatri
 Sinhala (si-LK) - Rashan Anushka
-Slovak (sk-SK) - Slovak Translation Team - Karol Cejka, Viliam Kmec, Alexander Horvath, Marek Sabo
+Slovak (sk-SK) - Karol Cejka
+Slovenian (sl-SI) - Slovenian Translation Team - Borut Planinc
 Spanish (es-ES) - Joomla!'s Spanish Community Translation Team - Javier Galasse
 Swedish (sv-SE) - Swedish Translation Team (SvenskJoomla!) - Sune Hultman, Christer Gerhardsson
-Syriac (sy-IQ) - Pauls! Dinka
+Syriac (sy-IQ) - East Syriac Translation (Syriac Joomla) - Pauls Dinka
+Tagalog (Philippines) (tl-PH) - Tagalog (Philippines) Translation Community - Aristedes Royo
 Tamil (ta-LK) - Sri Lanka -UoM, LK, sarves
+Tamil (ta-IN) - Ilagnayeru 'MIG' Manickam, Elango Samy Manim
 Thai (th-TH) - Joomla LaiThai Team (JoomlaCorner) - Akarawuth Tamrareang , Supachai Teasakul, Pisan Chueachatchai
-Turkish (tr-TR) - Joomla! Turkiye - Ümit Kenan Gönüllü, Uğur Uygur
+Turkish (tr-TR) - Joomla! Turkiye - Ümit Kenan Gönüllü
 Ukrainian (uk-UA) - Ukrainian Translation Team - Denys Nosov
 Urdu Pakistan (ur-PK) - Basim
 Vietnamese (vi-VN) - Việt Nam Translation Team - Viet Hoang Vu
@@ -251,8 +257,8 @@ License:	GNU Lesser General Public License (LGPL)
 Pear
 ----
 Author:		Sterling Hughes, Stig Bakken, Tomas V.V.Cox, Greg Beaver
-Copyright:	Copyright (C) 1997-2006 The PHP Group
-License:	PHP License 3.0
+Copyright:	Copyright (C) 1997-2009 The PHP Group
+License:	BSD License
 
 PHPGACL
 -------
@@ -268,8 +274,9 @@ License:	GNU General Public License (GPL)
 
 PHPMailer
 --------
-Author:		Brent R. Matzelle
+Author:		Andy Prevost, Brent R. Matzelle
 Copyright:	Copyright (C) 2001 - 2003 Brent R. Matzelle
+		Copyright (c) 2004-2009, Andy Prevost. All Rights Reserved.
 License:	GNU Lesser General Public License (LGPL) 2.1
 
 phpUTF8
@@ -299,7 +306,7 @@ License:	GNU Lesser General Public License (LGPL) 2.1
 TinyMCE
 -------
 Author:		Moxiecode Systems
-Copyright:	Copyright (C) 2005-2006, Moxiecode Systems AB, All rights reserved.
+Copyright:	Copyright (C) 2005-2009, Moxiecode Systems AB, All rights reserved.
 License:	GNU Lesser General Public License (LGPL) 2.1
 
 VCard

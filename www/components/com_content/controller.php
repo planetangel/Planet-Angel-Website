@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: controller.php 11386 2009-01-04 02:34:35Z ian $
+ * @version		$Id: controller.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -44,7 +44,12 @@ class ContentController extends JController
 
 		// View caching logic -- simple... are we logged in?
 		$user = &JFactory::getUser();
-		if ($user->get('id') || (JRequest::getVar('view') == 'category' && JRequest::getVar('layout') != 'blog')) {
+		$view = JRequest::getVar('view');
+		$viewcache = JRequest::getVar('viewcache',1,'POST','INT');
+
+		if ($user->get('id') ||
+			($view == 'category' && JRequest::getVar('layout') != 'blog' && $viewcache == 0) ||
+			 $view == 'archive' && $viewcache == 0) {
 			parent::display(false);
 		} else {
 			parent::display(true);

@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: pathway.php 10707 2008-08-21 09:52:47Z eddieajau $
+* @version		$Id: pathway.php 14997 2010-02-22 23:27:02Z ian $
 * @package		Joomla.Framework
 * @subpackage	Application
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -206,7 +206,11 @@ class JPathway extends JObject
 	function _makeItem($name, $link)
 	{
 		$item = new stdClass();
-		$item->name = html_entity_decode($name);
+		if((version_compare( phpversion(), '5.0' ) < 0)) {
+			$item->name = html_entity_decode($name);
+		} else {
+			$item->name = html_entity_decode($name, ENT_COMPAT, 'UTF-8');
+		}
 		$item->link = $link;
 
 		return $item;

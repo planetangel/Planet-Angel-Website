@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: database.php 11137 2008-10-15 19:47:01Z kdevine $
+* @version		$Id: database.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla.Framework
 * @subpackage	Database
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -959,7 +959,7 @@ class JDatabase extends JObject
 
 		$query = trim( $query );
 		$this->setQuery( $query );
-		if (eregi( '^select', $query )) {
+		if (preg_match('#^select#i', $query )) {
 			$result = $this->loadRowList();
 			return new JRecordSet( $result );
 		} else {

@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -11,12 +11,19 @@
 
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+if (!isset($this->error)) {
+	$this->error = JError::raiseWarning( 403, JText::_('ALERTNOTAUTH') );
+	$this->debug = false; 
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
 	<title><?php echo $this->error->code ?> - <?php echo $this->title; ?></title>
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error.css" type="text/css" />
+	<?php if($this->direction == 'rtl') : ?>
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/error_rtl.css" type="text/css" />
+	<?php endif; ?>
 </head>
 <body>
 	<div align="center">

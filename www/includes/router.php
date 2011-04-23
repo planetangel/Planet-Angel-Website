@@ -3,7 +3,7 @@
 * @version		$Id: router.php 8180 2007-07-23 05:52:29Z eddieajau $
 * @package		Joomla.Framework
 * @subpackage	Application
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -145,7 +145,9 @@ class JRouterSite extends JRouter
 		if(count($this->getVars()) == 1)
 		{
 			$item = $menu->getItem($this->getVar('Itemid'));
-			$vars = $vars + $item->query;
+			if($item !== NULL && is_array($item->query)) {
+				$vars = $vars + $item->query;
+			}
 		}
 
 		// Set the active menu item

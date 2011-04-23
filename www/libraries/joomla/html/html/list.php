@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: list.php 10713 2008-08-21 10:09:57Z eddieajau $
+* @version		$Id: list.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla.Framework
 * @subpackage		HTML
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -60,7 +60,7 @@ class JHTMLList
 		$imageFiles = JFolder::files( JPATH_SITE.DS.$directory );
 		$images 	= array(  JHTML::_('select.option',  '', '- '. JText::_( 'Select Image' ) .' -' ) );
 		foreach ( $imageFiles as $file ) {
-		   if ( eregi( $extensions, $file ) ) {
+		   if ( preg_match( "#$extensions#i", $file ) ) {
 				$images[] = JHTML::_('select.option',  $file );
 			}
 		}
@@ -210,7 +210,7 @@ class JHTMLList
 	/**
 	* Select list of active sections
 	*/
-	function section( $name, $active = NULL, $javascript = NULL, $order = 'ordering', $uncategorized = true )
+	function section( $name, $active = NULL, $javascript = NULL, $order = 'ordering', $uncategorized = true, $scope = 'content' )
 	{
 		$db =& JFactory::getDBO();
 
@@ -223,6 +223,7 @@ class JHTMLList
 		$query = 'SELECT id AS value, title AS text'
 		. ' FROM #__sections'
 		. ' WHERE published = 1'
+		. ' AND scope = ' . $db->Quote($scope)
 		. ' ORDER BY ' . $order
 		;
 		$db->setQuery( $query );

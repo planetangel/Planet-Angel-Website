@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: view.html.php 11213 2008-10-25 12:43:11Z pasamio $
+ * @version		$Id: view.html.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -29,7 +29,7 @@ class ContentViewArticle extends ContentView
 	function display($tpl = null)
 	{
 		global $mainframe;
-		
+
 		$user		=& JFactory::getUser();
 		$document	=& JFactory::getDocument();
 		$dispatcher	=& JDispatcher::getInstance();
@@ -58,7 +58,7 @@ class ContentViewArticle extends ContentView
 		}
 
 		$limitstart	= JRequest::getVar('limitstart', 0, '', 'int');
-		
+
 		if (!$params->get('intro_only') && ($this->getLayout() == 'default') && ($limitstart == 0))
 		{
 			$model =& $this->getModel();
@@ -171,19 +171,19 @@ class ContentViewArticle extends ContentView
 		 * Handle display events
 		 */
 		$article->event = new stdClass();
-		$results = $dispatcher->trigger('onAfterDisplayTitle', array ($article, &$params, $limitstart));
+		$results = $dispatcher->trigger('onAfterDisplayTitle', array (&$article, &$params, $limitstart));
 		$article->event->afterDisplayTitle = trim(implode("\n", $results));
 
-		$results = $dispatcher->trigger('onBeforeDisplayContent', array (& $article, & $params, $limitstart));
+		$results = $dispatcher->trigger('onBeforeDisplayContent', array (&$article, &$params, $limitstart));
 		$article->event->beforeDisplayContent = trim(implode("\n", $results));
 
-		$results = $dispatcher->trigger('onAfterDisplayContent', array (& $article, & $params, $limitstart));
+		$results = $dispatcher->trigger('onAfterDisplayContent', array (&$article, &$params, $limitstart));
 		$article->event->afterDisplayContent = trim(implode("\n", $results));
 
 		$print = JRequest::getBool('print');
 		if ($print) {
-      $document->setMetaData('robots', 'noindex, nofollow');
-    }
+			$document->setMetaData('robots', 'noindex, nofollow');
+		}
 
 		$this->assignRef('article', $article);
 		$this->assignRef('params' , $params);
@@ -206,8 +206,8 @@ class ContentViewArticle extends ContentView
 
 		// Make sure you are logged in and have the necessary access rights
 		if ($user->get('gid') < 19) {
-			  JResponse::setHeader('HTTP/1.0 403',true);
-              JError::raiseWarning( 403, JText::_('ALERTNOTAUTH') );
+			JResponse::setHeader('HTTP/1.0 403',true);
+			  JError::raiseWarning( 403, JText::_('ALERTNOTAUTH') );
 			return;
 		}
 
@@ -390,4 +390,4 @@ class ContentViewArticle extends ContentView
 		parent::display($tpl);
 	}
 }
-?>
+

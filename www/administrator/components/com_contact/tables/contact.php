@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: contact.php 10381 2008-06-01 03:35:53Z pasamio $
+ * @version		$Id: contact.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla
  * @subpackage	Contact
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -101,7 +101,7 @@ class TableContact extends JTable
 		}
 
 		// check for http on webpage
-		if (strlen($this->webpage) > 0 && (!(eregi('http://', $this->webpage) || (eregi('https://', $this->webpage)) || (eregi('ftp://', $this->webpage))))) {
+		if (strlen($this->webpage) > 0 && (!(preg_match('#http://#i', $this->webpage) || (preg_match('#https://#i', $this->webpage)) || (preg_match('#ftp://#i', $this->webpage))))) {
 			$this->webpage = 'http://'.$this->webpage;
 		}
 

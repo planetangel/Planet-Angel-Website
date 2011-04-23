@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: pagebreak.php 11662 2009-03-08 20:25:57Z willebil $
+* @version		$Id: pagebreak.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -95,7 +95,9 @@ function plgContentPagebreak( &$row, &$params, $page=0 )
 
 	// count the number of pages
 	$n = count( $text );
-
+	
+	$row->pagebreaktitle = $row->title;
+	
 	// we have found at least one plugin, therefore at least 2 pages
 	if ($n > 1)
 	{
@@ -114,7 +116,10 @@ function plgContentPagebreak( &$row, &$params, $page=0 )
 					$attrs = JUtility::parseAttributes($matches[$page-1][0]);
 
 					if ( @$attrs['title'] ) {
-						$row->page_title = $attrs['title'];
+						$row->title = $row->title.' - '.$attrs['title'];
+					} else {
+						$thispage = $page + 1;
+						$row->title = $row->title.' - '.JText::_( 'Page' ).' '.$thispage;
 					}
 				}
 			}
@@ -165,7 +170,7 @@ function plgContentPagebreak( &$row, &$params, $page=0 )
 function plgContentCreateTOC( &$row, &$matches, &$page )
 {
 
-	$heading = $row->title;
+	if (isset($row->pagebreaktitle)) {$heading = $row->pagebreaktitle;} else {$heading = $row->title;}
 	$limitstart = JRequest::getInt('limitstart', 0);
 	$showall = JRequest::getInt('showall', 0);
 

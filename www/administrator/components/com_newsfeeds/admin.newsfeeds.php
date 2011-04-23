@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: admin.newsfeeds.php 11371 2008-12-30 01:31:50Z ian $
+* @version		$Id: admin.newsfeeds.php 19343 2010-11-03 18:12:02Z ian $
 * @package		Joomla
 * @subpackage	Newsfeeds
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -91,7 +91,10 @@ function showNewsFeeds(  )
 	$filter_state		= $mainframe->getUserStateFromRequest( "$option.filter_state",		'filter_state',		'',				'word' );
 	$filter_catid		= $mainframe->getUserStateFromRequest( "$option.filter_catid",		'filter_catid',		0,				'int' );
 	$search				= $mainframe->getUserStateFromRequest( "$option.search",			'search',			'',				'string' );
-	$search				= JString::strtolower( $search );
+	if (strpos($search, '"') !== false) {
+		$search = str_replace(array('=', '<'), '', $search);
+	}
+	$search = JString::strtolower($search);
 
 	$limit		= $mainframe->getUserStateFromRequest( 'global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int' );
 	$limitstart	= $mainframe->getUserStateFromRequest( $option.'.limitstart', 'limitstart', 0, 'int' );
@@ -109,6 +112,15 @@ function showNewsFeeds(  )
 		} else if ($filter_state == 'U' ) {
 			$where[] = 'a.published = 0';
 		}
+	}
+
+	// sanitize $filter_order
+	if (!in_array($filter_order, array('a.name', 'a.published', 'a.ordering', 'catname', 'a.numarticles', 'a.cache_time', 'a.id'))) {
+		$filter_order = 'a.ordering';
+	}
+
+	if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+		$filter_order_Dir = '';
 	}
 
 	$where 		= ( count( $where ) ? ' WHERE ' . implode( ' AND ', $where ) : '' );

@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: icon.php 11917 2009-05-29 19:37:05Z ian $
+ * @version		$Id: icon.php 21078 2011-04-04 20:52:23Z dextercowley $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -65,12 +65,13 @@ class JHTMLIcon
 	}
 
 	function email($article, $params, $access, $attribs = array())
-	{
+        {
+                require_once(JPATH_SITE.DS.'components'.DS.'com_mailto'.DS.'helpers'.DS.'mailto.php');
 		$uri	=& JURI::getInstance();
 		$base	= $uri->toString( array('scheme', 'host', 'port'));
-		$link	= $base.JRoute::_( ContentHelperRoute::getArticleRoute($article->slug, $article->catslug, $article->sectionid) , false );
-		$url	= 'index.php?option=com_mailto&tmpl=component&link='.base64_encode( $link );
+                $link	= $base.JRoute::_( ContentHelperRoute::getArticleRoute($article->slug, $article->catslug, $article->sectionid) , false );
 
+                $url    = 'index.php?option=com_mailto&tmpl=component&link='.MailToHelper::addLink($link);
 		$status = 'width=400,height=350,menubar=yes,resizable=yes';
 
 		if ($params->get('show_icons')) 	{

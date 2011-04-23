@@ -3,7 +3,7 @@
 	<name>Feed Display</name>
 	<author>Joomla! Project</author>
 	<creationDate>July 2005</creationDate>
-	<copyright>Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
@@ -44,6 +44,6 @@
 			<option value="1">Use global</option>
 			<option value="0">No caching</option>
 		</param>
-		<param name="cache_time" type="text" default="15" label="Cache Time" description="The time in seconds before the module is re-cached." />
+		<param name="cache_time" type="text" default="15" label="Cache Time" description="The time in minutes before the module is re-cached." />
 	</params>
 </install>

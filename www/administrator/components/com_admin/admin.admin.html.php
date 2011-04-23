@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: admin.admin.html.php 11300 2008-11-22 02:19:40Z ian $
+ * @version		$Id: admin.admin.html.php 18162 2010-07-16 07:00:47Z ian $
  * @package		Joomla
  * @subpackage	Admin
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -137,6 +137,8 @@ class HTML_admin_misc
 		$fullhelpurl = $helpurl . '/index2.php?option=com_content&amp;task=findkey&amp;pop=1&amp;keyref=';
 
 		$helpsearch = JRequest::getString('helpsearch');
+		$helpsearch = str_replace(array('=', '<', '"'), '', $helpsearch);
+
 		$page		= JRequest::getCmd('page', 'joomla.whatsnew15.html');
 		$toc		= getHelpToc( $helpsearch );
 		$lang		=& JFactory::getLanguage();
@@ -145,7 +147,7 @@ class HTML_admin_misc
 			$langTag = 'en-GB';		// use english as fallback
 		}
 
-		if (!eregi( '\.html$', $page )) {
+		if (!preg_match( '#\.html$#i', $page )) {
 			$page .= '.xml';
 		}
 		?>
@@ -159,7 +161,7 @@ class HTML_admin_misc
 						<td>
 							<strong><?php echo JText::_( 'Search' ); ?>:</strong>
 							<input class="text_area" type="hidden" name="option" value="com_admin" />
-							<input type="text" name="helpsearch" value="<?php echo $helpsearch;?>" class="inputbox" />
+							<input type="text" name="helpsearch" value="<?php echo htmlspecialchars($helpsearch);?>" class="inputbox" />
 							<input type="submit" value="<?php echo JText::_( 'Go' ); ?>" class="button" />
 							<input type="button" value="<?php echo JText::_( 'Clear Results' ); ?>" class="button" onclick="f=document.adminForm;f.helpsearch.value='';f.submit()" />
 						</td>

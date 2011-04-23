@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: path.php 10381 2008-06-01 03:35:53Z pasamio $
+ * @version		$Id: path.php 21066 2011-04-03 22:19:02Z dextercowley $
  * @package		Joomla.Framework
  * @subpackage	FileSystem
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -11,7 +11,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  */
-
+defined('JPATH_BASE') or die();
 /** boolean True if a Windows based host */
 define('JPATH_ISWIN', (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN'));
 /** boolean True if a Mac based host */
@@ -244,8 +244,13 @@ class JPath
 			{
 				// not a stream, so do a realpath() to avoid directory
 				// traversal attempts on the local file system.
-				$path = realpath($path); // needed for substr() later
-				$fullname = realpath($fullname);
+				if (file_exists($path)) {
+					$path = realpath($path); // needed for substr() later
+					$fullname = realpath($fullname);
+				} else {
+					$path = '';
+					$fullname = '';
+				}
 			}
 
 			// the substr() check added to make sure that the realpath()

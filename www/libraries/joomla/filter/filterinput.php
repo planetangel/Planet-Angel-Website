@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: filterinput.php 11324 2008-12-05 19:06:24Z kdevine $
+ * @version		$Id: filterinput.php 19339 2010-11-03 14:52:38Z ian $
  * @package		Joomla.Framework
  * @subpackage	Filter
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -169,6 +169,17 @@ class JFilterInput extends JObject
 			case 'USERNAME' :
 				$result = (string) preg_replace( '/[\x00-\x1F\x7F<>"\'%&]/', '', $source );
 				break;
+				
+			case 'MENUTYPE':
+				$result = str_replace('-', ' ', $source);
+				$lang = &JFactory::getLanguage();
+				$result = $lang->transliterate($result);
+				$result = (string) preg_replace(
+					array('/\s+/','/[^A-Za-z0-9\-\_ ]/'), array('-',''), $result
+				);
+				$result = trim($result);
+				break;
+
 
 			default :
 				// Check for static usage and assign $filter the proper variable

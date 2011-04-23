@@ -1,10 +1,10 @@
 <?php
 
 /**
-* @version		$Id: ldap.php 10707 2008-08-21 09:52:47Z eddieajau $
+* @version		$Id: ldap.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla.Framework
 * @subpackage	Client
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software and parts of it may contain or be derived from the
 * GNU General Public License or other free or open source software licenses.
@@ -18,6 +18,10 @@
  * @subpackage	Client
  * @since		1.5
  */
+
+// no direct access
+defined('_JEXEC') or die('Restricted access');
+
 class JLDAP extends JObject
 {
 	/** @var string Hostname of LDAP server

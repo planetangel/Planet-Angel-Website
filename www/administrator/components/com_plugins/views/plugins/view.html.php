@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: view.html.php 11655 2009-03-08 20:04:17Z willebil $
+* @version		$Id: view.html.php 19343 2010-11-03 18:12:02Z ian $
 * @package		Joomla
 * @subpackage	Config
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -40,7 +40,10 @@ class PluginsViewPlugins extends JView
 		$filter_state		= $mainframe->getUserStateFromRequest( "$option.$client.filter_state",		'filter_state',		'',			'word' );
 		$filter_type		= $mainframe->getUserStateFromRequest( "$option.$client.filter_type", 		'filter_type',		1,			'cmd' );
 		$search				= $mainframe->getUserStateFromRequest( "$option.$client.search",			'search',			'',			'string' );
-		$search				= JString::strtolower( $search );
+		if (strpos($search, '"') !== false) {
+			$search = str_replace(array('=', '<'), '', $search);
+		}
+		$search = JString::strtolower($search);
 
 		$limit		= $mainframe->getUserStateFromRequest( 'global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int' );
 		$limitstart	= $mainframe->getUserStateFromRequest( $option.'.limitstart', 'limitstart', 0, 'int' );
@@ -70,12 +73,21 @@ class PluginsViewPlugins extends JView
 		}
 
 		$where 		= ( count( $where ) ? ' WHERE ' . implode( ' AND ', $where ) : '' );
+
+		// sanitize $filter_order
+		if (!in_array($filter_order, array('p.name', 'p.published', 'p.ordering', 'groupname', 'p.folder', 'p.element', 'p.id'))) {
+			$filter_order = 'p.folder';
+		}
+
+		if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+			$filter_order_Dir = '';
+		}
+
 		if ($filter_order == 'p.ordering') {
 			$orderby = ' ORDER BY p.folder, p.ordering '. $filter_order_Dir;
 		} else {
 			$orderby = ' ORDER BY '. $filter_order .' '. $filter_order_Dir .', p.ordering ASC';
 		}
-
 
 		// get the total number of records
 		$query = 'SELECT COUNT(*)'

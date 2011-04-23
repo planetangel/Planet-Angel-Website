@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: patfactory.php 10381 2008-06-01 03:35:53Z pasamio $
+* @version		$Id: patfactory.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla.Legacy
 * @subpackage	1.5
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -47,7 +47,7 @@ class patFactory
 		}
 
 		// TODO: Do the protocol better
-		$tmpl->addVar( 'form', 'formAction', basename($_SERVER['PHP_SELF']) );
+		$tmpl->addVar( 'form', 'formAction', basename(str_replace(array('"', '<', '>', "'"), '', $_SERVER["PHP_SELF"])) );
 		$tmpl->addVar( 'form', 'formName', 'adminForm' );
 
 		$tmpl->setRoot( dirname( __FILE__ ) . '/tmpl');

@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: admin.contact.php 11299 2008-11-22 01:40:44Z ian $
+* @version		$Id: admin.contact.php 19343 2010-11-03 18:12:02Z ian $
 * @package		Joomla
 * @subpackage	Contact
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -107,7 +107,10 @@ function showContacts( $option )
 	$filter_state 		= $mainframe->getUserStateFromRequest( $option.'filter_state', 		'filter_state', 	'',				'word' );
 	$filter_catid 		= $mainframe->getUserStateFromRequest( $option.'filter_catid', 		'filter_catid',		0,				'int' );
 	$search 			= $mainframe->getUserStateFromRequest( $option.'search', 			'search', 			'',				'string' );
-	$search 			= JString::strtolower( $search );
+	if (strpos($search, '"') !== false) {
+		$search = str_replace(array('=', '<'), '', $search);
+	}
+	$search = JString::strtolower($search);
 
 	$limit		= $mainframe->getUserStateFromRequest('global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
 	$limitstart	= $mainframe->getUserStateFromRequest($option.'.limitstart', 'limitstart', 0, 'int');
@@ -126,6 +129,15 @@ function showContacts( $option )
 		} else if ($filter_state == 'U' ) {
 			$where[] = 'cd.published = 0';
 		}
+	}
+
+	// sanitize $filter_order
+	if (!in_array($filter_order, array('cd.name', 'cd.published', 'cd.ordering', 'cd.access', 'category', 'user', 'cd.id'))) {
+		$filter_order = 'cd.ordering';
+	}
+
+	if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+		$filter_order_Dir = '';
 	}
 
 	$where 		= ( count( $where ) ? ' WHERE ' . implode( ' AND ', $where ) : '' );

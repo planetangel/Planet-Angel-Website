@@ -1,8 +1,8 @@
 <?php
 /**
- * @version		$Id: image.php 11784 2009-04-24 17:34:11Z kdevine $
+ * @version		$Id: image.php 21069 2011-04-03 22:58:48Z dextercowley $
  * @package		Joomla
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -49,12 +49,30 @@ class plgButtonImage extends JPlugin
 	{
 		global $mainframe;
 		$params =& JComponentHelper::getParams('com_media');
-		$ranks = array('publisher', 'editor', 'author', 'registered');
+		//Find out who has permission to upload and change the acl to let them.
 		$acl = & JFactory::getACL();
-		for($i = 0; $i < $params->get('allowed_media_usergroup', 3); $i++)
+		switch ($params->get('allowed_media_usergroup'))
 		{
-			$acl->addACL( 'com_media', 'popup', 'users', $ranks[$i] );
+			case '1':
+				$acl->addACL( 'com_media', 'upload', 'users', 'publisher' );
+				break;
+			case '2':
+				$acl->addACL( 'com_media', 'upload', 'users', 'publisher' );
+				$acl->addACL( 'com_media', 'upload', 'users', 'editor' );
+				break;
+			case '3':
+				$acl->addACL( 'com_media', 'upload', 'users', 'publisher' );
+				$acl->addACL( 'com_media', 'upload', 'users', 'editor' );
+				$acl->addACL( 'com_media', 'upload', 'users', 'author' );
+				break;
+			case '4':
+				$acl->addACL( 'com_media', 'upload', 'users', 'publisher' );
+				$acl->addACL( 'com_media', 'upload', 'users', 'editor' );
+				$acl->addACL( 'com_media', 'upload', 'users', 'author' );
+				$acl->addACL( 'com_media', 'upload', 'users', 'registered' );
+				break;
 		}
+
 		//Make sure the user is authorized to view this page
 		$user = & JFactory::getUser();
 		if (!$user->authorize( 'com_media', 'popup' )) {
@@ -63,7 +81,7 @@ class plgButtonImage extends JPlugin
 		$doc 		=& JFactory::getDocument();
 		$template 	= $mainframe->getTemplate();
 
-		$link = 'index.php?option=com_media&amp;view=images&amp;tmpl=component&amp;e_name='.$name;
+		$link = 'index.php?option=com_media&amp;view=images&amp;layout=default&amp;tmpl=component&amp;e_name='.$name;
 
 		JHTML::_('behavior.modal');
 

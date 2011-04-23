@@ -1,8 +1,8 @@
 <?php
 /**
- * @version		$Id: version.php 11987 2009-06-03 01:08:57Z ian $
+ * @version		$Id: version.php 21080 2011-04-04 22:01:17Z dextercowley $
  * @package	Joomla.Framework
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -10,7 +10,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  */
-
+defined('JPATH_BASE') or die();
 /**
  * Version information
  *
@@ -24,21 +24,21 @@ class JVersion
 	/** @var int Main Release Level */
 	var $RELEASE 	= '1.5';
 	/** @var string Development Status */
-	var $DEV_STATUS = 'Production/Stable';
+	var $DEV_STATUS = 'Stable';
 	/** @var int Sub Release Level */
-	var $DEV_LEVEL 	= '11';
+	var $DEV_LEVEL 	= '23';
 	/** @var int build Number */
 	var $BUILD	= '';
 	/** @var string Codename */
-	var $CODENAME 	= 'Vea';
+	var $CODENAME 	= 'senu takaa ama baji';
 	/** @var string Date */
-	var $RELDATE 	= '03-June-2009';
+	var $RELDATE 	= '04-March-2011';
 	/** @var string Time */
-	var $RELTIME 	= '03:30';
+	var $RELTIME 	= '18:00';
 	/** @var string Timezone */
 	var $RELTZ 	= 'GMT';
 	/** @var string Copyright Text */
-	var $COPYRIGHT 	= 'Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.';
+	var $COPYRIGHT 	= 'Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.';
 	/** @var string URL */
 	var $URL 	= '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';
 

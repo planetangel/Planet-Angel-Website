@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: user.php 11223 2008-10-29 03:10:37Z pasamio $
+* @version		$Id: user.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla.Framework
 * @subpackage	Table
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -148,7 +148,7 @@ class JTableUser extends JTable
 			return false;
 		}
 
-		if (eregi( "[<>\"'%;()&]", $this->username) || strlen(utf8_decode($this->username )) < 2) {
+		if (preg_match( "#[<>\"'%;()&]#i", $this->username) || strlen(utf8_decode($this->username )) < 2) {
 			$this->setError( JText::sprintf( 'VALID_AZ09', JText::_( 'Username' ), 2 ) );
 			return false;
 		}

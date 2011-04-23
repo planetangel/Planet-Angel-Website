@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: admin.messages.php 10710 2008-08-21 10:08:12Z eddieajau $
+* @version		$Id: admin.messages.php 19343 2010-11-03 18:12:02Z ian $
 * @package		Joomla
 * @subpackage	Messages
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -74,7 +74,18 @@ function showMessages( $option )
 	$limit				= $mainframe->getUserStateFromRequest( 'global.list.limit',			'limit',			$mainframe->getCfg('list_limit'), 'int' );
 	$limitstart			= $mainframe->getUserStateFromRequest( $context.'.limitstart',		'limitstart',		0,				'int' );
 	$search				= $mainframe->getUserStateFromRequest( $context.'search',			'search',			'',				'string' );
-	$search				= JString::strtolower( $search );
+	if (strpos($search, '"') !== false) {
+		$search = str_replace(array('=', '<'), '', $search);
+	}
+	$search = JString::strtolower($search);
+
+	if (!in_array($filter_order, array('a.date_time', 'a.state', 'a.subject', 'user_from'))) {
+		$filter_order = 'a.date_time';
+	}
+
+	if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+		$filter_order_Dir = 'DESC';
+	}
 
 	$where = array();
 	$where[] = ' a.user_id_to='.(int) $user->get('id');
@@ -92,6 +103,7 @@ function showMessages( $option )
 	}
 
 	$where 		= ( count( $where ) ? ' WHERE ' . implode( ' AND ', $where ) : '' );
+
 	$orderby 	= ' ORDER BY '. $filter_order .' '. $filter_order_Dir .', a.date_time DESC';
 
 	$query = 'SELECT COUNT(*)'

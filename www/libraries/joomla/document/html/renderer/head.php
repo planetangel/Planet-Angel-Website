@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: head.php 11917 2009-05-29 19:37:05Z ian $
+* @version		$Id: head.php 21074 2011-04-04 16:51:40Z dextercowley $
 * @package		Joomla.Framework
 * @subpackage	Document
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -52,6 +52,10 @@ class JDocumentRendererHead extends JDocumentRenderer
 	 */
 	function fetchHead(&$document)
 	{
+		// Trigger the onBeforeCompileHead event.
+		$app = &JFactory::getApplication();
+		$app->triggerEvent('onBeforeCompileHead');
+		
 		// get line endings
 		$lnEnd = $document->_getLineEnd();
 		$tab = $document->_getTab();

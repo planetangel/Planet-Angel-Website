@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: search.php 10381 2008-06-01 03:35:53Z pasamio $
+ * @version		$Id: search.php 19343 2010-11-03 18:12:02Z ian $
  * @package		Joomla
  * @subpackage	Search
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -52,11 +52,23 @@ class SearchModelSearch extends JModel
 		$limit				= $mainframe->getUserStateFromRequest( 'global.list.limit',				'limit',			$mainframe->getCfg('list_limit'), 'int' );
 		$limitstart			= $mainframe->getUserStateFromRequest( 'com_search.limitstart',			'limitstart',		0,		'int' );
 		$search				= $mainframe->getUserStateFromRequest( 'com_search.search',				'search',			'',		'string' );
-		$search				= JString::strtolower( $search );
+		if (strpos($search, '"') !== false) {
+			$search = str_replace(array('=', '<'), '', $search);
+		}
+		$search = JString::strtolower($search);
 		$showResults		= JRequest::getInt('search_results');
 
+		// sanitize $filter_order
+		if (!in_array($filter_order, array('search_term', 'hits'))) {
+			$filter_order = 'hits';
+		}
+
+		if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+			$filter_order_Dir = '';
+		}
+
 		// table ordering
-		if ( $filter_order_Dir == 'ASC' ) {
+		if ( strtoupper($filter_order_Dir) == 'ASC' ) {
 			$this->lists['order_Dir'] = 'ASC';
 		} else {
 			$this->lists['order_Dir'] = 'DESC';
@@ -72,6 +84,7 @@ class SearchModelSearch extends JModel
 		}
 
 		$where 		= ( count( $where ) ? ' WHERE ' . implode( ' AND ', $where ) : '' );
+
 		$orderby 	= ' ORDER BY '. $filter_order .' '. $filter_order_Dir .', hits DESC';
 
 		// get the total number of records

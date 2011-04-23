@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: weblink.php 11253 2008-11-10 23:38:48Z ircmaxell $
+* @version		$Id: weblink.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla
 * @subpackage	Weblinks
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -162,7 +162,7 @@ class TableWeblink extends JTable
 			return false;
 		}
 
-		if (!(eregi('http://', $this->url) || (eregi('https://', $this->url)) || (eregi('ftp://', $this->url)))) {
+		if (!(preg_match('#http://#i', $this->url) || (preg_match('#https://#i', $this->url)) || (preg_match('#ftp://#i', $this->url)))) {
 			$this->url = 'http://'.$this->url;
 		}
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: controller.php 10836 2008-08-28 10:56:44Z eddieajau $
+ * @version		$Id: controller.php 21042 2011-03-31 15:58:17Z dextercowley $
  * @package		Joomla
  * @subpackage	Templates
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -224,7 +224,7 @@ class TemplatesController
 			$return = JFile::write($file, $txt);
 
 			// Try to make the params file unwriteable
-			if (!$ftp['enabled'] && JPath::isOwner($file) && !JPath::setPermissions($file, '0555')) {
+			if (!$ftp['enabled'] && JPath::isOwner($file) && !JPath::setPermissions($file, '0644')) {
 				JError::raiseNotice('SOME_ERROR_CODE', JText::_('Could not make the template parameter file unwritable'));
 			}
 
@@ -352,7 +352,7 @@ class TemplatesController
 		$return = JFile::write($file, $filecontent);
 
 		// Try to make the template file unwriteable
-		if (!$ftp['enabled'] && !JPath::setPermissions($file, '0555')) {
+		if (!$ftp['enabled'] && !JPath::setPermissions($file, '0644')) {
 			JError::raiseNotice('SOME_ERROR_CODE', JText::_('Could not make the template file unwritable'));
 		}
 
@@ -474,7 +474,7 @@ class TemplatesController
 		$return = JFile::write($file, $filecontent);
 
 		// Try to make the css file unwriteable
-		if (!$ftp['enabled'] && JPath::isOwner($file) && !JPath::setPermissions($file, '0555')) {
+		if (!$ftp['enabled'] && JPath::isOwner($file) && !JPath::setPermissions($file, '0644')) {
 			JError::raiseNotice('SOME_ERROR_CODE', JText::_('Could not make the css file unwritable'));
 		}
 

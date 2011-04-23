@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: category.php 10752 2008-08-23 01:53:31Z eddieajau $
+ * @version		$Id: category.php 19343 2010-11-03 18:12:02Z ian $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -81,9 +81,20 @@ class WeblinksModelCategory extends JModel
 		// In case limit has been changed, adjust limitstart accordingly
 		$this->setState('limitstart', ($this->getState('limit') != 0 ? (floor($this->getState('limitstart') / $this->getState('limit')) * $this->getState('limit')) : 0));
 
+		$filter_order = JRequest::getCmd('filter_order', 'ordering');
+		$filter_order_Dir = JRequest::getCmd('filter_order_Dir', 'ASC');
+
+		if (!in_array($filter_order, array('title', 'hits', 'ordering'))) {
+			$filter_order = 'ordering';
+		}
+
+		if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC', ''))) {
+			$filter_order_Dir = 'ASC';
+		}
+
 		// Get the filter request variables
-		$this->setState('filter_order', JRequest::getCmd('filter_order', 'ordering'));
-		$this->setState('filter_order_dir', JRequest::getCmd('filter_order_Dir', 'ASC'));
+		$this->setState('filter_order', $filter_order);
+		$this->setState('filter_order_dir', $filter_order_Dir);
 
 		$id = JRequest::getVar('id', 0, '', 'int');
 		$this->setId((int)$id);

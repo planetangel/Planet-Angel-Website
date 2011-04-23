@@ -56,7 +56,7 @@ function submitbutton(pressbutton) {
 						<?php echo JText::_( 'Menu Item Type' ); ?>
 					</legend>
 					<div style="float:right">
-						<button type="button" onclick="location.href='index.php?option=com_menus&amp;task=type&amp;menutype=<?php echo $this->item->menutype;?><?php echo $this->item->expansion; ?>&amp;cid[]=<?php echo $this->item->id; ?>';">
+						<button type="button" onclick="location.href='index.php?option=com_menus&amp;task=type&amp;menutype=<?php echo htmlspecialchars($this->item->menutype);?><?php echo $this->item->expansion; ?>&amp;cid[]=<?php echo $this->item->id; ?>';">
 							<?php echo JText::_( 'Change Type' ); ?></button>
 					</div>
 					<h2><?php echo $this->name; ?></h2>
@@ -144,6 +144,7 @@ function submitbutton(pressbutton) {
 								<?php echo JHTML::_('list.accesslevel',  $this->item ); ?>
 							</td>
 						</tr>
+						<?php if ($this->item->type != "menulink") : ?>
 						<tr>
 							<td class="key" valign="top" align="right">
 								<?php echo JText::_( 'On Click, Open in' ); ?>:
@@ -152,6 +153,7 @@ function submitbutton(pressbutton) {
 								<?php echo MenusHelper::Target( $this->item ); ?>
 							</td>
 						</tr>
+						<?php endif; ?>
 					</table>
 				</fieldset>
 			</td>

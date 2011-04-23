@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: uri.php 10919 2008-09-09 20:50:29Z willebil $
+ * @version		$Id: uri.php 21079 2011-04-04 20:54:40Z dextercowley $
  * @package		Joomla.Framework
  * @subpackage	Environment
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -157,12 +157,17 @@ class JURI extends JObject
 				 * running on IIS and will therefore need to work some magic with the SCRIPT_NAME and
 				 * QUERY_STRING environment variables.
 				 */
+				
+				 	if (strlen($_SERVER['QUERY_STRING']) && strpos($_SERVER['REQUEST_URI'], $_SERVER['QUERY_STRING']) === false) {
+						$theURI .= '?'.$_SERVER['QUERY_STRING'];
+					}
+
 				}
 				 else
 				 {
 					// IIS uses the SCRIPT_NAME variable instead of a REQUEST_URI variable... thanks, MS
 					$theURI = 'http' . $https . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
-
+		
 					// If the query string exists append it to the URI string
 					if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
 						$theURI .= '?' . $_SERVER['QUERY_STRING'];
@@ -170,7 +175,24 @@ class JURI extends JObject
 				}
 
 				// Now we need to clean what we got since we can't trust the server var
-				$theURI = urldecode($theURI);
+				// Need to check that the URI is fully decoded in case of multiple-encoded attack vectors.
+				$halt	= 0;
+				while (true)
+				{
+					$last	= $theURI;
+					$theURI = urldecode($theURI);
+
+					// Check whether the last decode is equal to the first.
+					if ($theURI == $last) {
+						// Break out of the while if the URI is stable.
+						break;
+					}
+					else if (++$halt > 10) {
+						// Runaway check. URI has been seriously compromised.
+						jexit();
+					}
+				}
+
 				$theURI = str_replace('"', '&quot;',$theURI);
 				$theURI = str_replace('<', '&lt;',$theURI);
 				$theURI = str_replace('>', '&gt;',$theURI);
@@ -218,11 +240,15 @@ class JURI extends JObject
 				$uri	         =& JURI::getInstance();
 				$base['prefix'] = $uri->toString( array('scheme', 'host', 'port'));
 
-				if (strpos(php_sapi_name(), 'cgi') !== false && !empty($_SERVER['REQUEST_URI'])) {
-					//Apache CGI
-					$base['path'] =  rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+				if (strpos(php_sapi_name(), 'cgi') !== false && !empty($_SERVER['REQUEST_URI']) &&
+				    (!ini_get('cgi.fix_pathinfo') || version_compare(PHP_VERSION, '5.2.4', '<'))) {
+					// CGI on PHP pre-5.2.4 with cgi.fix_pathinfo = 0.
+
+					// In pre-rev. 240885 of main_cgi.c, SCRIPT_NAME doesn't conform the PHP spec.,
+					// therefore we use PHP_SELF instead.
+					$base['path'] =  rtrim(dirname(str_replace(array('"', '<', '>', "'"), '', $_SERVER["PHP_SELF"])), '/\\');
 				} else {
-					//Others
+					// Since PHP 5.2.4 we can trust SCRIPT_NAME;  it conforms the spec.
 					$base['path'] =  rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 				}
 			}

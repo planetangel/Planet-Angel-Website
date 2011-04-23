@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: view.php 11625 2009-02-15 15:32:42Z kdevine $
+ * @version		$Id: view.php 17299 2010-05-27 16:06:54Z ian $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -59,7 +59,7 @@ class ContentViewElement extends JView
 				<tr>
 					<td width="100%">
 						<?php echo JText::_( 'Filter' ); ?>:
-						<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+						<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 						<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 						<button onclick="document.getElementById('search').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
 					</td>
@@ -174,7 +174,10 @@ class ContentViewElement extends JView
 		$limit				= $mainframe->getUserStateFromRequest('global.list.limit',					'limit', $mainframe->getCfg('list_limit'), 'int');
 		$limitstart			= $mainframe->getUserStateFromRequest('articleelement.limitstart',			'limitstart',		0,	'int');
 		$search				= $mainframe->getUserStateFromRequest('articleelement.search',				'search',			'',	'string');
-		$search				= JString::strtolower($search);
+		if (strpos($search, '"') !== false) {
+			$search = str_replace(array('=', '<'), '', $search);
+		}
+		$search = JString::strtolower($search);
 
 		// get list of categories for dropdown filter
 		$filter = ($filter_sectionid >= 0) ? ' WHERE cc.section = '.$db->Quote($filter_sectionid) : '';

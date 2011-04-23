@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: client.php 10381 2008-06-01 03:35:53Z pasamio $
+ * @version		$Id: client.php 18162 2010-07-16 07:00:47Z ian $
  * @package		Joomla
  * @subpackage	Banners
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -39,7 +39,7 @@ class BannersViewClients
 			<tr>
 				<td align="left" width="100%">
 					<?php echo JText::_( 'Filter' ); ?>:
-					<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+					<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 					<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 					<button onclick="document.getElementById('search').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
 				</td>
@@ -102,9 +102,9 @@ class BannersViewClients
 							echo $row->name;
 						} else {
 							?>
-								<span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit' );?>::<?php echo $row->name; ?>">
+								<span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit' );?>::<?php echo htmlspecialchars($row->name); ?>">
 							<a href="<?php echo $link; ?>">
-								<?php echo $row->name; ?></a>
+								<?php echo htmlspecialchars($row->name); ?></a>
 								</span>
 							<?php
 						}

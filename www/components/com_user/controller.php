@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: controller.php 11215 2008-10-26 02:25:51Z ian $
+ * @version		$Id: controller.php 16385 2010-04-23 10:44:15Z ian $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -83,7 +83,7 @@ class UserController extends JController
 				$msg	= JText::_('PASSWORDS_DO_NOT_MATCH');
 				// something is wrong. we are redirecting back to edit form.
 				// TODO: HTTP_REFERER should be replaced with a base64 encoded form field in a later release
-				$return = @$_SERVER['HTTP_REFERER'];
+				$return = str_replace(array('"', '<', '>', "'"), '', @$_SERVER['HTTP_REFERER']);
 				if (empty($return) || !JURI::isInternal($return)) {
 					$return = JURI::base();
 				}
@@ -250,7 +250,7 @@ class UserController extends JController
 
 		// Set some initial user values
 		$user->set('id', 0);
-		$user->set('usertype', '');
+		$user->set('usertype', $newUsertype);
 		$user->set('gid', $authorize->get_group_id( '', $newUsertype, 'ARO' ));
 
 		$date =& JFactory::getDate();
@@ -403,18 +403,18 @@ class UserController extends JController
 
 		// Get the input
 		$token = JRequest::getVar('token', null, 'post', 'alnum');
+		$username = JRequest::getVar('username', null, 'post');
 
 		// Get the model
 		$model = &$this->getModel('Reset');
 
 		// Verify the token
-		if ($model->confirmReset($token) === false)
+		if ($model->confirmReset($token, $username) !== true)
 		{
 			$message = JText::sprintf('PASSWORD_RESET_CONFIRMATION_FAILED', $model->getError());
 			$this->setRedirect('index.php?option=com_user&view=reset&layout=confirm', $message);
 			return false;
 		}
-
 		$this->setRedirect('index.php?option=com_user&view=reset&layout=complete');
 	}
 

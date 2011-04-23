@@ -43,7 +43,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<?php echo JText::_('Num'); ?>
 	</td>
 	<?php if ($this->params->get('show_title')) : ?>
- 	<td class="sectiontableheader<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>" width="45%">
+ 	<td class="sectiontableheader<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>" >
 		<?php echo JHTML::_('grid.sort',  'Item Title', 'a.title', $this->lists['order_Dir'], $this->lists['order'] ); ?>
 	</td>
 	<?php endif; ?>
@@ -65,7 +65,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 </tr>
 <?php endif; ?>
 <?php foreach ($this->items as $item) : ?>
-<tr class="sectiontableentry<?php echo ($item->odd +1 ) . $this->escape($this->params->get('pageclass_sfx')); ?>; ?>" >
+<tr class="sectiontableentry<?php echo ($item->odd +1 ) . $this->escape($this->params->get('pageclass_sfx')); ?>" >
 	<td align="right">
 		<?php echo $this->pagination->getRowOffset( $item->count ); ?>
 	</td>
@@ -131,4 +131,5 @@ defined('_JEXEC') or die('Restricted access'); ?>
 <input type="hidden" name="filter_order" value="" />
 <input type="hidden" name="filter_order_Dir" value="" />
 <input type="hidden" name="limitstart" value="0" />
+<input type="hidden" name="viewcache" value="0" />
 </form>

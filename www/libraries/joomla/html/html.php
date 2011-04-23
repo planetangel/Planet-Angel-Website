@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: html.php 10381 2008-06-01 03:35:53Z pasamio $
+ * @version		$Id: html.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla.Framework
  * @subpackage	HTML
- * @copyright	Copyright (C) 2005 - 2007 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -11,7 +11,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  */
-
+defined('JPATH_BASE') or die();
 /**
  * Utility class for all HTML drawing classes
  *
@@ -82,8 +82,12 @@ class JHTML
 
 		if (is_callable( array( $className, $func ) ))
 		{
-			$args = func_get_args();
-			array_shift( $args );
+			$temp = func_get_args();
+			array_shift( $temp );
+			$args = array();
+			foreach ($temp as $k => $v) {
+			    $args[] = &$temp[$k];
+			}
 			return call_user_func_array( array( $className, $func ), $args );
 		}
 		else
@@ -239,8 +243,8 @@ class JHTML
 	 */
 	function tooltip($tooltip, $title='', $image='tooltip.png', $text='', $href='', $link=1)
 	{
-		$tooltip	= addslashes(htmlspecialchars($tooltip));
-		$title		= addslashes(htmlspecialchars($title));
+		$tooltip	= addslashes(htmlspecialchars($tooltip, ENT_QUOTES, 'UTF-8'));
+		$title		= addslashes(htmlspecialchars($title, ENT_QUOTES, 'UTF-8'));
 
 		if ( !$text ) {
 			$image 	= JURI::root(true).'/includes/js/ThemeOffice/'. $image;

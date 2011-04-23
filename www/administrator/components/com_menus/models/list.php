@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: list.php 11646 2009-03-01 19:34:56Z ian $
+ * @version		$Id: list.php 19343 2010-11-03 18:12:02Z ian $
  * @package		Joomla
  * @subpackage	Menus
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -53,7 +53,7 @@ class MenusModelList extends JModel
 
 		$db =& $this->getDBO();
 
-		$menutype			= $mainframe->getUserStateFromRequest( "com_menus.menutype",						'menutype',			'mainmenu',		'string' );
+		$menutype			= $mainframe->getUserStateFromRequest( 'com_menus.menutype',						'menutype',			'mainmenu',		'menutype' );
 		$filter_order		= $mainframe->getUserStateFromRequest( 'com_menus.'.$menutype.'.filter_order',		'filter_order',		'm.ordering',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( 'com_menus.'.$menutype.'.filter_order_Dir',	'filter_order_Dir',	'ASC',			'word' );
 		$filter_state		= $mainframe->getUserStateFromRequest( 'com_menus.'.$menutype.'.filter_state',		'filter_state',		'',				'word' );
@@ -61,7 +61,10 @@ class MenusModelList extends JModel
 		$limitstart			= $mainframe->getUserStateFromRequest( 'com_menus.'.$menutype.'.limitstart',		'limitstart',		0,				'int' );
 		$levellimit			= $mainframe->getUserStateFromRequest( 'com_menus.'.$menutype.'.levellimit',		'levellimit',		10,				'int' );
 		$search				= $mainframe->getUserStateFromRequest( 'com_menus.'.$menutype.'.search',			'search',			'',				'string' );
-		$search				= JString::strtolower( $search );
+		if (strpos($search, '"') !== false) {
+			$search = str_replace(array('=', '<'), '', $search);
+		}
+		$search = JString::strtolower($search);
 
 		$and = '';
 		if ( $filter_state )
@@ -71,6 +74,15 @@ class MenusModelList extends JModel
 			} else if ($filter_state == 'U' ) {
 				$and = ' AND m.published = 0';
 			}
+		}
+
+		// ensure $filter_order has a good value
+		if (!in_array($filter_order, array('m.name', 'm.published', 'm.ordering', 'groupname', 'm.type', 'm.id'))) {
+			$filter_order = 'm.ordering';
+		}
+
+		if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC', ''))) {
+			$filter_order_Dir = 'ASC';
 		}
 
 		// just in case filter_order get's messed up
@@ -172,7 +184,7 @@ class MenusModelList extends JModel
 						}
 						parse_str($query['query'], $view);
 					}
-					$list[$i]->view		= $list[$i]->com_name;
+					$list[$i]->view		= JText::_($list[$i]->com_name);
 					if (isset($view['view']))
 					{
 						$list[$i]->view	.= ' &raquo; '.JText::_(ucfirst($view['view']));

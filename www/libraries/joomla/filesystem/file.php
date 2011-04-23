@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: file.php 11807 2009-05-10 00:33:43Z kdevine $
+ * @version		$Id: file.php 19177 2010-10-21 03:08:56Z ian $
  * @package		Joomla.Framework
  * @subpackage	FileSystem
  * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
@@ -35,8 +35,14 @@ class JFile
 	 * @since 1.5
 	 */
 	function getExt($file) {
-		$dot = strrpos($file, '.') + 1;
-		return substr($file, $dot);
+		$chunks = explode('.', $file);
+		$chunksCount = count($chunks) - 1;
+
+		if($chunksCount > 0) {
+			return $chunks[$chunksCount];
+		}
+		
+		return false;
 	}
 
 	/**
@@ -334,9 +340,10 @@ class JFile
 			$dest = JPath::clean(str_replace(JPATH_ROOT, $FTPOptions['root'], $dest), '/');
 
 			// Copy the file to the destination directory
-			if ($ftp->store($src, $dest)) {
-				$ftp->chmod($dest, 0777);
-				$ret = true;
+			if (is_uploaded_file($src) && $ftp->store($src, $dest))
+			{
+			            $ret = true;
+                		unlink($src);
 			} else {
 				JError::raiseWarning(21, JText::_('WARNFS_ERR02'));
 			}

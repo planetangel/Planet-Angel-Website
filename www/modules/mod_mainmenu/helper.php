@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: helper.php 11799 2009-05-06 02:15:50Z ian $
+* @version		$Id: helper.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -28,7 +28,7 @@ jimport('joomla.utilities.simplexml');
  */
 class modMainMenuHelper
 {
-	function buildXML(&$params)
+	function buildXML($params)
 	{
 		$menu = new JMenuTree($params);
 		$items = &JSite::getMenu();

@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: category.php 11794 2009-05-06 01:56:42Z ian $
+ * @version		$Id: category.php 19340 2010-11-03 15:00:55Z ian $
  * @package		Joomla
  * @subpackage	Content
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -322,7 +322,7 @@ class ContentModelCategory extends JModel
 		}
 
 		// Lets load the siblings if they don't already exist
-		if (empty($this->_content[$state]))
+		if (empty($this->_data[$state]))
 		{
 			// Get the pagination request variables
 			$limit		= JRequest::getVar('limit', 0, '', 'int');
@@ -330,6 +330,13 @@ class ContentModelCategory extends JModel
 
 			$query = $this->_buildQuery();
 			$Arows = $this->_getList($query, $limitstart, $limit);
+			
+			// Check for db errors
+			if ($this->_db->getErrorNum())
+			{
+				JError::raiseError(500, $this->_db->stderror());
+				return false;
+			}
 
 			// special handling required as Uncategorized content does not have a section / category id linkage
 			$i = $limitstart;
@@ -382,16 +389,19 @@ class ContentModelCategory extends JModel
 		$itemid = JRequest::getInt('id', 0) . ':' . JRequest::getInt('Itemid', 0);
 		$filter_order  = $mainframe->getUserStateFromRequest('com_content.category.list.' . $itemid . '.filter_order', 'filter_order', '', 'cmd');
 		$filter_order_Dir = $mainframe->getUserStateFromRequest('com_content.category.list.' . $itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
+
+		if (!in_array($filter_order, array('a.title', 'author', 'a.hits', 'a.created', 'a.publish_up', 'a.publish_down', 'a.modified'))) {
+			$filter_order = '';
+		}
+
+		if (!in_array(strtoupper($filter_order_Dir), array('ASC', 'DESC'))) {
+			$filter_order_Dir = 'ASC';
+		}
+
 		$orderby = ' ORDER BY ';
 		if ($filter_order && $filter_order_Dir)
 		{
 			$orderby .= $filter_order .' '. $filter_order_Dir.', ';
-		}
-	    elseif($filter_order == '' && $filter_order_Dir == '')
-		{
-				$filter_order='a.ordering';
-				$filter_order_Dir='ASC';
-				$orderby .= $filter_order .' '. $filter_order_Dir.', ';
 		}
 
 		if ($filter_order == 'author')

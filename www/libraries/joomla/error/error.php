@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: error.php 10871 2008-08-30 07:30:33Z willebil $
+ * @version		$Id: error.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla.Framework
  * @subpackage	Error
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -547,6 +547,15 @@ class JError
 		$document	= & JDocument::getInstance('error');
 		$config		= & JFactory::getConfig();
 
+		//Get the current language direction
+		$language = &JFactory::getLanguage();
+		if ($language->isRTL()){
+		$dir ="rtl";
+		}
+		else {
+		$dir ="ltr";
+		}
+
 		// Get the current template from the application
 		$template = $app->getTemplate();
 
@@ -555,6 +564,8 @@ class JError
 
 		@ob_end_clean();
 		$document->setTitle(JText::_('Error').': '.$error->code);
+		$document->setLanguage($language->getTag());
+		$document->setDirection($dir);
 		$data = $document->render(false, array (
 			'template' => $template,
 			'directory' => JPATH_THEMES,

@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: legacy.php 10856 2008-08-30 06:35:08Z willebil $
+* @version		$Id: legacy.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -47,8 +47,8 @@ function mosGetMenuLink($mitem, $level = 0, & $params, $open = null)
 			break;
 
 		case 'url' :
-			if (eregi('index.php\?', $mitem->link)) {
-				if (!eregi('Itemid=', $mitem->link)) {
+			if (preg_match('#index.php\?#i', $mitem->link)) {
+				if (!preg_match('#Itemid=#i', $mitem->link)) {
 					$mitem->link .= '&amp;Itemid='.$mitem->id;
 				}
 			}

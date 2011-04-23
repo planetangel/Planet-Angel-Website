@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: admin.messages.html.php 10381 2008-06-01 03:35:53Z pasamio $
+* @version		$Id: admin.messages.html.php 18162 2010-07-16 07:00:47Z ian $
 * @package		Joomla
 * @subpackage	Messages
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -32,7 +32,7 @@ class HTML_messages
 		<tr>
 			<td align="left" width="100%">
 				<?php echo JText::_( 'Search' ); ?>:
-				<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+				<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 				<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 				<button onclick="document.getElementById('search').value='';this.form.getElementById('filter_state').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
 			</td>
@@ -100,7 +100,7 @@ class HTML_messages
 					</td>
 					<td>
 						<a href="#edit" onclick="return listItemTask('cb<?php echo $i;?>','view')">
-							<?php echo $row->subject; ?></a>
+							<?php echo htmlspecialchars($row->subject); ?></a>
 					</td>
 					<td align="center">
 						<a href="javascript: void(0);">
@@ -209,7 +209,7 @@ class HTML_messages
 					<?php echo JText::_( 'Subject' ); ?>:
 				</td>
 				<td bgcolor="#ffffff">
-					<?php echo $row->subject;?>
+					<?php echo htmlspecialchars($row->subject);?>
 				</td>
 			</tr>
 			<tr>
@@ -227,7 +227,7 @@ class HTML_messages
 		<input type="hidden" name="boxchecked" value="1" />
 		<input type="hidden" name="cid[]" value="<?php echo $row->message_id; ?>" />
 		<input type="hidden" name="userid" value="<?php echo $row->user_id_from; ?>" />
-		<input type="hidden" name="subject" value="Re: <?php echo $row->subject; ?>" />
+		<input type="hidden" name="subject" value="Re: <?php echo htmlspecialchars($row->subject); ?>" />
 		<?php echo JHTML::_( 'form.token' ); ?>
 		</form>
 		<?php

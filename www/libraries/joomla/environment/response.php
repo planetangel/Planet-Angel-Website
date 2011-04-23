@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: response.php 10707 2008-08-21 09:52:47Z eddieajau $
+ * @version		$Id: response.php 21044 2011-03-31 16:03:23Z dextercowley $
  * @package		Joomla.Framework
  * @subpackage	Environment
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -15,6 +15,7 @@
 /**
  * Create the response global object
  */
+defined('JPATH_BASE') or die();
 $GLOBALS['_JRESPONSE'] = new stdClass();
 $GLOBALS['_JRESPONSE']->cachable = false;
 $GLOBALS['_JRESPONSE']->headers  = array();
@@ -197,7 +198,8 @@ class JResponse
 		{
 			JResponse::setHeader( 'Expires', 'Mon, 1 Jan 2001 00:00:00 GMT', true ); 				// Expires in the past
 			JResponse::setHeader( 'Last-Modified', gmdate("D, d M Y H:i:s") . ' GMT', true ); 		// Always modified
-			JResponse::setHeader( 'Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0', false );
+			JResponse::setHeader( 'Cache-Control', 'no-store, no-cache, must-revalidate', true ); 	// Extra CYA
+			JResponse::setHeader( 'Cache-Control', 'post-check=0, pre-check=0', false );			// HTTP/1.1
 			JResponse::setHeader( 'Pragma', 'no-cache' ); 											// HTTP 1.0
 		}
 

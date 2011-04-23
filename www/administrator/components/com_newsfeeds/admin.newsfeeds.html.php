@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: admin.newsfeeds.html.php 11655 2009-03-08 20:04:17Z willebil $
+* @version		$Id: admin.newsfeeds.html.php 18162 2010-07-16 07:00:47Z ian $
 * @package		Joomla
 * @subpackage	Newsfeeds
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -38,7 +38,7 @@ class HTML_newsfeeds
 		<tr>
 			<td align="left" width="100%">
 				<?php echo JText::_( 'Filter' ); ?>:
-				<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+				<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 				<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 				<button onclick="document.getElementById('search').value='';this.form.getElementById('filter_catid').value='0';this.form.getElementById('filter_state').value='';this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
 			</td>
@@ -117,9 +117,9 @@ class HTML_newsfeeds
 							echo $row->name;
 						} else {
 							?>
-								<span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Newsfeed' );?>::<?php echo $row->name; ?>">
+								<span class="editlinktip hasTip" title="<?php echo JText::_( 'Edit Newsfeed' );?>::<?php echo htmlspecialchars($row->name); ?>">
 							<a href="<?php echo $link; ?>">
-								<?php echo $row->name; ?></a></span>
+								<?php echo htmlspecialchars($row->name); ?></a></span>
 							<?php
 						}
 						?>

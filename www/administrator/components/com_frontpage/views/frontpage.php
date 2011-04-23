@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: frontpage.php 11655 2009-03-08 20:04:17Z willebil $
+* @version		$Id: frontpage.php 19343 2010-11-03 18:12:02Z ian $
 * @package		Joomla
 * @subpackage	Content
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -46,7 +46,7 @@ class FrontpageView
 				<tr>
 					<td width="100%" class="filter">
 						<?php echo JText::_( 'Filter' ); ?>:
-						<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+						<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 						<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 						<button onclick="document.getElementById('search').value=''; this.form.getElementById('filter_sectionid').value='-1'; this.form.getElementById('catid').value='0'; this.form.getElementById('filter_authorid').value='0'; this.form.getElementById('filter_state').value=''; this.form.submit();"><?php echo JText::_( 'Reset' ); ?></button>
 					</td>
@@ -92,7 +92,7 @@ class FrontpageView
 						<?php echo JHTML::_('grid.sort',   'Section', 'sect_name', @$lists['order_Dir'], @$lists['order'] ); ?>
 					</th>
 					<th width="10%" class="title">
-						<?php echo JHTML::_('grid.sort',   'Category', 'cc.name', @$lists['order_Dir'], @$lists['order'] ); ?>
+						<?php echo JHTML::_('grid.sort',   'Category', 'cc.title', @$lists['order_Dir'], @$lists['order'] ); ?>
 					</th>
 					<th width="10%" class="title">
 						<?php echo JHTML::_('grid.sort',   'Author', 'author', @$lists['order_Dir'], @$lists['order'] ); ?>

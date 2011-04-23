@@ -1,8 +1,8 @@
 <?php
 /**
- * @version		$Id: factory.php 11811 2009-05-13 16:16:52Z ian $
+ * @version		$Id: factory.php 19176 2010-10-21 03:06:39Z ian $
  * @package		Joomla.Framework
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -10,7 +10,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  */
-
+defined('JPATH_BASE') or die();
 /**
  * Joomla Framework Factory class
  *
@@ -331,6 +331,7 @@ class JFactory
 						JPATH_BASE.DS.'cache',
 						isset( $options['cache_time'] ) ? $options['cache_time'] : 0
 					);
+					$simplepie->force_feed(true);
 					$simplepie->handle_content_type();
 					if ($simplepie->init()) {
 						$doc = $simplepie;
@@ -562,6 +563,7 @@ class JFactory
 		$db =& JDatabase::getInstance( $options );
 
 		if ( JError::isError($db) ) {
+			header('HTTP/1.1 500 Internal Server Error');
 			jexit('Database Error: ' . $db->toString() );
 		}
 
@@ -591,6 +593,8 @@ class JFactory
 		$smtpuser 	= $conf->getValue('config.smtpuser');
 		$smtppass  	= $conf->getValue('config.smtppass');
 		$smtphost 	= $conf->getValue('config.smtphost');
+		$smtpsecure	= $conf->getValue('config.smtpsecure');
+		$smtpport	= $conf->getValue('config.smtpport');
 		$mailfrom 	= $conf->getValue('config.mailfrom');
 		$fromname 	= $conf->getValue('config.fromname');
 		$mailer 	= $conf->getValue('config.mailer');
@@ -605,7 +609,7 @@ class JFactory
 		switch ($mailer)
 		{
 			case 'smtp' :
-				$mail->useSMTP($smtpauth, $smtphost, $smtpuser, $smtppass);
+				$mail->useSMTP($smtpauth, $smtphost, $smtpuser, $smtppass, $smtpsecure, $smtpport);
 				break;
 			case 'sendmail' :
 				$mail->useSendmail($sendmail);
@@ -655,7 +659,7 @@ class JFactory
 		}
 
 		$tmpl->addGlobalVar( 'option', 				$GLOBALS['option'] );
-		$tmpl->addGlobalVar( 'self', 				$_SERVER['PHP_SELF'] );
+		$tmpl->addGlobalVar( 'self', 				str_replace(array('"', '<', '>', "'"), '', $_SERVER["PHP_SELF"]) );
 		$tmpl->addGlobalVar( 'uri_query', 			$_SERVER['QUERY_STRING'] );
 		$tmpl->addGlobalVar( 'REQUEST_URI',			JRequest::getURI() );
 		if (isset($GLOBALS['Itemid'])) {

@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: cache.php 10707 2008-08-21 09:52:47Z eddieajau $
+ * @version		$Id: cache.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla.Framework
  * @subpackage	Cache
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant to the
  * GNU General Public License, and as distributed it includes or is derivative
@@ -140,7 +140,7 @@ class JCache extends JObject
 				require_once(dirname(__FILE__).DS.'storage'.DS.$name.'.php');
 			}
 
-			if(call_user_func_array( array( trim($class), 'test' ), null)) {
+			if(call_user_func_array( array( trim($class), 'test' ), array())) {
 				$names[] = $name;
 			}
 		}
