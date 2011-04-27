@@ -32,17 +32,6 @@ error_log(print_r($this, true));
 
 ?>
 <script language="javascript" src="/templates/planetangelx/js/countdown_clock.js"></script>
-
-<?php // BEGIN GREYBOX ?>
-<script type="text/javascript">
-    var GB_ROOT_DIR = "<?php echo $this->base ?>lib/greybox/";
-</script>
-<script type="text/javascript" src="/lib/greybox/AJS.js"></script>
-<script type="text/javascript" src="/lib/greybox/AJS_fx.js"></script>
-<script type="text/javascript" src="/lib/greybox/gb_scripts.js"></script>
-<link href="/lib/greybox/gb_styles.css" rel="stylesheet" type="text/css" />
-<?php // END GREYBOX ?>
-
 </head>
 <body>
 	<div id="wrapper" align="center">
