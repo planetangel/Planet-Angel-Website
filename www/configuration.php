@@ -33,7 +33,7 @@ class JConfig {
 	var $dbtype = 'mysql';
 	var $host = 'localhost';
 	var $user = 'pangel';
-	var $db = 'pabeta';
+	var $db = 'pangel';
 	var $dbprefix = 'jos_';
 	var $mailer = 'mail';
 	var $mailfrom = '';
