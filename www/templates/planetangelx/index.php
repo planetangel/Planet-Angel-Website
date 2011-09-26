@@ -18,7 +18,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	<meta property="og:title" content="<?php echo $this->title; ?>"/>
 	<meta property="og:type" content="non_profit"/>
 	<meta property="og:url" content="<?php echo $this->base; ?>"/>
-	<meta property="og:image" content="http://www.planetangel.net/templates/planetangelx/images/glowlogo.jpg"/>
+	<meta property="og:image" content="<?php echo $this->base; ?>/templates/planetangelx/images/og-logo.png"/>
 	<meta property="og:site_name" content="Planet Angel"/>
 	<meta property="og:description" content="Live an ordinary life in an extraordinary way"/>
 	<meta property="og:locale" content="en_GB"/>
