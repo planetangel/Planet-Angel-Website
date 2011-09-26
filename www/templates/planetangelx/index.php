@@ -4,12 +4,26 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 error_log(print_r($this, true));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xml:lang="<?php echo $this->language;?>" 
+      lang="<?php echo $this->language; ?>" 
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
 	<jdoc:include type="head" />
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/system.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/system/css/general.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/planetangelx/css/template_css.css" type="text/css" />
+
+	<meta property="og:title" content="Planet Angel"/>
+	<meta property="og:type" content="non_profit"/>
+	<meta property="og:url" content="http://www.planetangel.net"/>
+	<meta property="og:image" content="http://www.planetangel.net/templates/planetangelx/images/glowlogo.jpg"/>
+	<meta property="og:site_name" content="Planet Angel"/>
+	<meta property="og:description" content="Live an ordinary life in an extraordinary way"/>
+	<?php // leaving the fb:admins tag commented out until I properly understand it. -dafydd 2011-09-26 ?>
+	<?php //<meta property="fb:admins" content="dafyddmtjames"/> ?>
+	
 <?php
 	$paSect = "home";
 	if ( $this->countModules( 'newsmenu' ) ) {
