@@ -243,11 +243,6 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 				<div id="footer">
 					<div style="width: 100%; height: 80px; position: relative;">
-						<div style="position: absolute; right: 8px;">
-							<a href="http://www.ethical-junction.org/" title="We are members of Ethical Junction 2009" target="_blank">
-								<img src="http://www.ethical-junction.org/images/members/EJ-Membership-2009-1.png" style="border: medium none ;" alt="Ethical Junction Member 2009" height="60" width="120">
-							</a>
-						</div>
 					<div>Planet Angel is a not-for-profit company, limited by guarantee.</div>
 					<div>&copy; Planet Angel 1999 - 2009</div>
 					<div>All Rights Reserved. <a href="/listc/credits/">Click here</a> for a full list of credits.</div>
