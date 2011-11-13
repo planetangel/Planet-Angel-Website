@@ -244,7 +244,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 				<div id="footer">
 					<div style="width: 100%; height: 80px; position: relative;">
 					<div>Planet Angel is a not-for-profit company, limited by guarantee.</div>
-					<div>&copy; Planet Angel 1999 - 2009</div>
+					<div>&copy; Planet Angel 1999 - 2011</div>
 					<div>All Rights Reserved. <a href="/listc/credits/">Click here</a> for a full list of credits.</div>
 				</div>
 
